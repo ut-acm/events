@@ -1,0 +1,62 @@
+<%= form_for(@worldcup) do |f| %>
+    <% if @worldcup.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@worldcup.errors.count, "error") %> prohibited this worldcup from being saved:</h2>
+
+          <ul>
+            <% @worldcup.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="worldcup-container">
+  <!--<img src="/assets/halghe.jpg">-->
+  <div class="wrp">
+    <div class="main-content">
+      <div class="card-col">
+        <div class="noid_container">
+          <img src="/events/assets/Germany.jpg">
+
+          <div class="title">
+           <p>
+            تعداد گل آلمان
+           </p>
+            <%= f.number_field :germany_goal %>
+          </div>
+
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="noid_container">
+          <img src="/events/assets/fifa3.jpg">
+
+          <div class="title">
+              <%= f.submit "ارسال" ,  data: { confirm:
+              'از ارسال نتیجه مطمئن هستید؟'
+
+              }%>
+          </div>
+
+        </div>
+      </div>
+      <div class="card-col">
+        <div class="noid_container">
+          <img src="/events/assets/Argentina.jpg">
+
+          <div class="title">
+            <p>
+              تعداد گل‌های آرژانتین
+            </p>
+            <%= f.number_field :argentina_goal%>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<% end %>
+

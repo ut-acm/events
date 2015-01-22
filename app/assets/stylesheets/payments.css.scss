@@ -1,0 +1,208 @@
+// Place all the styles related to the payments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.form_class {
+  background-color: #f5f5f5;
+  color: #333;
+//  font-family: 'Titillium Web', sans-serif;
+  font-size: 14px;
+  height: 100%;
+  line-height: 1.4;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+
+  .wrapper {
+    bottom: 0;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    vertical-align: top;
+
+    .panel {
+      background-color: #fbfbfb;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.05), 0 4px 4px -3px rgba(0, 0, 0, 0.1);
+      display: block;
+      margin: 0 auto;
+      position: relative;
+      top: 5%;
+      width: 400px;
+
+      .heading {
+        background-color: #fff;
+        border-bottom: 1px solid transparent;
+        color: #666;
+        display: block;
+        padding: 22px 15px;
+        text-align: center;
+
+        div {
+          display: inline-block;
+          margin: 0 auto;
+
+          img {
+            display: block;
+            float: left;
+            margin-right: 5px;
+            position: relative;
+            top: 5px;
+          }
+
+          h1 {
+            display: block;
+            float: left;
+            text-align: left;
+            margin-top: 10px;
+
+            .title {
+              color: #333;
+              display: block;
+              font-size: 30px;
+              font-weight: bold;
+              letter-spacing: -1px;
+              line-height: 35px;
+            }
+
+            .subtitle {
+              color: #333;
+              display: block;
+              font-size: 12px;
+              line-height: 12px;
+            }
+
+          }
+
+        }
+
+      }
+
+      .content {
+        display: block;
+
+        li {
+          border-top: 1px solid #eee;
+          color: #555;
+          display: block;
+          padding: 23px 15px;
+          position: relative;
+          text-align: center;
+
+          .welcome-text {
+            display: block;
+            font-size: 16px;
+          }
+
+          .member {
+            display: inline-block;
+            margin-right: 7px;
+          }
+
+          .login-text {
+            display: inline-block;
+            margin-bottom: 16px;
+          }
+
+          .form-group {
+            margin: 0 auto 10px;
+            text-align: center;
+            font-size: 20px;
+            input {
+              background-color: #fff;
+              border: 1px solid #e3e3e3;
+              border-radius: 3px;
+              color: #555;
+              display: block;
+              height: 41px;
+              line-height: 1.33;
+              margin: 0 auto;
+              outline: none;
+              padding: 7.5px 16px;
+              transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+              width: 262px;
+            }
+
+          }
+
+        }
+
+      }
+
+      .footer {
+        background-color: #fff;
+        border-top: 1px solid #eee;
+        padding: 10px 15px;
+        text-align: center;
+
+        .google,
+        input[type=submit] {
+          background-color: #aece4e;
+          border: 1px solid #aece4e;
+          border-radius: 3px;
+          color: #fff;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 20px;
+          font-weight: normal;
+          line-height: 1.33;
+          margin-top: 10px;
+          padding: 7.5px 16px;
+          text-align: center;
+          white-space: nowrap;
+          width: 260px;
+        }
+
+        input[type=submit]:hover, input[type=submit]:focus {
+          background-color: #9cbe35;
+        }
+
+        .google {
+          background-color: #E74C3C;
+          border-color: #E74C3C;
+          &:hover,
+          &:focus {
+            background-color: #C0392B;
+            border-color: #C0392B;
+          }
+        }
+
+        .forget {
+          display: inline-block;
+          font-size: 12px;
+          margin: 15px auto 5px;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+th, tr
+{
+  text-align: center;
+}
+
+
+.new_payment2 {
+  background-color: #aece4e;
+  border: 1px solid #aece4e;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 22px;
+  font-weight: normal;
+  line-height: 1.33;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 7.5px 10px;
+  text-align: center;
+  white-space: nowrap;
+  width: 260px;
+}

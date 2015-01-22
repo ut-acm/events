@@ -1,0 +1,30 @@
+
+<div class="container">
+  <div class="widget green">
+    <div class="widget-title">
+      <h4>
+خطا در ثبت‌نام
+      </h4>
+    </div>
+    <div class="widget-body">
+
+      <div class="control-group" style="direction: rtl">
+        <p>
+اعتبار شما برای ثبت‌نام در رویداد
+     <strong>     <%= @participation.event.title %></strong>
+          ، کافی نیست. حداقل مبلغ
+          <strong><%= @participation.event.price - @participation.profile.credit %> </strong>
+          ریال
+          پرداخت کنید تا بتوانید در این رویداد ثبت‌نام کنید.
+        </p>
+
+        <div class="controls">
+          <!--<div >-->
+            <%= link_to "پرداخت جدید",new_payment_path, :class =>"btn panel-primary" %>
+          <!--</div>-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

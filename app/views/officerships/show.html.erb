@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @officership.event_id %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @officership.profile_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @officership.description %>
+</p>
+
+<%= link_to 'Edit', edit_officership_path(@officership) %> |
+<%= link_to 'Back', officerships_path %>

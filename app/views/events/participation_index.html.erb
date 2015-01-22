@@ -1,0 +1,39 @@
+<div style="direction: rtl">
+  <h1>
+    لیست شرکت‌کردن‌ها
+  </h1>
+  <%= link_to 'Add User to Event' , "/events/participations/new", data: { confirm: 'Are you sure?' } %>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>
+        هزینه
+      </th>
+      <th>
+        رویداد
+      </th>
+      <% if current_user.has_role?(:admin) %>
+          <th colspan="3"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @participations.each do |participation| %>
+      <tr>
+        <td><%= participation.event.price%></td>
+        <td><%= link_to participation.event.title, participation.event %></td>
+        <% if current_user.has_role?(:admin) %>
+            <td><%= link_to participation.profile.credentials, participation.profile%></td>
+            <% if participation.payed == false %>
+                <td><%= link_to 'Buy' , "/events/participations/buy/#{participation.id}", method: :post, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+            <td><%= link_to 'Destroy' , "/events/participations/destroy/#{participation.id}", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

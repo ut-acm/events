@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile_id: 
+  germany_goal: 1
+  argentina_goal: 1
+
+two:
+  profile_id: 
+  germany_goal: 1
+  argentina_goal: 1

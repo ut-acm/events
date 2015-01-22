@@ -1,0 +1,76 @@
+<div class="container">
+
+
+  <div class="widget green">
+    <div class="widget-title">
+      <h4>کاربر</h4>
+    </div>
+    <div class="widget-body">
+      <%= form_for @profile, :html => {:autocomplete => 'off'} do |f| %>
+          <div class="control-group">
+            <label class="control-label">نام</label>
+
+            <div class="controls">
+              <%= f.text_field :name, :required => true, :autofocus => true %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">نام خانوادگی</label>
+
+            <div class="controls">
+              <%= f.text_field :surname, :required => true, :autofocus => true %>
+            </div>
+          </div>
+          <div class="form-actions">
+            <%= f.submit 'Submit', :class => 'btn submit' %>
+            <%= link_to 'Cancel', root_path, :class => 'btn' %>
+          </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+
+  <div class="widget green">
+    <div class="widget-title">
+      <h4>
+        پرداخت‌های مالی
+      </h4>
+    </div>
+    <div class="widget-body">
+      <div class="control-group">
+        <label class="control-label"> موجودی فعلی </label>
+
+        <div class="controls">
+          ریال
+          <div class="btn panel-primary">
+            <%= @profile.credit %>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"> پرداخت‌ها</label>
+
+        <div class="controls">
+          <!--<div class="btn panel-warning">-->
+            <%= link_to "پرداخت‌های قبلی",payments_path, :class =>"btn panel-warning" %>
+          <!--</div>-->
+          <!--<div >-->
+            <%= link_to "پرداخت جدید",new_payment_path, :class => "btn panel-primary" %>
+          <!--</div>-->
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label"> رویداد‌های خریداری‌شده</label>
+
+        <div class="controls">
+          <!--<div >-->
+            <%= link_to "صورت‌حساب‌ها",invoices_path, :class => "btn panel-warning" %>
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

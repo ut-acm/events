@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="header">
+    <div class="title">
+      جلسه‌های پیش رو
+    </div>
+  </div>
+
+   <%= render 'class_sessions/next_sessions', :profile => @profile %>
+</div>
+<div class="container">
+  <div class="header">
+    <div class="title">
+      <%= @title %>
+    </div>
+  </div>
+
+  <% @events.each do |event| %>
+      <%= render 'events/event_card', :event => event %>
+  <% end %>
+</div>

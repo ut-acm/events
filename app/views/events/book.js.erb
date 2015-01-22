@@ -1,0 +1,27 @@
+<% if @error %>
+alert("<%= @error %>");
+<% else %>
+$('#register<%=@event.id%>').html('<%= link_to cancel_book_event_path(@event), :remote => true, :data => {:confirm => 'آیا مطمئن هستید که می‌خواهید لغو کنید؟'}, :method => :delete, :style => 'display: block' do %>' +
+        '<i class="check"></i>' +
+        '<p class="info">' +
+        'شرکت خواهم کرد!' +
+        '</p>' +
+        '<% end %>');
+//$('#more_info<%=@event.id%>').html('<span class="feature register link" >'
+//        + '<%= link_to  @event do %>'
+//        +' <p class="info">'
+//        + 'اطلاعات بیش‌تر'
+//+'</p>'
+//+ '<% end %>'
+//+'</span>');
+
+$('#sabt<%=@event.id%>').html('<span class="feature register link" >'
+        + '<%= link_to  prebuy_path(@event) do %>'
+        +' <p class="info">'
+        + 'ثبت نام'
++'</p>'
++ '<% end %>'
++'</span>');
+
+
+<% end %>

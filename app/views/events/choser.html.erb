@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <title>رویداد‌های ای‌سی‌ام </title>
+  <%= yield :extra_js %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-acm navbar-static-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <img class="acm-logo" src="/events/assets/logo-small.png">
+      <a class="navbar-brand" href="/">ACM</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="/events">Events</a></li>
+        <li><a href="/events/category/Ring">
+          حلقه
+        </a></li>
+        <!--<li><a href="/events/category/Lab">-->
+        <!--کار‌آموزی-->
+        <!--</a></li>-->
+        <li><a href="/events/category/Class">
+          کلاس‌های‌ تابستانی
+        </a></li>
+        <li><a href="/events/category/Workshop">
+          ورک‌شاپ‌
+        </a></li>
+	<li><a href="/events/category/Conference">همایش</a></li>
+	<li><a href="/events/category/Talk">تاک
+	</a></li>
+        <!--<li><a href="/events/events/25">-->
+          <!--<strong>-->
+            <!--F1-->
+          <!--</strong>-->
+        <!--</a></li>-->
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+            <li><%= link_to current_user.profile.credentials + " (تنظیمات)", '/events/profiles/' + current_user.profile.id.to_s + '/edit' %></li>
+            <li><%= link_to 'رویداد‌های من', current_user.profile %></li>
+            <li><%= link_to 'خروج', destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+            <li><%= link_to 'ورود', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+
+<!--<div class="box-container">-->
+  <!--&lt;!&ndash;<img src="/assets/halghe.jpg">&ndash;&gt;-->
+  <!--<div class="wrp">-->
+    <!--<div class="detail-content">-->
+      <!--<div class="header">-->
+
+        <!--<br>-->
+        <!--<br>-->
+        <!--<p style="font-size: 128px">-->
+        <!--</p>-->
+        <!--<br>-->
+        <!--<br>-->
+        <!--<p>-->
+          <!--روز تا انتشار شماره‌ی تابستان مجله‌ی اف‌یک!-->
+        <!--</p>-->
+
+
+      <!--</div>-->
+      <!--</div>-->
+<!--</div>-->
+    <!--<div class="main-content">-->
+      <!--<div class="card-col">-->
+        <!--<a href="http://acm.ut.ac.ir/events/events/25" >-->
+        <!--&lt;!&ndash;<a href="/events/worldcups/new">&ndash;&gt;-->
+          <!--<img src="/events/assets/F1-1.jpg">-->
+
+          <!--<div class="title">-->
+
+          <!--</div>-->
+        <!--</a>-->
+      <!--</div>-->
+      <!--<div class="card-col">-->
+        <!--&lt;!&ndash;<a href='/events/worldcups/new'>&ndash;&gt;-->
+        <!--<a href="http://acm.ut.ac.ir/events/events/25" >-->
+          <!--<img src="/events/assets/F1-2.jpg">-->
+
+          <!--<div class="title" style="direction: rtl">-->
+<!--در رونمایی اف‌یک شرکت کنید.-->
+          <!--</div>-->
+        <!--</a>-->
+      <!--</div>-->
+      <!--<div class="card-col">-->
+        <!--<a href="http://acm.ut.ac.ir/events/events/25" >-->
+        <!--&lt;!&ndash;<a href='/events/worldcups/new'>&ndash;&gt;-->
+          <!--<img src="/events/assets/F1-3.jpg">-->
+
+          <!--<div class="title">-->
+
+          <!--</div>-->
+        <!--</a>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--</div>-->
+  <!--</div>-->
+
+
+
+<div class="box-container">
+  <div class="wrp">
+    <div class="detail-content">
+      <div class="header">حلقه و کلاس‌های تابستانی</div>
+      <div class="description">
+        <p>
+          <b>حلقه چیست؟</b>
+          حلقه فرصتی است برای اتصال. اتصال صاحبان دانش به علاقه‌مندان دانش، اتصال نیروی کار به جایی که نیاز به آن نیرو
+          دارد چه صنعت، چه دانشگاه، اتصال شما به تصور از آینده‌ای که می‌توانید بسازید. حلقه در دو نوع آموزشی و کاربردی
+          است. حلقه‌های آموزشی نوعی کلاس‌ است که از چند نفر علاقه‌مند به فراگیری موضوعی خاص و یک نفر که به آن موضوع مسلط
+          است، تشکیل می‌شود. در حلقه تعداد زیادی شرکت‌کننده نداریم، ارتباط بین افراد به‌‌صورت یک‌طرفه نیست و بخش کاربردی
+          آموزش‌های درون حلقه بسیار پررنگ‌ است. در حلقه‌های کاربردی افرادی که دارای توانایی‌هایی هستند ( که می‌توانند
+          این توانایی را از حلقه‌های آموزشی کسب کنند) به آزمایشگاه‌ها و حتی شرکت‌های صنعتی معرفی خواهندشد. </p>
+
+        <p>
+          <b>حلقه‌های (آموزشی) علمی:</b>
+          برای ادامه‌ تحصیل و انتخاب رشته‌ی خود باید اطلاعات کافی در رابطه با رشته‌های گوناگون داشته باشید. درحال حاضر
+          این اطلاعات به وسیله‌ی واحد‌های اختیاری، مطالعه‌ی مباحث اضافه، صحبت با اساتید و دانشجویان مقاطع بالاتر به دست
+          می‌آید. عنصر مفقوده‌ی این انتقال اطلاعات، آشنایی به صورت عملی با این مباحث در زمانی کوتاه است. </p>
+
+        <p>
+          <b>حلقه‌های (آموزشی) فنی:</b>
+          چه بخواهید در صنعت فعالیت داشته باشید، چه در دانشگاه و به صورت آکادمیک، توانایی‌ها و مهارت‌هایی نیاز دارید که
+          به صورت معمول در دانشگاه آموزش داده نمی‌شود. این توانایی‌ها در حلقه‌های فنی به صورت کاملا عملی در مدت زمان
+          کوتاهی آموزش داده‌می‌شود. </p>
+
+        <p>
+          <b> کلاس‌های تابستانی </b>
+          امسال، با تمرکز بر مهندسی اینترنت و هم‌چنین آموزش پرکاربردترین زبان‌ها برگزار می‌شود. برای سهولت در شرکت،
+          کلاس‌ها بعد از ماه مبارک رمضان و از ۱۱ مرداد شروع می‌شود. </p>
+      </div>
+      <div class="header"> شما می‌توانید با شرکت در رویدادهایی که به آن علاقه دارید، از اخبار بعدی آن رویداد آگاه
+        شوید.
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="card-col">
+      <a href="/events/category/Class">
+        <img src="/events/assets/watermelon-clipart.jpg">
+
+        <div class="title">
+          کلاس‌های تابستانی
+        </div>
+      </a>
+    </div>
+    <div class="card-col">
+      <a href='/events/category/Lab'>
+        <img src="/events/assets/lab.png">
+
+        <div class="title">
+          آزمایشگاه‌ها و کارآموزی
+        </div>
+      </a>
+    </div>
+    <div class="card-col">
+      <a href='/events/category/Ring'>
+        <img src="/events/assets/halghe.jpg">
+
+        <div class="title">
+          حلقه‌
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="secondary-content">
+    <div class="copy">All rights reserved by ACM Student Chapter of University of Tehran</div>
+  </div>
+</div>
+</body>
+</html>

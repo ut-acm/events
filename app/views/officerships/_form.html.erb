@@ -1,0 +1,47 @@
+<%= form_for(@officership) do |f| %>
+  <% if @officership.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@officership.errors.count, "error") %> prohibited this officership from being saved:</h2>
+
+      <ul>
+      <% @officership.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+    <div class="form-group">
+      <%= f.label :event, :class => 'control-label col-sm-3' %>
+      <div class="col-sm-9">
+        <%= f.collection_select :event_id, Event.all, :id, :title, {}, { class: 'form-control'} %>
+      </div>
+    </div>
+
+<div class="form-group">
+  <%= f.label :profile, :class => 'control-label col-sm-3' %>
+  <div class="col-sm-9">
+    <%= f.collection_select :profile_id, Profile.all, :id, :credentials, {}, { class: 'form-control'} %>
+  </div>
+</div>
+
+
+
+    <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<% content_for :extra_js do %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select').chosen({width: '100%'});
+        });
+
+    </script>
+<% end %>

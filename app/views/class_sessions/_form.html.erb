@@ -1,0 +1,45 @@
+<%= form_for(@class_session) do |f| %>
+  <% if @class_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@class_session.errors.count, "error") %> prohibited this class_session from being saved:</h2>
+
+      <ul>
+      <% @class_session.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+      <%= f.label :event, :class => 'control-label col-sm-3' %>
+      <div class="col-sm-9">
+        <%= f.collection_select :event_id, Event.all, :id, :title, {}, { class: 'form-control'} %>
+      </div>
+    </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.datetime_select :start_time %>
+  </div>
+  <div class="field">
+    <%= label_tag :weeks %><br>
+    <%= number_field_tag :weeks %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<% content_for :extra_js do %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select').chosen({width: '100%'});
+        });
+
+    </script>
+<% end %>

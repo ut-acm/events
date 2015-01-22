@@ -1,0 +1,73 @@
+<div style="direction: rtl">
+<h1>
+  لیست پرداخت‌ها
+</h1>
+  <%= link_to 'پرداخت جدید', new_payment_path, :class => "new_payment2" %>
+  <%= link_to 'پرداخت دستی', '/events/payments/manual_new', :class => "new_payment2" %>
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>
+        مبلغ
+      </th>
+      <th>
+        کاربر
+      </th>
+      <th>
+        وضعیت پرداخت
+      </th>
+      <th>
+        تاریخ ایجاد
+      </th>
+      <th>
+        تاریخ پرداخت
+      </th>
+      <% if current_user.has_role?(:admin) %>
+          <th colspan="4"></th>
+      <% end %>
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if current_user.has_role?(:admin) %>
+    <tr>
+        <td><%= Payment.where("status = ?",true).sum(:amount) %></td>
+        <td colspan="8"></td>
+    </tr>
+     <% end %>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%= payment.amount %></td>
+        <td><%= payment.profile.credentials %></td>
+        <td>
+          <% if payment.status %>
+          کامل
+          <% else %>
+        پرداخت نشده‌
+
+          <% end %>
+        </td>
+        <td><%= payment.created_at.to_parsi %></td>
+        <td>
+            <% if payment.succeed_time.nil? == false %>
+                <%= payment.succeed_time.to_parsi%>
+             <% end %>
+        </td>
+        <% if current_user.has_role?(:admin) %>
+            <td><%= link_to 'Show', payment %></td>
+            <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
+            <td><%= link_to 'Approve' , "/events/payments/manual_approve/#{payment.id}", method: :put, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

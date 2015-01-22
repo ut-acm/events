@@ -1,0 +1,35 @@
+<h1>Editing worldcup</h1>
+
+
+<%= form_for(@worldcup) do |f| %>
+    <% if @worldcup.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@worldcup.errors.count, "error") %> prohibited this worldcup from being saved:</h2>
+
+          <ul>
+            <% @worldcup.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :profile_id %><br>
+      <%= f.text_field :profile_id %>
+    </div>
+    <div class="field">
+      <%= f.label :germany_goal %><br>
+      <%= f.number_field :germany_goal %>
+    </div>
+    <div class="field">
+      <%= f.label :argentina_goal %><br>
+      <%= f.number_field :argentina_goal %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+<%= link_to 'Show', @worldcup %> |
+<%= link_to 'Back', worldcups_path %>

@@ -1,0 +1,29 @@
+<h1>Listing worldcups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Germany goal</th>
+      <th>Argentina goal</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @worldcups.each do |worldcup| %>
+      <tr>
+        <td><%=link_to worldcup.profile.credentials, worldcup.profile %></td>
+        <td><%= worldcup.germany_goal %></td>
+        <td><%= worldcup.argentina_goal %></td>
+        <td><%= link_to 'Show', worldcup %></td>
+        <td><%= link_to 'Edit', edit_worldcup_path(worldcup) %></td>
+        <td><%= link_to 'Destroy', worldcup, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Worldcup', new_worldcup_path %>

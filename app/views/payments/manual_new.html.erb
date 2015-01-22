@@ -1,0 +1,68 @@
+<div class="form_class" >
+<%= form_for :payment , :url => {:action => "manual_new", :id => @payment} do |f| %>
+<section class="wrapper">
+  <section class="panel">
+    <div class="heading">
+        <h1> افزایش اعتبار</h1>
+    </div>
+    <% if @payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+      <ul>
+      <% @payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <ul class="content">
+      <li>
+
+        <div class="form-group">
+          <%= f.label :profile, :class => 'control-label col-sm-3' %>
+          <div class="col-sm-9">
+            <%= f.collection_select :profile_id, Profile.all, :id, :credentials, {}, { class: 'form-control'} %>
+          </div>
+        </div>
+        <!--</li>-->
+      <!--<li>-->
+      <div class="form-group">
+        <%= f.label :amount, "مبلغ به ریال"%><br>
+        <%= f.number_field :amount %>
+        <div>
+حداقل مبلغ ۱۰۰۰۰ریال
+        </div>
+      </div>
+
+      </li>
+      <li>
+        <div class="form-group">
+          <%= f.label :reference_key, "Reference"%><br>
+          <%= f.text_field :reference_key %>
+        </div>
+
+      </li>
+    </ul>
+
+    <div class="footer">
+      <%= f.submit "ارسال" %>
+
+    </div>
+    <div class="footer">
+    <%= link_to 'بازگشت' ,payments_path %>
+    </div>
+  </section>
+</section>
+<% end %>
+</div>
+
+<% content_for :extra_js do %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select').chosen({width: '100%'});
+        });
+
+    </script>
+<% end %>

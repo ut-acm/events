@@ -1,0 +1,34 @@
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
+    <section class="wrapper">
+      <section class="panel">
+
+        <%= render '/devise/shared/heading'%>
+
+        <ul class="content">
+          <li>
+            <div class="form-group">
+              <%= f.label :password, "New password" %><br />
+              <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+            </div>
+
+            <!-- TODO -->
+            <%= devise_error_messages! %>
+          </li>
+          <li>
+            <div class="form-group">
+              <%= f.label :password_confirmation, "Confirm new password" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            </div>
+          </li>
+        </ul>
+
+        <div class="footer">
+          <%= f.submit "Change my password" %>
+        </div>
+
+      </section>
+    </section>
+
+<% end %>

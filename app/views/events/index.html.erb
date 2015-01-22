@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="header">
+    <div class="title">
+      <%= @title %>
+    </div>
+    <div class="summary">
+      <h4>
+        شما می‌توانید با ثبت‌نام در سایت و شرکت در رویداد مورد نظر خود، از اخبار بعدی آن رویداد و هم‌چنین
+        رویداد‌های جدید آگاه شوید. </h4>
+    </div>
+  </div>
+  <% @events.each do |event| %>
+      <%= render 'event_card', :event => event %>
+  <% end %>
+  <div class="header">
+    <div class="title">
+        رویداد‌های گذشته
+    </div>
+  </div>
+
+  <% @archives.each do |event| %>
+      <%= render 'event_card', :event => event %>
+  <% end %>
+</div>

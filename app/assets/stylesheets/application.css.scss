@@ -1,0 +1,152 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap.min
+ *= require fonts.css.scss.erb
+ *= require chosen
+ *= require font-awesome.min.css.erb
+ *= require_tree .
+ *= require_self
+ */
+
+html, body {
+  background-color: #F7F7F7;
+  font-family: 'MyriadPro-Light' 'Mitra';
+}
+
+h3 {
+  color: #888888;
+  display: block;
+  font-size: 28px;
+}
+
+.navbar-acm {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 300;
+  .navbar-brand {
+    font-weight: 300;
+  }
+  .acm-logo {
+    height: 50px;
+    float: left;
+    padding: 3px 15px 3px 0;
+  }
+}
+
+.breadcrumb {
+  background-color: #f5f5f5;
+  list-style: none;
+  margin: 10px 0;
+  padding: 8px 15px;
+}
+
+.breadcrumb li {
+  display: inline-block;
+  line-height: 20px;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.breadcrumb li a {
+  color: #888888;
+  font-size: 14px;
+}
+
+.breadcrumb li span {
+  color: #888888;
+  font-size: 12px;
+}
+
+.widget {
+  background: #fff;
+  clear: both;
+  font-size: 13px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.widget-title {
+  height: 36px;
+}
+
+.widget-body {
+  padding: 15px 15px;
+}
+
+.widget-title h4 {
+  color: #fff;
+  display: block;
+  float: left;
+  font-size: 14px;
+  line-height: 12px;
+  margin: 0;
+  padding: 15px;
+}
+
+.widget.green .widget-title {
+  background: #74B749;
+}
+
+.control-group {
+  margin-bottom: 20px;
+}
+
+.control-label {
+  cursor: pointer;
+  display: block;
+  float: left;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  text-align: left;
+  width: 160px;
+}
+
+.controls {
+  margin-left: 180px;
+}
+
+.controls input {
+  border: 1px solid #ddd;
+  color: #555;
+  display: inline-block;
+  float: none;
+  font-size: 14px;
+  line-height: 20px;
+  outline: none;
+  height: 30px;
+  padding: 4px 6px;
+  width: 50%;
+}
+
+.controls input:focus {
+  border-color: #4a8bc2;
+}
+
+.form-actions {
+  background-color: #fff;
+  border-top: 1px solid #e5e5e5;
+  margin: 20px 0;
+  padding: 19px 20px 20px 180px;
+}
+
+
+.notice{
+  direction: rtl;
+  background-color: #FFFACD;
+  border-top: 1px solid #e5e5e5;
+  margin: 20px 0;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+}

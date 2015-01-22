@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="widget green">
+    <div class="widget-title">
+      <h4>
+        تایید پرداخت
+      </h4>
+    </div>
+    <div class="widget-body">
+
+      <div class="control-group" style="direction: rtl">
+        <p>
+شما با موفقیت مبلغ
+          <strong>   <%= @payment.amount %></strong>
+          ریال
+پرداخت کردید، می‌توانید لیست پرداخت‌ها و صورت‌حساب خود را در صفحه‌ی تنظیمات خود ببینید.
+        </p>
+
+        <div class="controls">
+          <!--<div class="btn panel-primary">-->
+          <%= link_to "تنظیمات", edit_profile_path(@profile) , :class =>"btn panel-primary"%>
+          <!--</div>-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

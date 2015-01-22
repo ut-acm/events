@@ -1,0 +1,30 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+<section class="wrapper">
+	<section class="panel">
+		
+		<%= render '/devise/shared/heading'%>
+		
+		<ul class="content">
+			<li>
+				<span class="login-text">
+					Recovery instructions will be sent to your email address
+				</span>
+					<div class="form-group">
+					  <%= f.email_field :email, autofocus: true, required: true, placeholder: 'Email' %>
+					</div>
+					<!-- TODO -->
+					<%= devise_error_messages! %>
+			</li>
+		</ul>
+		
+		<div class="footer">
+			<%= f.submit "Send me reset password instructions" %>
+			<br>
+			<%= link_to "Log in to your account", new_session_path(resource_name), class: 'forget' %>
+		</div>
+
+	</section>
+</section>
+
+<% end %>

@@ -1,0 +1,27 @@
+<table>
+  <thead>
+  <tr>
+    <th>
+      روز
+    </th>
+    <th>
+      ساعت
+    </th>
+    <th>
+      مدت
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% event.class_sessions.order(:start_time).each do |cs| %>
+      <tr>
+        <td> <%= cs.start_time.to_parsi.strftime("%A-%D") %></td>
+        <td> <%= cs.start_time.to_parsi.strftime("%I:%M %P") %></td>
+        <td>
+          <%= cs.duration %>
+          min
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

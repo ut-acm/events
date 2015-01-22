@@ -1,0 +1,49 @@
+<div style="direction: rtl">
+  <h1>
+    لیست صورت‌حساب‌ها
+  </h1>
+
+</div>
+
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+      <th>
+        هزینه
+      </th>
+      <th>
+        رویداد
+      </th>
+      <% if current_user.has_role?(:admin) %>
+          <th colspan="4"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% if current_user.has_role?(:admin) %>
+      <tr>
+        <td><%= Invoice.sum(:amount) %></td>
+        <td colspan="8"></td>
+      </tr>
+      <% end %>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.amount %></td>
+        <td><%= link_to invoice.participation.event.title, invoice.participation.event %></td>
+        <% if current_user.has_role?(:admin) %>
+            <td><%= link_to invoice.participation.profile.credentials, invoice.participation.profile%></td>
+            <td><%= link_to 'Show', invoice %></td>
+            <td><%= link_to 'Edit', edit_invoice_path(invoice) %></td>
+            <td><%= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if current_user.has_role?(:admin) %>
+<%= link_to 'New Invoice', new_invoice_path %>
+<% end %>

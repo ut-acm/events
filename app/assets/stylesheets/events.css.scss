@@ -1,0 +1,181 @@
+// Place all the styles related to the events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container > .header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+  direction: rtl;
+  text-align: center;
+  > .title {
+    font-size: 48px;
+  }
+}
+
+.event {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: table;
+  margin: 20px 0;
+  padding: 10px;
+  width: 100%;
+  background-color: #fff;
+  color: #333;
+  border-radius: 4px;
+  > div {
+    vertical-align: top;
+  }
+
+  .column {
+    display: table-cell;
+    width: 100px;
+
+    .feature {
+      background: #dadada;
+      border: 1px solid transparent;
+      color: #969696;
+      cursor: pointer;
+      display: block;
+      margin-bottom: 10px;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 4px;
+      > a {
+        > i {
+          padding: 0;
+          margin: 0;
+          display: block;
+          background-position: center;
+          width: 100%;
+        }
+        > .info {
+          direction: rtl;
+          margin: 6px 0 0;
+          height: 40px;
+        }
+      }
+    }
+
+    .feature.link a {
+      color: #969696 !important;
+    }
+
+    .feature.link a:hover {
+      color: #44a048 !important;
+    }
+
+    .feature.date {
+      background-color: #04579e; //#f37b53;
+      color: #fff;
+      padding: 0;
+      > p {
+        margin: 0;
+        display: block;
+      }
+      .day {
+        font-size: 54px;
+        line-height: 60px;
+        padding-top: 4px;
+      }
+      .month {
+        font-size: 20px;
+        text-transform: uppercase;
+        padding-bottom: 6px;
+      }
+    }
+  }
+
+  .content {
+    display: table-cell;
+    padding: 10px;
+    margin: 0;
+
+    > .wrapper {
+      display: table;
+      width: 100%;
+      > .small-detail {
+        display: table-cell;
+        width: 200px;
+        text-align: center;
+        vertical-align: top;
+        padding: 10px;
+        > .title {
+          font-size: 24px;
+          direction: rtl;
+        }
+        > .authors {
+          padding-top: 4px;
+          font-size: 14px;
+        }
+        > .date {
+          font-size: 14px;
+          padding-top: 2px;
+        }
+        > .info {
+          font-size: 13px;
+          text-align: center;
+          direction: rtl;
+          padding-top: 12px;
+        }
+      }
+      @media (max-width: 992px) {
+        > .small-detail {
+          display: none;
+        }
+      }
+      @media (max-width: 1200px) {
+        > .small-detail {
+          width: 150px;
+        }
+      }
+
+      > .big-detail {
+        display: table-cell;
+        > .wrapper {
+          display: table;
+          width: 100%;
+          > div {
+            vertical-align: top;
+          }
+          > .poster-wrapper {
+            display: table-cell;
+            width: 300px;
+            > .poster {
+              width: 100%;
+            }
+          }
+          @media (max-width: 992px) {
+            > .poster-wrapper {
+              display: none;
+            }
+          }
+          @media (max-width: 1200px) and (min-width: 992px) {
+            > .poster-wrapper {
+              width: 200px;
+            }
+          }
+          > .text-wrapper {
+            direction: rtl;
+            padding: 10px;
+            display: table-cell;
+            > .sentence {
+              text-align: center;
+              font-size: 28px;
+            }
+            > .summary {
+              text-align: justify;
+              font-size: 16px;
+            }
+            > .description {
+              text-align: justify;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

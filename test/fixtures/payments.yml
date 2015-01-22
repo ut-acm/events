@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  profile_id: 1
+  reference_key: MyString
+  status: false
+  succeed_time: 2014-07-01 18:00:58
+
+two:
+  amount: 1
+  profile_id: 1
+  reference_key: MyString
+  status: false
+  succeed_time: 2014-07-01 18:00:58

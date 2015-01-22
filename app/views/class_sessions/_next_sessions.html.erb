@@ -1,0 +1,31 @@
+<table>
+  <thead>
+  <tr>
+    <th>
+      کلاس
+    </th>
+    <th>
+      روز
+    </th>
+    <th>
+      ساعت
+    </th>
+    <th>
+      مدت
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% profile.next_sessions.order(:start_time).each do |cs| %>
+      <tr>
+        <td style="direction: rtl"> <%= link_to cs.event.title, cs.event %></td>
+        <td> <%= cs.start_time.to_parsi.strftime("%A-%D") %></td>
+        <td> <%= cs.start_time.to_parsi.strftime("%I:%M %P") %></td>
+        <td>
+          <%= cs.duration %>
+          min
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

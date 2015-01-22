@@ -1,0 +1,22 @@
+i {
+	display: inline-block;
+	font-size: 35px;
+	height: 32px;
+	margin: 5px 0;
+	width: 32px;
+}
+
+i.audience {
+	background: url(image-path('i-audience.png')) no-repeat;
+	background-size: 32px 32px;
+}
+
+i.check {
+	background: url(image-path('i-check.png')) no-repeat;
+	background-size: 32px 32px;
+}
+
+i.link {
+	background: url(image-path('i-link.png')) no-repeat;
+	background-size: 32px 32px;
+}

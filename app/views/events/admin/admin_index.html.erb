@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="header">
+    <div class="title">
+      <%= @title %>
+    </div>
+    <div class="summary">
+      <h4>
+        شما می‌توانید با ثبت‌نام در سایت و شرکت در رویداد مورد نظر خود، از اخبار بعدی آن رویداد و هم‌چنین
+        رویداد‌های جدید آگاه شوید. </h4>
+      <span class="feature register link">
+        <%= link_to new_event_path, :style => 'display: block;' do %>
+                        <i class="link"></i>
+                        <p class="info">new</p>
+                    <% end %>
+		</span>
+      <!--<span class="feature register link">-->
+        <!--<%= link_to temp_start_all_path, :style => 'display: block;', data:  {confirm: "Are you sure?"} do %>-->
+                        <!--<i class="link"></i>-->
+                        <!--<p class="info">Send Payment start Message to all</p>-->
+                    <!--<% end %>-->
+		<!--</span>-->
+
+    </div>
+  </div>
+  <% @events.each do |event| %>
+      <%= render 'events/admin/admin_event_card', :event => event %>
+  <% end %>
+</div>

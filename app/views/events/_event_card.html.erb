@@ -1,0 +1,130 @@
+<div class="event">
+
+  <div class="column">
+		<span class="feature date">
+			<p class="day"><%= event.begins.to_parsi.strftime("%d") %></p>
+			<p class="month"><%= event.begins.to_parsi.strftime("%B") %></p>
+		</span>
+        <span class="feature" >
+      <p>
+        <%= event.participants.count %>
+      </p>
+        <p class="info">
+          علاقه‌مند
+        </p>
+    </span>
+    <!--<span class="feature audiences">-->
+    <!--<i class="audience"></i>-->
+    <!--<p class="info"><%= "#{event.participants.count} are going" %></p>-->
+    <!--</span>-->
+    <% if event.can_register? %>
+		<span class="feature register link" id="register<%= event.id %>">
+		    <% if current_user and event.participations.where("payed = ?", true).where("profile_id = ?", current_user.profile.id).count > 0 %>
+                <%= link_to "#", :remote => true, :style => 'display: block' do %>
+                    <i class="check"></i>
+	    			<p class="info">
+                      در این رویداد ثبت‌نام کرده‌ام
+                    </p>
+                <% end %>
+                        <% elsif event.is_full? %>
+                <!--<i class=""></i>-->
+				<p class="info">
+                  ظرفیت تمام شده‌است.
+                </p>
+            <% elsif current_user and event.participants.include? current_user.profile %>
+                  <%= link_to cancel_book_event_path(event), :remote => true, :data => {:confirm => 'آیا مطمئن هستید که می‌خواهید لغو کنید؟'}, :method => :delete, :style => 'display: block' do %>
+                    <i class="check"></i>
+	    			<p class="info">
+                      شرکت خواهم کرد! </p>
+                  <% end %>
+			<% elsif !event.is_full? %>
+
+				<% if current_user %>
+                    <%= link_to book_event_path(event), :method => :post, :style => 'display: block;', :remote => true do %>
+                        <i class="link"></i>
+                        <p class="info">
+                          دوست دارید شرکت کنید؟ </p>
+                    <% end %>
+                <% else %>
+
+                  <%= link_to new_user_session_path, :method => :post, :style => 'display: block;' do %>
+                        <i class="link"></i>
+                        <p class="info">برای ثبت‌نام وارد شوید!</p>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <!--<i class=""></i>-->
+				<p class="info">Full!</p>
+			<% end %>
+		</span>
+    <% end %>
+
+    <% if event.can_register? == false %>
+
+    <span class="feature register link" style="background-color: #e74c3c; color: white" >
+				<p class="info">
+                  زمان ثبت نام این رویداد به اتمام رسیده است. در صورتی که تا به حال ثبت نام نکرده‌اید به دفتر شاخه‌ مراجعه کنید.
+                </p>
+    </span>
+
+
+    <% end %>
+    <div id="sabt<%=event.id%>">
+    </div>
+    <div id="more_info<%= event.id %>">
+        <span class="feature register link">
+               <%= link_to event do %>
+				<p class="info">
+                  اطلاعات بیش‌تر
+                </p>
+              <% end %>
+		</span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="wrapper">
+      <div class="small-detail">
+        <div class="title"><%= event.title %></div>
+        <br>
+        <% event.officerships.each do |o| %>
+            <div class="authors">
+              <%= o.profile.credentials %>
+            </div>
+            <div class="info">
+              <p><%= raw o.description %></p>
+            </div>
+        <% end %>
+      </div>
+      <div class="big-detail">
+        <div class="wrapper">
+          <div class="poster-wrapper">
+            <%= image_tag event.poster.url, :class => 'poster' %>
+          </div>
+          <div class="text-wrapper">
+            <div class="sentence"><%= event.sentence %></div>
+            <br>
+
+            <div class="summary">
+              <%= raw event.summary %>
+
+            </div>
+          </div>
+        </div>
+        <hr>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :extra_js do %>
+    <script type="text/javascript" lang="javascript">
+        $(document).ready(function () {
+            $('#login').click(function () {
+                $.get('/users/sign_in', function (data) {
+                    $('#main-modal-body').html(data);
+                });
+            });
+        });
+    </script>
+<% end %>

@@ -1,0 +1,34 @@
+<table>
+  <thead>
+  <tr>
+    <th>
+
+    </th>
+    <th>
+      نام
+    </th>
+    <th>
+      ایمیل
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <% event.members.each do |p, i| %>
+      <tr>
+        <td><%= i %></td>
+        <td style="direction: rtl"> <%= p.credentials %> </td>
+        <td> <%= mail_to p.user.email, p.user.email %></td>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+<% if event.members.count > 0 %>
+<p style="text-align: center">
+    <%= mail_to  event.members_mails, "ارسال ایمیل به همه‌ی اعضا"  %>
+</p>
+<% end %>
+<hr>

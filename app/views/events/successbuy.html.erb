@@ -1,0 +1,29 @@
+
+<div class="container">
+  <div class="widget green">
+    <div class="widget-title">
+      <h4>
+پایان ثبت‌نام
+      </h4>
+    </div>
+    <div class="widget-body">
+
+      <div class="control-group" style="direction: rtl">
+        <p>
+شما در رویداد
+          <strong>     <%= @participation.event.title %></strong>
+          ثبت‌نام کردید و مبلغ
+          <strong><%= @participation.event.price %> </strong>
+          ریال از اعتبار شما کسر شد.
+        </p>
+
+        <div class="controls">
+          <!--<div class="btn panel-primary">-->
+            <%= link_to @participation.event.title, @participation.event, :class =>"btn panel-primary"%>
+          <!--</div>-->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

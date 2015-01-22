@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="widget green">
+    <div class="widget-title">
+      <h4>تایید ثبت‌نام</h4>
+    </div>
+    <div class="widget-body">
+
+          <div class="control-group" style="direction: rtl">
+              <p>
+شما در حال ثبت‌نام رویداد
+                <strong>     <%= @participation.event.title %></strong>
+          و هزینه‌ی ثبت‌نام
+              <strong><%= @participation.event.price %></strong>
+ریال
+              است.
+              </p>
+              <p>
+                آیا مطمئن هستید می‌خواهید در این رویداد ثبت‌نام کنید؟
+              </p>
+
+            <div class="controls">
+              <div class="form-actions">
+                <%= link_to 'ثبت نام',buy_path(participation: @participation), method: :post, :class => 'btn btn-primary' %>
+                <%= link_to 'لغو', root_path, :class => 'btn btn-danger' %>
+              </div>
+            </div>
+          </div>
+
+    </div>
+  </div>
+</div>

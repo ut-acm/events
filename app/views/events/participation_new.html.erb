@@ -1,0 +1,58 @@
+<div class="form_class" >
+  <%= form_for :participation , :url => {:controller => "events", :action => "participation_create"} do |f| %>
+      <section class="wrapper">
+        <section class="panel">
+          <div class="heading">
+            <h1> ایجاد شرکت‌کردن</h1>
+          </div>
+          <% if @participation.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@participation.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+                <ul>
+                  <% @participation.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+
+          <ul class="content">
+            <li>
+
+              <div class="form-group">
+                <%= f.label :profile, :class => 'control-label col-sm-3' %>
+                <div class="col-sm-9">
+                  <%= f.collection_select :profile_id, Profile.all, :id, :credentials, {}, { class: 'form-control'} %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :event, "رویداد" , :class => 'control-label col-sm-3' %>
+                <div class="col-sm-9">
+                  <%= f.collection_select :event_id, Event.all, :id, :title, {}, { class: 'form-control'} %>
+                </div>
+              </div>
+
+            </li>
+          </ul>
+
+          <div class="footer">
+            <%= f.submit "ارسال" %>
+
+          </div>
+          <div class="footer">
+            <%= link_to 'بازگشت' ,participations_path %>
+          </div>
+        </section>
+      </section>
+  <% end %>
+</div>
+
+<% content_for :extra_js do %>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select').chosen({width: '100%'});
+        });
+
+    </script>
+<% end %>

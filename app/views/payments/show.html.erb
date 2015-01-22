@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payment.amount %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @payment.profile_id %>
+</p>
+
+<p>
+  <strong>Reference key:</strong>
+  <%= @payment.reference_key %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @payment.status %>
+</p>
+
+<p>
+  <strong>Succeed time:</strong>
+  <%= @payment.succeed_time %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

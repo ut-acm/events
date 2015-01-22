@@ -1,0 +1,42 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<section class="wrapper">
+	<section class="panel">
+		
+		<%= render '/devise/shared/heading'%>
+		
+		<ul class="content">
+			<li>
+				<span class="welcome-text">
+					Welcome back to ACM members portal!
+				</span>
+				<span class="member">
+					Not a Member?
+				</span>
+				<%= link_to 'Sign Up »', new_user_registration_path %>
+			</li>
+			<li>
+				<span class="login-text">
+					Log in with your email address
+				</span>
+					<div class="form-group">
+					  <%= f.email_field :email, autofocus: true, required: true, placeholder: 'Email' %>
+					</div>
+					<div class="form-group">
+						<%= f.password_field :password, autocomplete: 'off', required: true, placeholder: 'Password' %>
+					</div>
+					<%= f.check_box :remember_me %> <%= f.label :remember_me, :style => 'font-size: 12px;' %>
+			</li>
+		</ul>
+		
+		<div class="footer">
+			<%= f.submit "LOG IN TO YOUR ACCOUNT" %>
+            <%= link_to "LOG IN WITH GOOGLE", user_omniauth_authorize_path(:google_oauth2), :class => 'google' %>
+			<br>
+			<%= link_to "Forgot your password?", new_password_path(resource_name), class: 'forget' %>
+		</div>
+		
+	</section>
+</section>
+
+<% end %>

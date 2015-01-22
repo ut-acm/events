@@ -1,0 +1,144 @@
+<div class="event">
+
+  <div class="column">
+		<span class="feature date">
+			<p class="day"><%= event.begins.strftime("%d") %></p>
+			<p class="month"><%= event.begins.strftime("%B") %></p>
+		</span>
+    <!--<span class="feature audiences">-->
+    <!--<i class="audience"></i>-->
+    <!--<p class="info"><%= "#{event.participants.count} are going" %></p>-->
+    <!--</span>-->
+		<span class="feature register link" id="register<%= event.id %>">
+			<% if current_user and event.participants.include? current_user.profile %>
+                  <%= link_to cancel_book_event_path(event), :remote => true, :data => {:confirm => 'آیا مطمئن هستید که می‌خواهید لغو کنید؟'}, :method => :delete, :style => 'display: block' do %>
+                    <i class="check"></i>
+	    			<p class="info">
+                      شرکت خواهم کرد! </p>
+                  <% end %>
+			<% elsif !event.is_full? %>
+
+				<% if current_user %>
+                    <%= link_to book_event_path(event), :method => :post, :style => 'display: block;', :remote => true do %>
+                        <i class="link"></i>
+                        <p class="info">
+                          دوست دارید شرکت کنید؟ </p>
+                    <% end %>
+                <% else %>
+                  <!--<a class="btn" id="login" data-toggle="modal" data-target="#main-modal">-->
+                    <!--Log in to book!-->
+                  <!--</a>-->
+
+                  <%= link_to new_user_session_path, :method => :post, :style => 'display: block;' do %>
+                        <i class="link"></i>
+                        <p class="info">برای ثبت‌نام وارد شوید!</p>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <i class=""></i>
+				<p class="info">Full!</p>
+			<% end %>
+		</span>
+        <span class="feature register link" id="register<%= event.id %>">
+        <%= link_to "#", :style => 'display: block;' do %>
+<p class="info">شرکت‌کنندگان</p>
+              <p class="info"><%= event.participants.count %></p>
+                    <% end %>
+		</span>
+        <span class="feature register link" id="register<%= event.id %>">
+        <%= link_to edit_event_path(event), :style => 'display: block;' do %>
+                        <i class="link"></i>
+                        <p class="info">edit</p>
+                    <% end %>
+		</span>
+        <span class="feature register link" id="register<%= event.id %>">
+        <%= link_to event, :method => :delete, :style => 'display: block;', data: {confirm: 'Are you sure?'} do %>
+            <i class="link"></i>
+            <p class="info">remove</p>
+        <% end %>
+        </span>
+        <span class="feature register link" id="register<%= event.id %>">
+        <%= link_to new_class_session_path(event), :style => 'display: block;' do %>
+            <i class="link"></i>
+            <p class="info">New Class Session</p>
+        <% end %>
+        </span>
+        <span class="feature register link" id="register<%= event.id %>">
+        <%= link_to start_register_event_path(event), :style => 'display: block;', data: {confirm: 'Are you sure?'} do %>
+            <i class="link"></i>
+            <p class="info">Start Registeration</p>
+        <% end %>
+        </span>
+  </div>
+  <div class="content">
+    <div class="wrapper">
+      <div class="small-detail">
+        <div class="title"><%= event.title %></div>
+        <br>
+        <% event.officerships.each do |o| %>
+            <div class="authors">
+              <%= o.profile.credentials %>
+            </div>
+            <div class="info">
+              <p><%= o.description %></p>
+            </div>
+        <% end %>
+      </div>
+      <div class="big-detail">
+        <div class="wrapper">
+          <div class="poster-wrapper">
+            <%= image_tag event.poster.url, :class => 'poster' %>
+          </div>
+          <div class="text-wrapper">
+            <div class="sentence"><%= event.sentence %></div>
+            <br>
+          </div>
+        </div>
+        <div class="summary">
+          <p class="info">شرکت‌کنندگان</p>
+
+          <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Payed</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% event.participants.each do |profile| %>
+                <tr>
+                  <td><%= link_to profile.credentials, profile %> </td>
+                  <td><%= profile.user.email %> </td>
+                  <td><%= (Participation.where("event_id = ?", event.id).where("profile_id = ?", profile.id).where("payed =?", true).count > 0).to_s %></td>
+                  <% part = Participation.where("event_id = ?", event.id).where("profile_id = ?", profile.id).where("payed =?", true).last %>
+                  <td>
+                    <% if part != nil %>
+                        <%= part.created_at %>
+                    <% else %>
+                        None
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :extra_js do %>
+    <script type="text/javascript" lang="javascript">
+        $(document).ready(function () {
+            $('#login').click(function () {
+                $.get('/users/sign_in', function (data) {
+                    $('#main-modal-body').html(data);
+                });
+            });
+        });
+    </script>
+<% end %>
