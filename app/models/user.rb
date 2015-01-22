@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # callbacks
   after_create :create_profile
-  after_create :send_welcome
+  # after_create :send_welcome
   # associations
   has_one :profile
 

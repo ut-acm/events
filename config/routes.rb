@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   get 'category/:category' => 'events#filter_by_category'
 
-
+  match 'user_import/import_users' ,to: 'user_import#import_users' ,via: :post
 
   get 'admin' => 'events#admin_index'
 
