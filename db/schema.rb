@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712212507) do
+ActiveRecord::Schema.define(version: 20141117100623) do
+
+  create_table "answers", force: true do |t|
+    t.integer  "answered"
+    t.integer  "profile_id"
+    t.integer  "survey_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "class_sessions", force: true do |t|
     t.integer  "event_id"
@@ -114,6 +122,16 @@ ActiveRecord::Schema.define(version: 20140712212507) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "surveys", force: true do |t|
+    t.text     "question"
+    t.text     "op1"
+    t.text     "op2"
+    t.text     "op3"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
