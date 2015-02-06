@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Acm
   class Application < Rails::Application
     config.time_zone = 'Tehran'
+    config.assets.precompile += Ckeditor.assets
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
