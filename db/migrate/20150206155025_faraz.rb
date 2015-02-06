@@ -1,11 +1,8 @@
 class Faraz < ActiveRecord::Migration
   def change
-  	create_table :profiles do |t|
-  		t.string :phone_number
-  		t.integer :rating, :default => 0
-  	end
-  	create_table :events do |t|
-  		t.integer :report_id
-  	end
+	add column :prfiles, :phone_number, :string
+	add column :prfiles, :rating, :integer,:default => 0
+	add column :events, :report_id, :integer
   end
 end
+
