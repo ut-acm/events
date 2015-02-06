@@ -11,6 +11,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :capacity
       t.integer :price
       t.attachment :poster
+      t.integer :report_id
       t.timestamps
     end
   end

@@ -7,6 +7,16 @@
     </div>
     <div class="widget-body">
       <%= form_for @profile, :html => {:autocomplete => 'off'} do |f| %>
+      <div class="control-group">
+            <label class="control-label">آواتار</label>
+            <div class="controls">
+<%= image_tag current_user.profile.avatar.url(:thumb) ,:size => '100x100'%>
+</div>
+            <div class="controls">
+              <%= f.file_field :avatar %>
+            </div>
+          </div>
+
           <div class="control-group">
             <label class="control-label">نام</label>
 
@@ -20,7 +30,33 @@
             <div class="controls">
               <%= f.text_field :surname, :required => true, :autofocus => true %>
             </div>
+
           </div>
+          <div class="control-group">
+            <label class="control-label">شماره تلفن</label>
+
+            <div class="controls">
+              <%= f.text_field :phone_number,:required => true,  :autofocus => true %>
+            </div>
+
+          </div>
+
+        <br>
+      <div class="control-group">
+        <label class="control-label">مهارت ها(با ویرگول جدا کنید)ا</label>
+          <%= f.text_field :tag_list %>
+        </div>
+      </div>
+
+          <div class="control-group">
+            <label class="control-label">امتیاز شما</label>
+
+            <!--<div class="controls">-->
+              <%= @profile.rating %>
+            <!--</div>-->
+
+          </div>
+
           <div class="form-actions">
             <%= f.submit 'Submit', :class => 'btn submit' %>
             <%= link_to 'Cancel', root_path, :class => 'btn' %>

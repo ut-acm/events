@@ -1,5 +1,6 @@
 class Profile < ActiveRecord::Base
-
+  acts_as_taggable
+  validates :phone_number, format: { with: /\A[0-9]*\z/, message: "bad format" }
   # associations
   belongs_to :user
   has_many :participations
@@ -19,6 +20,9 @@ class Profile < ActiveRecord::Base
     end
     if self.surname.nil?
       self.surname = ""
+    end
+    if self.phone_number.nil?
+      self.phone_number=""
     end
     self.save
   end

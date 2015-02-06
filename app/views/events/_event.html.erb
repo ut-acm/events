@@ -104,6 +104,7 @@
     <div class="wrapper">
       <div class="small-detail">
         <div class="title"><%= event.title %></div>
+        <%link_to 'گزارش',event.report%>
         <br>
         <% event.officerships.each do |o| %>
             <div class="authors">

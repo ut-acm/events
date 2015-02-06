@@ -3,7 +3,9 @@ class CreateProfiles < ActiveRecord::Migration
     create_table :profiles do |t|
       t.string :name
       t.string :surname
+      t.string :phone_number
       t.integer :credit, :default => 0
+      t.integer :rating, :default => 0
       t.attachment :avatar
       t.references :user, index: true
       t.timestamps

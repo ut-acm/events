@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/galetahub/ckeditor.git
+  revision: 96c2ba8602154a7d46c4c95952550ae638503396
+  specs:
+    ckeditor (4.1.1)
+      cocaine
+      orm_adapter (~> 0.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -27,6 +35,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.4.3)
+      activerecord (>= 3.2, < 5)
     arel (5.0.1.20140414130214)
     authority (3.0.0)
       activesupport (>= 3.0.0)
@@ -148,6 +158,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    simple_calendar (1.1.10)
+      rails (>= 3.0)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -181,9 +193,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   authority
   better_errors
   binding_of_caller
+  ckeditor!
   daemons
   delayed_job_active_record
   devise
@@ -198,6 +212,7 @@ DEPENDENCIES
   rolify
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  simple_calendar (~> 1.1.0)
   thin
   turbolinks
   uglifier

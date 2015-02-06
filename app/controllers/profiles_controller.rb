@@ -26,6 +26,11 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
       redirect_to events_path
     else
+      puts":::::::::::::::::::"
+      @profile.errors.messages.each do |e|
+        puts e
+      end
+      puts"<<<<<<<<<<<<<<<<<<<<"
       render action: 'edit', :alert => 'data validation failed.'
     end
   end
@@ -33,7 +38,7 @@ class ProfilesController < ApplicationController
   private
   
   def profile_params
-    params.require(:profile).permit(:name, :surname, :avatar)
+    params.require(:profile).permit(:name, :surname, :avatar, :phone_number,:tag_list,:avatar)
   end
   
   def set_profile

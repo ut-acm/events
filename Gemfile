@@ -51,3 +51,11 @@ gem 'delayed_job_active_record'
 gem "daemons"
 
 gem "uglifier"
+
+gem 'acts-as-taggable-on'
+
+gem "simple_calendar", "~> 1.1.0"
+
+gem 'ckeditor', github: 'galetahub/ckeditor'
+
+gem 'paperclip'

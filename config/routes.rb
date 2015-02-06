@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  resources :reports
+
+  mount Ckeditor::Engine => '/ckeditor'
   resources :answers
 
   resources :surveys

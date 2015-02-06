@@ -9,6 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= javascript_include_tag 'ckeditor/ckeditor.js' %>
 <div class="modal fade" id="main-modal" tabindex="-1" role="dialog" aria-labelledby="mainModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -72,6 +73,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+        <li><%= image_tag current_user.profile.avatar.url(:thumb) ,:size => '50x50'%></li>
             <li><%= link_to current_user.profile.credentials + " (تنظیمات)", '/events/profiles/' + current_user.profile.id.to_s + '/edit' %></li>
             <li><%= link_to 'رویداد‌های من', current_user.profile %> </li>
             <li><%= link_to 'خروج', destroy_user_session_path, :method => :delete %> </li>
@@ -94,6 +96,15 @@
     </div>
   </div>
 </div>
-
+<script type="text/javascript">
+  $(document).ready(function() {
+      if ($('textarea.ckeditor').length > 0) {
+          var data = $('textarea.ckeditor');
+          $.each(data, function(i) {
+              CKEDITOR.replace(data[i].id);
+          });
+      }
+  });
+</script>
 </body>
 </html>
