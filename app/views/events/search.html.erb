@@ -1,0 +1,10 @@
+<form action="search" method="get">
+	<input type="text" placeholder="نام" name="name">
+	<% ActsAsTaggableOn::Tagging.includes(:tag).where(:taggable_type=>"Event").each do |t|%>
+		<div class="tags" onclick="document.getElementById('tags').value+=',<%=t.tag.name%>'"> 
+			<%=t.tag.name%>
+		</div><br>
+	<%end%>
+	<input name="tags" id="tags" text=""/>
+	<input type="submit" text="جستجو"/>
+</form>

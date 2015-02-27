@@ -67,8 +67,26 @@
                 </p>
     </span>
 
+    <% event.tag_list.each do |t|%>
+    <div class="tags">
+    <a href="search?tags=<%=t%>">
+      <%=t%>
+    </div> 
+  </a>
+  <%end%>
+
+  <% if event.begins < Time.now && event.report %>
+
+    <span class="feature register link">
+               <%= link_to event.report do %>
+               <p class="report">
+                گزارش
+               </p>
+              <% end %>
+    </span>
 
     <% end %>
+    <%end%>
     <div id="sabt<%=event.id%>">
     </div>
     <div id="more_info<%= event.id %>">

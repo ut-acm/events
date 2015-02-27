@@ -195,6 +195,17 @@ class EventsController < ApplicationController
     params.require(:participation).permit(:profile_id, :event_id)
   end
 
+  def search
+    if (params[:tags] || params[:name])
+      @all=Event.tagged_with(params[:tags],:any=>true)
+      @all=@all.where("title LIKE '#{params[:name]}' OR sentence LIKE '#{params[:name]}' OR description LIKE '#{params[:name]}' OR summary LIKE '#{params[:name]}'") if params[:name] && params[:name]!=""
+      @events=@all.where("begins > ?", Time.now).order(:begins)
+      @archives=@all.where("begins < ?", Time.now).order(:begins)
+      render 'events/index'
+    else
+      render 'events/search'
+    end
+  end
 
   def manual_buy
     authenticate_user!
@@ -270,7 +281,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster, :officer_ids => [])
+    params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster,:tag_list, :officer_ids => [])
   end
 
   def set_event

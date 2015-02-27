@@ -28,7 +28,9 @@ class ReportsController < ApplicationController
     @report = Report.new(report_params)
 
     respond_to do |format|
-      if @report.save
+      event=Event.where(:id=>params[:event])[0]
+      event.report=@report
+      if @report.save && event.save
         format.html { redirect_to @report, notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
       else
@@ -71,6 +73,6 @@ class ReportsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
       # params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster, :officer_ids => [])
-      params.require(:report).permit(:body)
+      params.require(:report).permit(:body,:event)
     end
 end

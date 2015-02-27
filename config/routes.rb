@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'events/search' => 'events#search'
 
   resources :reports
 
@@ -55,7 +56,7 @@ Rails.application.routes.draw do
       resources :class_sessions
       match 'book' => 'events#book', :as => :book, :via => :post
       match 'cancel' => 'events#cancel_book', :as => :cancel_book, :via => :delete
-      match 'start_register' => 'events#start_register', :as => :start_register, :via => :get
+      match 'start_register' => 'events#start_register', :a => :start_register, :via => :get
     end
   end
   resources :profiles

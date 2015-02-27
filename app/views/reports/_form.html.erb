@@ -13,6 +13,13 @@
 
    <%= f.cktext_area :body, :class => 'someclass', :ckeditor => {:language => 'fa'} %>
 
+   <% event_id_map=[] %>
+   <% Event.all.each do |e| %>
+      <% event_id_map<<[e.title,e.id]%>
+   <%end%>
+
+   <%=select_tag(:event,options_for_select(event_id_map)) %>
+
 
   <div class="actions">
     <%= f.submit %>
