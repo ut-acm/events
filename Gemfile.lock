@@ -102,6 +102,7 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.16)
+    non-stupid-digest-assets (1.0.4)
     oauth2 (0.9.3)
       faraday (>= 0.8, < 0.10)
       jwt (~> 0.1.8)
@@ -205,6 +206,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
+  non-stupid-digest-assets
   omniauth-google-oauth2
   paperclip
   parsi-date (~> 0.2.5)

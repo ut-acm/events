@@ -56,6 +56,6 @@ gem 'acts-as-taggable-on'
 
 gem "simple_calendar", "~> 1.1.0"
 
-gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'ckeditor' ,github: 'galetahub/ckeditor'
 
-gem 'paperclip'
+gem "non-stupid-digest-assets"

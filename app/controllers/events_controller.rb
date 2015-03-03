@@ -24,7 +24,7 @@ class EventsController < ApplicationController
       @archives = Event.where("category = ?", category).where("begins < ?", Time.now).order(:begins)
       @title = "رویداد‌ها"
       if category == 'Class'
-        @title = "کلاس‌های تابستانی"
+        @title = "کلاس‌ها"
       elsif category == 'Ring'
         @title = "حلقه‌ها"
       elsif category == 'Lab'
