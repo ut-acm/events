@@ -19,7 +19,6 @@ class EventsController < ApplicationController
 
   def filter_by_category
     category = params[:category]
-    year = params[:year]
     if category == 'Class' or category == 'Ring' or category == 'Lab' or category == 'Workshop' or category=='Conference' or category=='Talk'
       @events = Event.where("category = ?", category).where("begins > ?", Time.now).order(:begins)
       @archives = Event.where("category = ?", category).where("begins < ?", Time.now).order(:begins)
@@ -33,16 +32,22 @@ class EventsController < ApplicationController
       elsif category == 'Workshop'
         @title = "ورک‌شاپ‌ها"
       elsif category == 'Conference'
-	@title = "همایش ها"
+	      @title = "همایش ها"
       elsif category == 'Talk'
-	@title = 'تاک ها'
+	      @title = 'تاک ها'
       end
       render 'events/index'
-    elsif year
-      @events=@events.where("begins > ?",Time.begining_of_year(year))
     else
       redirect_to events_path
     end
+  end
+
+  def fliter_by_year
+    year = params[:year]
+    @events=Event.where("begins > ?",Time.begining_of_year(year.to_i)).where("begins > ?", Time.now).order(:begins)
+    @archives=Event.where("begins > ?",Time.begining_of_year(year.to_i)).where("begins < ?", Time.now).order(:begins)
+    @title = 'تمامی رویدادهای سال '+year.to_s
+    render 'events/index'
   end
 
   def show
