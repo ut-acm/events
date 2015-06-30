@@ -42,7 +42,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def fliter_by_year
+  def filter_by_year
     year = params[:year]
     @events=Event.where("begins > ?",Time.begining_of_year(year.to_i)).where("begins > ?", Time.now).order(:begins)
     @archives=Event.where("begins > ?",Time.begining_of_year(year.to_i)).where("begins < ?", Time.now).order(:begins)

@@ -37,8 +37,8 @@ Rails.application.routes.draw do
   #
   #get 'events/edit'
 
-  get 'year/:category' => 'events#filter_by_category'
-  #get 'year/:year' => 'events#filter_by_year'
+  get 'category/:category' => 'events#filter_by_category'
+  get 'year/:year' => 'events#filter_by_year'
 
   match 'user_import/import_users' ,to: 'user_import#import_users' ,via: :post
 
