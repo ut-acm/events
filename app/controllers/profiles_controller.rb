@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile
