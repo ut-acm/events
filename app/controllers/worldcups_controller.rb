@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
 class WorldcupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_worldcup, only: [:show, :edit, :update, :destroy]
