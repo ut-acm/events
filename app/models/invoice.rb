@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
 class Invoice < ActiveRecord::Base
   belongs_to :participation
   validate :check_credit
