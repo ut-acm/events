@@ -88,8 +88,22 @@ class UserMailer < ActionMailer::Base
       format.html { render 'user_mailer/send_all_register', :locals => {:profile => profile} }
 #      format.html { render 'welcome_message' }
     end
+
   end
 
+  def remind_event(event)
+    subject =
+        'شاخه‌ی دانشجویی ای‌سی‌ام دانشگاه تهران -' +
+            'یادآوری کلاس '+event.title
+    event.participations.each do |p|
+      recipient = p.profile.user.email
 
+      attachments.inline['acm.png'] = @@acm
 
+      puts 'Email: to => ' + recipient + ', subject => ' + subject
+      mail(to: recipient, subject: subject) do |format|
+        format.html { render 'user_mailer/remind_event', :locals => {:profile => p.profile,:event=>event} }
+      end
+    end
+  end
 end

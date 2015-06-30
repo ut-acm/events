@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="direction: rtl">
+  <p>
+    کاربر عزیز
+    <strong> <%= profile.credentials %></strong>
+  </p>
+  <p>
+    این ایمیل جهت یادآوری برگزاری کلاس <%=event.title %> برای شما فرستاده شده است. کلاس شما فردا در ساعت مشخص شده برگزار خواهد شد.
+
+  <p style="margin-top: 30px;">شاخه‌ی دانشجویی ای‌سی‌ام</p>
+    <%= image_tag attachments['acm.png'].url, :alt => 'ACM Student Chapter', :size => '64x64' %>
+  </body>
+</html>
