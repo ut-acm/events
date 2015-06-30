@@ -75,16 +75,15 @@
   <%="<option value='"+y.to_s+"' ><a href='/events?year="+y.to_s+"'>سال "+y.to_s+" </a></option>"%>
   <%end%>
 </select>-->
-<li><div class="btn-group">
+<li>
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-        Action <span class="caret"></span>
+        زمان کلاس <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
         <% (1393..Time.now.to_parsi.year).each do |y| %>
-  <%="<li><a href='/events?year="+y.to_s+"'>سال "+y.to_s+" </a></li>"%>
+  <li><a href='/events?year=<%=y.to_s%>'>سال <%=y.to_s%> </a></li>
   <%end%>
-      </ul>
-    </div></li>
+      </ul></li>
 
 
       </ul>
