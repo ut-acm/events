@@ -68,11 +68,11 @@
 <!--</strong>-->
         <!--</a></li>-->
 
-<li text-align="center">
-      <button style="border-color:#fff" text-align="center" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+<li>
+      <button style="border-color:#fff;text-align:center" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
         زمان کلاس <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu" role="menu">
+      <ul class="dropdown-menu" role="menu" style="background-color: #969696;">
         <% (1393..Time.now.to_parsi.year).each do |y| %>
   <li><%=link_to "سال "+y.to_s ,filter_by_year_path(:year=>y.to_s)%></li>
   <%end%>
