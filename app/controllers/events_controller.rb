@@ -1,4 +1,5 @@
-# encoding: UTF-8
+#!/usr/bin/env ruby
+# encoding: utf-8
 class EventsController < ApplicationController
   before_action :authenticate_user!, :only => [:book, :cancel_book, :edit, :new]
   before_action :complete_profile
