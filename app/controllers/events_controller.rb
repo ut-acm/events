@@ -44,8 +44,9 @@ class EventsController < ApplicationController
 
   def filter_by_year
     year = params[:year]
-    @events=Event.where("begins > ?",Time.new(year.to_i,1,1)).where("begins > ?", Time.now).order(:begins)
-    @archives=Event.where("begins > ?",Time.new(year.to_i,1,1)).where("begins < ?", Time.now).order(:begins)
+    all=Event.where("begins >= ?",Time.new(year.to_i,1,1).to_gregorian()).where("begins <= ?",Time.new(year.to_i+1,1,1))
+    @events=all.where("begins > ?", Time.now).order(:begins)
+    @archives=all.where("begins < ?", Time.now).order(:begins)
     @title = 'تمامی رویدادهای سال '+year.to_s
     render 'events/index'
   end
