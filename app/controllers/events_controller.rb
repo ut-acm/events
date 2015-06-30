@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     if category == 'Class' or category == 'Ring' or category == 'Lab' or category == 'Workshop' or category=='Conference' or category=='Talk'
       @events = Event.where("category = ?", category).where("begins > ?", Time.now).order(:begins)
       @archives = Event.where("category = ?", category).where("begins < ?", Time.now).order(:begins)
-      @title = "رویداد‌ها"
+      @title = "رویدادها"
       if category == 'Class'
         @title = "کلاس‌ها"
       elsif category == 'Ring'
