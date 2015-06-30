@@ -54,8 +54,10 @@ gem "uglifier"
 
 gem 'acts-as-taggable-on'
 
-gem "simple_calendar", "~> 1.1.0"
+#gem "simple_calendar", "~> 1.1.0"
 
 gem 'ckeditor' ,github: 'galetahub/ckeditor'
 
 gem "non-stupid-digest-assets"
+
+#gem 'spreadsheet', '~> 0.9.9'
