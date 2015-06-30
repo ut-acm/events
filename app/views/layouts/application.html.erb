@@ -81,7 +81,7 @@
       </button>
       <ul class="dropdown-menu" role="menu">
         <% (1393..Time.now.to_parsi.year).each do |y| %>
-  <li><%=link_to "سال "+y.to_s ,filter_by_year(y.to_s)%></li>
+  <li><%=link_to "سال "+y.to_s ,filter_by_year_path(:year=>y.to_s)%></li>
   <%end%>
       </ul></li>
 
