@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   def filter_by_category
     category = params[:category]
-    year = [arms[:year]
+    year = params[:year]
     if category == 'Class' or category == 'Ring' or category == 'Lab' or category == 'Workshop' or category=='Conference' or category=='Talk'
       @events = Event.where("category = ?", category).where("begins > ?", Time.now).order(:begins)
       @archives = Event.where("category = ?", category).where("begins < ?", Time.now).order(:begins)
