@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
 class UserMailer < ActionMailer::Base
   
   # class variable to hold logo
