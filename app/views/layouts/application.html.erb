@@ -72,8 +72,8 @@
   <option value="">زان کلاس</option>
   ASDDDDDDDDDDD<%=Time.now.to_parsi%>
   <%=Time.now.to_parsi.year%>
-  <% [1393..Time.now.to_parsi.year].each do |y| %>
-  <%="<option value="+y.to_s+" ><a href='/events?year="+y.to_s+"'>سال "+y.to_s+" </a></option>"%>
+  <% (1393..Time.now.to_parsi.year).each do |y| %>
+  <%="<option value='"+y.to_s+"' ><a href='/events?year="+y.to_s+"'>سال "+y.to_s+" </a></option>"%>
   <%end%>
 </select>
 
