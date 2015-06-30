@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
 class Participation < ActiveRecord::Base
   validate :check_capacity
   belongs_to :profile
