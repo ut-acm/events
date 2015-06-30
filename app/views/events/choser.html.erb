@@ -49,6 +49,17 @@
           <!--</strong>-->
         <!--</a></li>-->
 
+        <li>
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        زمان کلاس <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <% (1393..Time.now.to_parsi.year).each do |y| %>
+        <li><%=link_to "سال "+y.to_s ,filter_by_year_path(:year=>y.to_s)%></li>
+        <%end%>
+      </ul></li>
+
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
