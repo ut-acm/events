@@ -61,3 +61,4 @@ gem 'ckeditor' ,github: 'galetahub/ckeditor'
 gem "non-stupid-digest-assets"
 
 #gem 'spreadsheet', '~> 0.9.9'
+gem 'whenever', :require => false
