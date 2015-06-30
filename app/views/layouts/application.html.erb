@@ -68,13 +68,23 @@
 <!--</strong>-->
         <!--</a></li>-->
 
-  <select name="years" value='<%=Time.now.to_parsi.year%>'>  
-  <option value='1393' >asd<a href='/events?year=1393'>سال 1393 </a></option>
+  <!--<select name="years" value='<%=Time.now.to_parsi.year%>'>  
+  <option value='1393' ><a href='/events?year=1393'>سال 1393 </a></option>
   <option value='1394' ><a href='/events?year=1394'>سال 1394 </a></option>
   <% (1393..Time.now.to_parsi.year).each do |y| %>
   <%="<option value='"+y.to_s+"' ><a href='/events?year="+y.to_s+"'>سال "+y.to_s+" </a></option>"%>
   <%end%>
-</select>
+</select>-->
+<li><div class="btn-group">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Action <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <% (1393..Time.now.to_parsi.year).each do |y| %>
+  <%="<li><a href='/events?year="+y.to_s+"'>سال "+y.to_s+" </a></li>"%>
+  <%end%>
+      </ul>
+    </div></li>
 
 
       </ul>
