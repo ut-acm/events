@@ -19,6 +19,7 @@ class EventsController < ApplicationController
 
   def filter_by_category
     category = params[:category]
+    year = [arms[:year]
     if category == 'Class' or category == 'Ring' or category == 'Lab' or category == 'Workshop' or category=='Conference' or category=='Talk'
       @events = Event.where("category = ?", category).where("begins > ?", Time.now).order(:begins)
       @archives = Event.where("category = ?", category).where("begins < ?", Time.now).order(:begins)
@@ -37,6 +38,8 @@ class EventsController < ApplicationController
 	@title = 'تاک ها'
       end
       render 'events/index'
+    elsif year
+      @events=@events.where("begins > ?",Time.begining_of_year(year))
     else
       redirect_to events_path
     end
