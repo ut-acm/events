@@ -18,6 +18,7 @@ class Participation < ActiveRecord::Base
         profile.save
         return true
       end
+      puts ":::::::::::::::::::::::::::::::::::::::::::::::::"
       puts invoice.errors.messages
       return false
     end
