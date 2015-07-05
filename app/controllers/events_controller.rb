@@ -182,8 +182,8 @@ class EventsController < ApplicationController
       if @participation.buy(@profile)
         redirect_to participation_index, :notice => "خرید این رویداد موفقیت‌آمیز بود"
       else
-        puts "::::::::::::::::::::::::::::",@participation.errors.messages
-        redirect_to @participation.event, :notice => "فرآیند خرید با اشکال روبه‌رو شد."
+        # puts "::::::::::::::::::::::::::::",@participation.errors.messages
+        redirect_to @participation.event, :notice => "فرآیند خرید با اشکال روبه‌رو شد."+@participation.errors.messages
       end
     end
   end
