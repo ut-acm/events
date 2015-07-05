@@ -18,7 +18,9 @@ class Participation < ActiveRecord::Base
         profile.save
         return true
       end
-      puts ":::::::::::::::::::::::::::::::::::::::::::::::::"
+      Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::#{invoice.errors.messages.first}"
+
+      # puts ":::::::::::::::::::::::::::::::::::::::::::::::::"
       puts invoice.errors.messages
       return false
     end
