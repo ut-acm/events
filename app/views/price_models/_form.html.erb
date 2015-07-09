@@ -1,0 +1,29 @@
+<%= form_for(@price_model) do |f| %>
+  <% if @price_model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@price_model.errors.count, "error") %> prohibited this price_model from being saved:</h2>
+
+      <ul>
+      <% @price_model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :event_id %><br>
+    <%= f.number_field :event_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
