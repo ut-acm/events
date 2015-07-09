@@ -63,6 +63,8 @@ class EventsController < ApplicationController
   end
 
   def create
+    Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::#{params}"
+    return
     @event = Event.new(event_params)
     authorize_action_for @event
     if @event.save
@@ -293,7 +295,8 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster,:tag_list, :officer_ids => [])
+    # params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster,:tag_list, :officer_ids => [])
+    params.require(:event).permit!
   end
 
   def set_event
