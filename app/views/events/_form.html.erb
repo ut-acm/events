@@ -87,7 +87,7 @@
             <%PriceModel.all.each do |p|%>
               <%@dict[p.name]=p.id%>
             <%end%>
-            <%=f.checkbox :price_model_ids, @dict%>
+            <%=f.check_box :price_model_ids, @dict%>
           </div>
           <div class="form-actions">
             <%= f.submit 'Submit', :class => 'btn submit' %>
