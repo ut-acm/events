@@ -81,12 +81,13 @@
             </div>
           </div>
 
-          <div class="control-group" id="price_model_main">
-            <label class="control-label">Price Model</label>
-            <br>
-            <div id="price_model_panel">
-            </div>
-            <button type='button' onclick="add_price_model()">+</button>
+          <div class="control-group">
+            <label class="control-label">Price Model:</label><br>
+            <% @dict={}%>
+            <%PriceModel.all.each do |p|%>
+              <%@dict[p.name]=p.id%>
+            <%end%>
+            <%=f.checkbox :price_model_ids, @dict%>
           </div>
           <div class="form-actions">
             <%= f.submit 'Submit', :class => 'btn submit' %>
@@ -97,23 +98,6 @@
   </div>
 
 </div>
-
-<script>
-    function add_price_model() {
-        document.getElementById("price_model_panel").innerHTML += "<br><input type='text' name='price_model_title["+(window.price_model_size+1).toString()+"]'/>  : <input type='text' name='price_model_price["+(window.price_model_size+1).toString()+"]'/>";
-        window.price_model_size++;
-    }
-    </script>
-    <script>
-    function category_change() {
-        var x = document.getElementById("event_category").value;
-        if (x=="Conference")
-          document.getElementById("price_model_main").style.display = '';
-        else
-          document.getElementById("price_model_main").style.display = 'none';
-    }
-    </script>
-
 
 <% content_for :extra_js do %>
 
