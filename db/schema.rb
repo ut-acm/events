@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630113602) do
+ActiveRecord::Schema.define(version: 20150206155025) do
 
   create_table "answers", force: true do |t|
     t.integer  "answered"
@@ -110,6 +110,14 @@ ActiveRecord::Schema.define(version: 20150630113602) do
     t.boolean  "status",        default: false
     t.datetime "succeed_time"
     t.text     "response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "price_models", force: true do |t|
+    t.integer  "price"
+    t.string   "name"
+    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
