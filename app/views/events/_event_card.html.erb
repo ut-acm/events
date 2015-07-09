@@ -73,6 +73,7 @@
           <%=form_tag 'book_conference' do%>
             <%=hidden_field_tag :event_id, event.id%>
             <%=select_tag :model_id, options_from_collection_for_select(PriceModel.all,:id,:name)%>
+            <%=submit_tag 'انتخاب'%>
           <%end%>
         </div>
       </div>
