@@ -63,7 +63,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::#{params[:price_model_title]}"
+    Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::#{params}"
     return
     @event = Event.new(event_params)
     authorize_action_for @event

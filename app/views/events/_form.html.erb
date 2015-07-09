@@ -4,7 +4,7 @@
       <h4>Event</h4>
     </div>
     <div class="widget-body">
-      <%= form_for @event, :html => {:autocomplete => 'off'} do |f| %>
+      <%= form_for @event, :url => event_path(:type => "whatever"),:html => {:autocomplete => 'off'} do |f| %>
           <div class="control-group">
             <label class="control-label">Title</label>
 
