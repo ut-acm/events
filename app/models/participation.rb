@@ -10,7 +10,7 @@ class Participation < ActiveRecord::Base
   validate :price_model_is_for_event, :before => :create
 
     def price_model_is_for_event
-      if self.is_conference_like && not(self.event.price_models.ids.include?(self.price_model.id))
+      if self.event.is_conference_like && not(self.event.price_models.ids.include?(self.price_model.id))
         errors.add(:price_model, ':|')
       end
     end
