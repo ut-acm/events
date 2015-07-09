@@ -15,8 +15,6 @@ class Event < ActiveRecord::Base
   has_one :report
   has_many :price_models
 
-  attr_accessor :price_model_title, :price_model_price
-
   # attachments
   has_attached_file :poster, styles: {thumb: "x150"}
   

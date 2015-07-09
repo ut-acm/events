@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :worldcups
 
+  resources :price_models
+
   get 'payments/approve' => 'payments#approve'
   get 'payments/manual_new' => 'payments#manual_new'
   post 'payments/manual_new' => 'payments#manual_create'
