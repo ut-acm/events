@@ -5,6 +5,7 @@ class Participation < ActiveRecord::Base
   belongs_to :profile
   belongs_to :event
   has_one :invoice
+  belongs_to :price_model
 
 
   def buy (profile)
@@ -18,8 +19,7 @@ class Participation < ActiveRecord::Base
         profile.save
         return true
       end
-      Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::#{invoice.errors.messages.first}"
-
+      # Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::#{invoice.errors.messages.first}"
       # puts ":::::::::::::::::::::::::::::::::::::::::::::::::"
       puts invoice.errors.messages
       return false

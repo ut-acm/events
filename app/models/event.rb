@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
   has_many :class_sessions
   has_one :survey
   has_one :report
+  has_many :price_models
 
   # attachments
   has_attached_file :poster, styles: {thumb: "x150"}

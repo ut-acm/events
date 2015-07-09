@@ -51,7 +51,7 @@
             <label class="control-label">Category</label>
 
             <div class="controls">
-              <%= f.text_field :category %>
+              <%= f.text_field :category,:onclick=>"category_change" %>
             </div>
           </div>
           <div class="control-group">
@@ -80,6 +80,12 @@
               <%= f.text_field :tag_list %>
             </div>
           </div>
+
+          <div class="control-group" id="price_model_main">
+            <div id="price_model_panel">
+            </div>
+            <button onclick="add_price_model()">+</button>
+          </div>
           <div class="form-actions">
             <%= f.submit 'Submit', :class => 'btn submit' %>
             <%= link_to 'Cancel', root_path, :class => 'btn' %>
@@ -91,8 +97,27 @@
 </div>
 
 <% content_for :extra_js do %>
+    <script>
+    function add_price_model() {
+        document.getElementById("price_model_panel").innerHTML += "<input type='text' name='price_model_title_"+(window.price_model_size+1).toString()+"'/>  : <input type='text' name='price_model_price_"+(window.price_model_size+1).toString()+"'/>";
+        window.price_model_size++;
+    }
+    </script>
+    <script>
+    function category_change() {
+        var x = document.getElementById("event_category").value;
+        if (value=="Conference")
+          document.getElementById("price_model_main").style.display = '';
+        else
+          document.getElementById("price_model_main").style.display = 'none';
+    }
+    </script>
+
+
     <script type="text/javascript">
         $(document).ready(function () {
+          window.price_model_size=0;
+          add_price_model();
             $('select').chosen({width: '100%'});
         });
 
