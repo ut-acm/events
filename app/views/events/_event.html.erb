@@ -41,7 +41,8 @@
                   <% end %>
 			<% elsif !event.is_full? %>
 
-				<%if event.category=="Conference"%>
+				<% if current_user %>
+                <%if event.category=="Conference"%>
                     <%= link_to '/#','data-toggle'=>"modal",'data-target'=>"#myModal"+event.id.to_s, :style => 'display: block;', :onclick=>"$(.modal).style.display=''" do %>
                         <i class="link"></i>
                         <p class="info">
@@ -65,8 +66,7 @@
                 <!--<i class=""></i>-->
 				<p class="info">Full!</p>
 			<% end %>
-    <% if current_user  and event.is_full? == false and event.participants.include? current_user.profile and event.participations.where("payed = ?",true).where("profile_id = ?", current_user.profile.id).count == 0 %>
-    
+		</span>
     <div class="modal fade" id="myModal<%=event.id%>" role="dialog">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -80,6 +80,7 @@
     </div>
   </div>
 
+    <% if current_user  and event.is_full? == false and event.participants.include? current_user.profile and event.participations.where("payed = ?",true).where("profile_id = ?", current_user.profile.id).count == 0 %>
     <div id="sabt<%=event.id%>">
     <span class="feature register link" >
 
