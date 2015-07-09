@@ -68,15 +68,6 @@
 			<% end %>
 		</span>
 
-    <div class="modal-content">
-        <div class="modal-body">
-          <%=form_tag 'book_conference' do%>
-            <%=hidden_field_tag :event_id, event.id%>
-            <%=select_tag :model_id, PriceModel.all.collect { |e| [ e.name, e.id ] }%>
-          <%end%>
-        </div>
-      </div>
-
     <% if current_user  and event.is_full? == false and event.participants.include? current_user.profile and event.participations.where("payed = ?",true).where("profile_id = ?", current_user.profile.id).count == 0 %>
     <div id="sabt<%=event.id%>">
     <span class="feature register link" >

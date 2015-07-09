@@ -41,7 +41,7 @@
 
 				<% if current_user %>
         <%if event.category=="Conference"%>
-                    <%= link_to '#','data-toggle'=>"modal",'data-target'=>"#myModal", :method => :post, :style => 'display: block;', :onclick=>"$(.modal).style.display=''" do %>
+                    <%= link_to '#','data-toggle'=>"modal",'data-target'=>"#myModal"+event.id.to_s, :method => :post, :style => 'display: block;', :onclick=>"$(.modal).style.display=''" do %>
                         <i class="link"></i>
                         <p class="info">
                           دوست دارید شرکت کنید؟ </p>
@@ -66,6 +66,18 @@
 			<% end %>
 		</span>
     <% end %>
+<div class="modal fade" id="myModal<%=event.id%>" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+          <%=form_tag 'book_conference' do%>
+            <%=hidden_field_tag :event_id, event.id%>
+            <%=select_tag :model_id, PriceModel.all.collect { |e| [ e.name, e.id ] }%>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <% if event.can_register? == false %>
 
