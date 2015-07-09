@@ -41,7 +41,7 @@
 
 				<% if current_user %>
         <%if event.category=="Conference"%>
-                    <%= link_to '#','data-toggle'=>"modal",'data-target'=>"#myModal"+event.id.to_s, :method => :post, :style => 'display: block;', :onclick=>"$(.modal).style.display=''" do %>
+                    <%= link_to '/#','data-toggle'=>"modal",'data-target'=>"#myModal"+event.id.to_s, :method => :post, :style => 'display: block;', :onclick=>"$(.modal).style.display=''" do %>
                         <i class="link"></i>
                         <p class="info">
                           دوست دارید شرکت کنید؟ </p>
