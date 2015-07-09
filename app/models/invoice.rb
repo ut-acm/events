@@ -8,7 +8,7 @@ class Invoice < ActiveRecord::Base
   after_create :send_invoice
 
   def check_credit
-    if participation.profile.credit < participation.price_model.price
+    if participation.profile.credit < participation.event.price
       errors.add(:credit, "اعتبار شما کافی نیست، لطفا برای افزایش اعتبار به صفحه‌ی تنظیمات مراجعه کنید.")
     end
   end

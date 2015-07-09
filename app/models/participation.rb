@@ -21,7 +21,7 @@ class Participation < ActiveRecord::Base
       end
       # Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::#{invoice.errors.messages.first}"
       # puts ":::::::::::::::::::::::::::::::::::::::::::::::::"
-      puts invoice.errors.messages
+      # puts invoice.errors.messages
       return false
     end
     return false

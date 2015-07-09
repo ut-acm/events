@@ -82,6 +82,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+
+        
+        
         <li><%= image_tag current_user.profile.avatar.url(:thumb) ,:size => '50x50'%></li>
             <li><%= link_to current_user.profile.credentials + " (تنظیمات)", '/events/profiles/' + current_user.profile.id.to_s + '/edit' %></li>
             <li><%= link_to 'رویداد‌های من', current_user.profile %> </li>
