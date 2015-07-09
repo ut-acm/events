@@ -7,7 +7,6 @@ class Participation < ActiveRecord::Base
   has_one :invoice
   belongs_to :price_model
 
-
   def buy (profile)
     if self.profile == profile and self.payed == false and Invoice.joins(:participation).merge(Participation.where("profile_id = ?", self.profile.id).where("event_id = ?", self.event.id)).count == 0
     #if true
