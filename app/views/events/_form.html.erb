@@ -51,7 +51,7 @@
             <label class="control-label">Category</label>
 
             <div class="controls">
-              <%= f.text_field :category,:onchange=>"category_change" %>
+              <%= f.text_field :category,:onchange=>"category_change()" %>
             </div>
           </div>
           <div class="control-group">
@@ -120,6 +120,7 @@
         $(document).ready(function () {
           window.price_model_size=0;
           add_price_model();
+          category_change()
             $('select').chosen({width: '100%'});
         });
 
