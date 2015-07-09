@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
 
     puts 'Email: to => ' + recipient + ', subject => ' + subject
     mail(to: recipient, subject: subject) do |format|
-      format.html { render 'start_register', :locals => {:profile => profile, :event => event} }
+      format.html { render 'start_register', :locals => {:profile => profile, :event => event,:price=>participation.get_price} }
 #      format.html { render 'welcome_message' }
     end
   end
@@ -57,7 +57,7 @@ class UserMailer < ActionMailer::Base
 
     puts 'Email: to => ' + recipient + ', subject => ' + subject
     mail(to: recipient, subject: subject) do |format|
-      format.html { render 'user_mailer/complete_invoice', :locals => {:profile => invoice.participation.profile, :event => invoice.participation.event} }
+      format.html { render 'user_mailer/complete_invoice', :locals => {:profile => invoice.participation.profile, :event => invoice.participation.event,:price=>participation.get_price} }
 #      format.html { render 'welcome_message' }
     end
   end
@@ -72,7 +72,7 @@ class UserMailer < ActionMailer::Base
 
     puts 'Email: to => ' + recipient + ', subject => ' + subject
     mail(to: recipient, subject: subject) do |format|
-      format.html { render 'user_mailer/book_event', :locals => {:profile => participation.profile, :event => participation.event} }
+      format.html { render 'user_mailer/book_event', :locals => {:profile => participation.profile, :event => participation.event,:price=>participation.get_price} }
 #      format.html { render 'welcome_message' }
     end
   end

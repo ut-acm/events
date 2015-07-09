@@ -65,9 +65,9 @@ class Profile < ActiveRecord::Base
 
   def buy(participation)
     if participations.profile == self and Invoice.where("profile_id = ?", participations.profile.id).where("event_id = ?", participations.event.id).any? == false
-      invoice = Invoice.create(:participation => participation, :amount => participations.event.price)
+      invoice = Invoice.create(:participation => participation, :amount => participations.get_price)
       if invoice.errors.blank?
-        self.credit -= participations.event.price
+        self.credit -= participations.get_price
         self.save
         return true
       end

@@ -23,7 +23,7 @@
   <tbody>
     <% @participations.each do |participation| %>
       <tr>
-        <td><%= participation.event.price%></td>
+        <td><%= participation.get_price%></td>
         <td><%= link_to participation.event.title, participation.event %></td>
         <% if current_user.has_role?(:admin) %>
             <td><%= link_to participation.profile.credentials, participation.profile%></td>

@@ -10,11 +10,11 @@ class Participation < ActiveRecord::Base
   def buy (profile)
     if self.profile == profile and self.payed == false and Invoice.joins(:participation).merge(Participation.where("profile_id = ?", self.profile.id).where("event_id = ?", self.event.id)).count == 0
     #if true
-      invoice = Invoice.create(:participation => self, :amount => self.event.price)
+      invoice = Invoice.create(:participation => self, :amount => self.get_price)
       if invoice.errors.blank?
         self.payed = true
         self.save
-        profile.credit -= self.event.price
+        profile.credit -= self.get_price
         profile.save
         return true
       end
@@ -26,8 +26,13 @@ class Participation < ActiveRecord::Base
     return false
   end
 
+  def get_price
+    return participation.price_model.price if participation.event.is_conference_like
+    return participation.event.price
+  end
+
   def check_credit
-    if profile.credit < event.price
+    if profile.credit < self.get_price
       errors.add(:credit, "اعتبار شما کافی نیست، لطفا برای افزایش اعتبار به صفحه‌ی تنظیمات مراجعه کنید.")
     end
   end
