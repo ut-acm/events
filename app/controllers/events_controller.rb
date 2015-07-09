@@ -303,7 +303,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster,:tag_list, :officer_ids => [],:is_conference_like)
+    params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster,:tag_list,:is_conference_like, :officer_ids => [])
     # params.permit!
   end
 
