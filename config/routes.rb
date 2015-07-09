@@ -53,12 +53,11 @@ Rails.application.routes.draw do
   get 'events/prebuy/:event' => 'events#prebuy', :as => :prebuy
   post 'buy' => 'events#buy', :as => :buy
   match 'temp_start_all' => 'events#temp_start_all', :as => :temp_start_all, :via => :get
-
+  match 'book_conference' => 'events#book_conference',:as=>:book_conference, :via => :post
   resources :events do
     member do
       resources :class_sessions
       match 'book' => 'events#book', :as => :book, :via => :post
-      match 'book_conference' => 'events#book_conference',:as=>:book_conference, :via => :post
       match 'cancel' => 'events#cancel_book', :as => :cancel_book, :via => :delete
       match 'start_register' => 'events#start_register', :a => :start_register, :via => :get
     end
