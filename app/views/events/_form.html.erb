@@ -96,8 +96,7 @@
 
 </div>
 
-<% content_for :extra_js do %>
-    <script>
+<script>
     function add_price_model() {
         document.getElementById("price_model_panel").innerHTML += "<input type='text' name='price_model_title_"+(window.price_model_size+1).toString()+"'/>  : <input type='text' name='price_model_price_"+(window.price_model_size+1).toString()+"'/>";
         window.price_model_size++;
@@ -113,6 +112,8 @@
     }
     </script>
 
+
+<% content_for :extra_js do %>
 
     <script type="text/javascript">
         $(document).ready(function () {
