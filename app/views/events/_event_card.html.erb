@@ -70,7 +70,7 @@
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-body">
-          <%=form_tag book_conference_path(event) do%>
+          <%=form_tag book_conference_event_path(event) do%>
             <%=select_tag :price_model_id, options_from_collection_for_select(PriceModel.all,:id,:name)%>
             <%=submit_tag 'انتخاب'%>
           <%end%>
