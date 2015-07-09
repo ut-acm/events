@@ -27,8 +27,8 @@ class Participation < ActiveRecord::Base
   end
 
   def get_price
-    return participation.price_model.price if participation.event.is_conference_like
-    return participation.event.price
+    return self.price_model.price if self.event.is_conference_like
+    return self.event.price
   end
 
   def check_credit
