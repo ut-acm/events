@@ -100,7 +100,7 @@
 
 <script>
     function add_price_model() {
-        document.getElementById("price_model_panel").innerHTML += "<br><input type='text' name='price_model_title_"+(window.price_model_size+1).toString()+"'/>  : <input type='text' name='price_model_price_"+(window.price_model_size+1).toString()+"'/>";
+        document.getElementById("price_model_panel").innerHTML += "<br><input type='text' name='price_model_title["+(window.price_model_size+1).toString()+"]'/>  : <input type='text' name='price_model_price["+(window.price_model_size+1).toString()+"]'/>";
         window.price_model_size++;
     }
     </script>
