@@ -18,15 +18,6 @@
     </div>
   </div>
 
-  <div class="modal-content">
-        <div class="modal-body">
-          <%=form_tag 'book_conference' do%>
-            <%=hidden_field_tag :event_id, event.id%>
-            <%=select_tag :model_id, PriceModel.all.collect { |e| [ e.name, e.id ] }%>
-          <%end%>
-        </div>
-      </div>
-
   <% @archives.each do |event| %>
       <%= render 'event_card', :event => event %>
   <% end %>
