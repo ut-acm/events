@@ -7,7 +7,7 @@ $('#register<%=@event.id%>').html('<%= link_to cancel_book_event_path(@event), :
         'شرکت خواهم کرد!' +
         '</p>' +
         '<% end %>');
-$('#myModal<%=@event.id%>').style.display='none'
+$("#myModal<%=@event.id%>").hide()
 //$('#more_info<%=@event.id%>').html('<span class="feature register link" >'
 //        + '<%= link_to  @event do %>'
 //        +' <p class="info">'
