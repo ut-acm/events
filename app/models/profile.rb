@@ -58,10 +58,10 @@ class Profile < ActiveRecord::Base
   end
 
   def book_conference
-    event=Event.where(:id=>params).first
+    event=Event.where(:id=>params[:event_id]).first
     price_model_id=params[:price_model_id]
     if event.participations.where("profile_id = ?", self.id).count == 0
-      return (event.participations << Participation.new(:event => event, :profile => self,:price_model_id=>price_model_id*))
+      return (event.participations << Participation.new(:event => event, :profile => self,:price_model_id=>price_model_id))
     end
   end
 

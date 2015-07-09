@@ -42,19 +42,19 @@
 			<% elsif !event.is_full? %>
 
 				<% if current_user %>
-                <%#if event.category=="Conference"%>
-                    <%=# link_to '#','data-toggle'=>"modal" 'data-target'=>"#myModal", :method => :post, :style => 'display: block;', :onclick=>"$(.modal).style.display=''" do %>
+                <%if event.category=="Conference"%>
+                    <%= link_to '#','data-toggle'=>"modal",'data-target'=>"#myModal", :method => :post, :style => 'display: block;', :onclick=>"$(.modal).style.display=''" do %>
                         <i class="link"></i>
                         <p class="info">
                           دوست دارید شرکت کنید؟ </p>
-                          <%#end%>
-                <%#else%>
+                          <%end%>
+                <%else%>
                     <%= link_to book_event_path(event), :method => :post, :style => 'display: block;', :remote => true do %>
                         <i class="link"></i>
                         <p class="info">
                           دوست دارید شرکت کنید؟ </p>
                     <% end %>
-                <%#end%>
+                <%end%>
                 <% else %>
 
                   <%= link_to new_user_session_path, :method => :post, :style => 'display: block;' do %>
