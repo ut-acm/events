@@ -7,6 +7,14 @@ class Participation < ActiveRecord::Base
   has_one :invoice
   belongs_to :price_model
 
+  validate :price_model_is_for_event, :before => :create
+
+    def price_model_is_for_event
+      if self.is_conference_like && not(self.event.price_models.ids.include?(self.price_model.id))
+        errors.add(:price_model, ':|')
+      end
+    end
+
   def buy (profile)
     if self.profile == profile and self.payed == false and Invoice.joins(:participation).merge(Participation.where("profile_id = ?", self.profile.id).where("event_id = ?", self.event.id)).count == 0
     #if true
