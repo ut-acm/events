@@ -6,6 +6,6 @@ class CreatePriceModels < ActiveRecord::Migration
       t.integer :event_id
       t.timestamps
     end
-    add_column :paricipations, :price_model_id, :integer
+    add_column :participations, :price_model_id, :integer
   end
 end
