@@ -3,12 +3,12 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, :only => [:book, :cancel_book, :edit, :new]
   before_action :complete_profile
-  before_action :set_event, :only => [:book, :cancel_book, :edit, :update, :show, :destroy, :start_register]
+  before_action :set_event, :only => [:book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register]
 
   def index
     #@events = Event.all
     render 'events/choser', layout: false
-  end
+  end 
 
   def admin_index
     if current_user and current_user.has_role?("admin")
