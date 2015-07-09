@@ -63,8 +63,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::#{params}"
-    return
     @event = Event.new(event_params)
     authorize_action_for @event
     if @event.save
@@ -268,7 +266,16 @@ class EventsController < ApplicationController
   end
 
 
-
+  def book_conference
+    authenticate_user!
+    @profile = current_user.profile
+    if !(@profile.book(@event))
+      @error = "Event is full!"
+    else
+      participation = Participation.where("event_id = ?", @event.id).where("profile_id = ?",@profile.id).first
+      participation.notify_book
+    end
+  end
 
 
   def book
@@ -281,6 +288,7 @@ class EventsController < ApplicationController
       participation.notify_book
     end
   end
+
   def cancel_book
     authenticate_user!
     @profile = current_user.profile

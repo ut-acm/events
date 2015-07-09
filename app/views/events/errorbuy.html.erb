@@ -13,7 +13,7 @@
 اعتبار شما برای ثبت‌نام در رویداد
      <strong>     <%= @participation.event.title %></strong>
           ، کافی نیست. حداقل مبلغ
-          <strong><%= @participation.event.price - @participation.profile.credit %> </strong>
+          <strong><%= @participation.price_model.price - @participation.profile.credit %> </strong>
           ریال
           پرداخت کنید تا بتوانید در این رویداد ثبت‌نام کنید.
         </p>

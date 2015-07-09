@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :event_id %><br>
-    <%= f.number_field :event_id %>
+    <%= f.select :person_id, Event.all.collect { |e| [ e.name, e.id ] }%>
   </div>
   <div class="actions">
     <%= f.submit %>

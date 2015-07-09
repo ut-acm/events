@@ -57,6 +57,14 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def book_conference
+    event=Event.where(:id=>params).first
+    price_model_id=params[:price_model_id]
+    if event.participations.where("profile_id = ?", self.id).count == 0
+      return (event.participations << Participation.new(:event => event, :profile => self,:price_model_id=>price_model_id*))
+    end
+  end
+
   def buy(participation)
     if participations.profile == self and Invoice.where("profile_id = ?", participations.profile.id).where("event_id = ?", participations.event.id).any? == false
       invoice = Invoice.create(:participation => participation, :amount => participations.event.price)

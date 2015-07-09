@@ -81,14 +81,15 @@
             </div>
           </div>
 
-          <div class="control-group">
+          <!--<div class="control-group">
             <label class="control-label">Price Model:</label><br>
-            <% @dict={}%>
-            <%PriceModel.all.each do |p|%>
-              <%@dict[p.name]=p.id%>
-            <%end%>
-            <%=f.check_box :price_model_ids, @dict%>
+            <%# @dict={}%>
+            <%#PriceModel.all.each do |p|%>
+              <%#@dict[p.name]=p.id%>
+            <%#end%>
+            <%=#f.check_box :price_model_ids,{:multiple => true}, PriceModel.all.ids%>
           </div>
+          %>-->
           <div class="form-actions">
             <%= f.submit 'Submit', :class => 'btn submit' %>
             <%= link_to 'Cancel', root_path, :class => 'btn' %>
