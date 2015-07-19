@@ -6,6 +6,7 @@ class Participation < ActiveRecord::Base
   belongs_to :event
   has_one :invoice
   belongs_to :price_model
+  belongs_to :coupon
 
   validate :price_model_is_for_event, :before => :create
   validate :coupon_is_for_price_model, :before => :create
