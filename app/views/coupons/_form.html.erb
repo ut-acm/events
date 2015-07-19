@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :event_id %><br>
-    <%= f.number_field :event_id %>
+    <%= f.label :price_model_id %><br>
+    <%= f.select :price_model_id, PriceModel.all.collect { |e| [ e.name, e.id ] }%>
   </div>
   <div class="field">
     <%= f.label :cut_code %><br>

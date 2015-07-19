@@ -11,7 +11,7 @@ class Participation < ActiveRecord::Base
 
     def price_model_is_for_event
       if self.event.is_conference_like && not(self.event.price_models.ids.include?(self.price_model.id))
-        errors.add(:price_model, ':|')
+        errors.add(:base, 'wrong argument')
       end
     end
 

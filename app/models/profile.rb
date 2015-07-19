@@ -57,9 +57,17 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  def book_conference(event,price_model)
+  def book_conference(event,price_model,cut_code)
+    if price_model.coupons.size>0
+      coupon=Coupon.where(:cut_code=>cut_code,:enabled=>true,:price_model=>price_model).first
+      return "false coupon code" unless coupon
+      coupon.update(:enabled=>false)
+    end
     if event.participations.where("profile_id = ?", self.id).count == 0
-      return (event.participations << Participation.new(:event => event, :profile => self,:price_model=>price_model))
+        p=Participation.new(:event => event, :profile => self,:price_model=>price_model)
+        return p.errors.messages.first
+        event.participations << p
+        return nil
     end
   end
 

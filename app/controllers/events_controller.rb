@@ -269,8 +269,9 @@ class EventsController < ApplicationController
   def book_conference
     authenticate_user!
     @profile = current_user.profile
-    if !(@profile.book_conference(@event,PriceModel.where(:id=>params[:price_model_id]).first))
-      @error = "Event is full!"
+    error=@profile.book_conference(@event,PriceModel.where(:id=>params[:price_model_id]).first,params[:cut_code])
+    if error
+      @error = error
     else
       participation = Participation.where("event_id = ?", @event.id).where("profile_id = ?",@profile.id).first
       participation.notify_book
