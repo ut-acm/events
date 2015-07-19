@@ -50,6 +50,8 @@ Rails.application.routes.draw do
 
   devise_for :users, path: 'auth', path_names: {sign_in: 'login', sign_out: 'logout', password: 'password', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'new'}, :controllers => {:omniauth_callbacks => 'omniauth_callbacks'}
 
+  get 'live'=>'live#choose' => :as=>:live_choose
+
   get 'events/prebuy/:event' => 'events#prebuy', :as => :prebuy
   post 'buy' => 'events#buy', :as => :buy
   match 'temp_start_all' => 'events#temp_start_all', :as => :temp_start_all, :via => :get
