@@ -3,6 +3,13 @@ class CouponsController < ApplicationController
 
   # GET /coupons
   # GET /coupons.json
+
+  def filter_by_price
+    @coupons=Coupon.where(:price_model_id=>params[:price_model_id])
+    render 'coupons/index'
+  end
+
+
   def index
     @coupons = Coupon.all
   end
