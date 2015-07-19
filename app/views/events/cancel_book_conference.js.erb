@@ -6,7 +6,7 @@ $('#register<%=@event.id%>').html('<%= link_to "/#","data-toggle"=>"modal","data
         <i class="link"></i>
         <p class="info">
           دوست دارید شرکت کنید؟ </p>
-          <%end%>');
+          <%end%>'.html_safe);
 //$('#more_info<%=@event.id%>').html('');
 $('#sabt<%=@event.id%>').html('');
 <% end %>
