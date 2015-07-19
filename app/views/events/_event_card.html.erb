@@ -163,9 +163,9 @@
        $("#price_model_id_<%=event.id%>").change(function () {
         arr=<%=PriceModel.includes(:coupons).where(:event=>event).where.not(:coupons=>{:price_model_id=>nil}).ids.to_s%>;
         if(jQuery.inArray( $('#price_model_id_<%=event.id%>').val(), arr )==-1)
-          $("#cut_code_<%=event.id%>").hide()
+          $("#cut_code_<%=event.id%>").style.display('');//.hide()
         else
-          $("#cut_code_<%=event.id%>").show()
+          $("#cut_code_<%=event.id%>").style.display('block');//.show()
       });
        <%end%>
         $(document).ready(function () {
