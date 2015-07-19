@@ -1,0 +1,2 @@
+module AddCouponToParticipationHelper
+end
