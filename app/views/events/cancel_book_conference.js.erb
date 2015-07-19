@@ -1,6 +1,7 @@
 <% if @error %>
 alert("<%= @error %>");
 <% else %>
+<%event=@event%>
 $('#register<%=@event.id%>').html('<% if current_user and event.participations.where("payed = ?", true).where("profile_id = ?", current_user.profile.id).count > 0 %>
                 <%= link_to "#", :remote => true, :style => "display: block" do %>
                     <i class="check"></i>
