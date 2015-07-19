@@ -64,9 +64,9 @@ class Profile < ActiveRecord::Base
       coupon.update(:enabled=>false)
     end
     if event.participations.where("profile_id = ?", self.id).count == 0
-        p=Participation.create(:event => event, :profile => self,:price_model=>price_model)
-        return p.errors.messages.first
+        p=Participation.new(:event => event, :profile => self,:price_model=>price_model)
         event.participations << p
+        return p.errors.messages.first
         return nil
     end
   end

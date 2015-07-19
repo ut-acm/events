@@ -13,7 +13,7 @@
   <tbody>
     <% @coupons.each do |coupon| %>
       <tr>
-        <td><%= coupon.event_id %></td>
+        <td><%= coupon.price_model_id %></td>
         <td><%= coupon.cut_code %></td>
         <td><%= coupon.enabled %></td>
         <td><%= link_to 'Show', coupon %></td>
