@@ -127,8 +127,8 @@ end
     end
   end
 
-  def check_token(event)
-    par=Participation.where(:event=>event,:enroll_token=>:params[:token]).where.not(:enroll_seen=>true).first
+  def check_token
+    par=Participation.where(:event=>self,:enroll_token=>:params[:token]).where.not(:enroll_seen=>true).first
     @pass=par
     par.update(:enroll_seen=>true) if par
   end
