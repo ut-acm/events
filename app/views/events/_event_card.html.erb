@@ -72,7 +72,7 @@
         <div class="modal-body">
           <%=form_tag book_conference_event_path(event),:remote=>true do%>
             <%=select_tag :price_model_id, options_from_collection_for_select(PriceModel.where(:event=>event),:id,:name),:id=>"price_model_id_#{event.id}"%>
-            <%=text_field_tag :cut_code,'',:style=>"dispaly:none;",:id=>"cut_code_#{event.id}"%>
+            <%=text_field_tag :cut_code,'',:style=>"display:none;",:id=>"cut_code_#{event.id}"%>
             <%=submit_tag 'انتخاب'%>
           <%end%>
         </div>
@@ -167,7 +167,7 @@
         else
           $("#cut_code_<%=event.id%>").show();
       });
-       <%end%>
+    <%end%>
         $(document).ready(function () {
             $('#login').click(function () {
                 $.get('/users/sign_in', function (data) {
