@@ -71,8 +71,8 @@
     <div class="modal-content">
         <div class="modal-body">
           <%=form_tag book_conference_event_path(event),:remote=>true do%>
-            <%=select_tag :price_model_id, options_from_collection_for_select(PriceModel.where(:event=>event),:id,:name)%>
-            <%=text_field_tag :cut_code,'',:style=>"visibility:hidden;"%>
+            <%=select_tag :price_model_id, options_from_collection_for_select(PriceModel.where(:event=>event),:id,:name),:id=>"price_model_id_#{event.id}"%>
+            <%=text_field_tag :cut_code,'',:style=>"visibility:hidden;","cut_code_#{event.id}"%>
             <%=submit_tag 'انتخاب'%>
           <%end%>
         </div>
@@ -158,14 +158,14 @@
 
 <% content_for :extra_js do %>
     <script type="text/javascript" lang="javascript">
-    
+
     <%if event.is_conference_like%>
-       $("#price_model_id").change(function () {
+       $("#price_model_id_<%=event.id%>").change(function () {
         arr=<%=PriceModel.includes(:coupons).where(:event=>event).where.not(:coupons=>{:price_model_id=>nil}).ids.to_s%>;
-        if(jQuery.inArray( $('#price_model_id').val(), arr )==-1)
-          $("#cut_code").hide()
+        if(jQuery.inArray( $('#price_model_id_<%=event.id%>').val(), arr )==-1)
+          $("#cut_code_<%=event.id%>").hide()
         else
-          $("#cut_code").show()
+          $("#cut_code_<%=event.id%>").show()
       });
        <%end%>
         $(document).ready(function () {
