@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :coupons
+
   get 'events/search' => 'events#search'
 
   resources :reports
