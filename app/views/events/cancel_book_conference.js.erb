@@ -1,52 +1,11 @@
 <% if @error %>
 alert("<%= @error %>");
 <% else %>
-<%event=@event%>
-$('#register<%=@event.id%>').html('<% if current_user and event.participations.where("payed = ?", true).where("profile_id = ?", current_user.profile.id).count > 0 %>
-                <%= link_to "#", :remote => true, :style => "display: block" do %>
-                    <i class="check"></i>
-	    			<p class="info">
-                      در این رویداد ثبت‌نام کرده‌ام
-                    </p>
-                <% end %>
-                        <% elsif event.is_full? %>
-                <!--<i class=""></i>-->
-				<p class="info">
-                  ظرفیت تمام شده‌است.
-                </p>
-            <% elsif current_user and event.participants.include? current_user.profile %>
-                  <%= link_to cancel_book_event_path(event), :remote => true, :data => {:confirm => "آیا مطمئن هستید که می‌خواهید لغو کنید؟"}, :method => :delete, :style => "display: block" do %>
-                    <i class="check"></i>
-	    			<p class="info">
-                      شرکت خواهم کرد! </p>
-                  <% end %>
-			<% elsif !event.is_full? %>
-
-				<% if current_user %>
-        <%if event.is_conference_like%>
-                    <%= link_to "/#","data-toggle"=>"modal","data-target"=>"#myModal"+event.id.to_s, :style => "display: block;", :onclick=>"$(.modal).style.display=''" do %>
+$('#register<%=@event.id%>').html('<%= link_to "/#","data-toggle"=>"modal","data-target"=>"#myModal"+event.id.to_s, :style => "display: block;", :onclick=>"$(.modal).style.display=\'\'" do %>
                         <i class="link"></i>
                         <p class="info">
                           دوست دارید شرکت کنید؟ </p>
-                          <%end%>
-                <%else%>
-                    <%= link_to book_event_path(event), :method => :post, :style => "display: block;", :remote => true do %>
-                        <i class="link"></i>
-                        <p class="info">
-                          دوست دارید شرکت کنید؟ </p>
-                  <%end%>
-                    <% end %>
-                <% else %>
-
-                  <%= link_to new_user_session_path, :method => :post, :style => "display: block;" do %>
-                        <i class="link"></i>
-                        <p class="info">برای ثبت‌نام وارد شوید!</p>
-                    <% end %>
-                <% end %>
-            <% else %>
-                <!--<i class=""></i>-->
-				<p class="info">Full!</p>
-			<% end %>');
+                          <%end%>');
 //$('#more_info<%=@event.id%>').html('');
 $('#sabt<%=@event.id%>').html('');
 <% end %>
