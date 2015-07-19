@@ -1,2 +1,0 @@
-class AddCouponToParticipationController < ApplicationController
-end
