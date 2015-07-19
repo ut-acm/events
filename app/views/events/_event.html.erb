@@ -74,8 +74,8 @@
           <%=form_tag book_conference_event_path(event),:remote=>true do%>
             <li><%=label_tag 'نوع ثبتنام:'%><br>
             <%=select_tag :price_model_id, options_from_collection_for_select(PriceModel.where(:event=>event),:id,:name),:id=>"price_model_id_#{event.id}"%></li>
-            <li id="cut_code_<%event.id%>}"><%=label_tag 'کئ تخفیف:'%><br>
-            <%=text_field_tag :cut_code,'',:style=>"display:none;"%></li>
+            <li id="cut_code_<%event.id%>}" style="display:none;"><%=label_tag 'کد تخفیف:'%><br>
+            <%=text_field_tag :cut_code%></li>
             <%=submit_tag 'انتخاب'%>
           <%end%>
         </div>
