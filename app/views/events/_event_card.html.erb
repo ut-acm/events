@@ -73,7 +73,6 @@
           <%=form_tag book_conference_event_path(event),:remote=>true do%>
             <%=select_tag :price_model_id, options_from_collection_for_select(PriceModel.where(:event=>event),:id,:name)%>
             <%=submit_tag 'انتخاب'%>
-            <%=text_field_tag :cut_code,:style=>"visibility:hidden;"%>
           <%end%>
         </div>
       </div>
@@ -158,16 +157,6 @@
 
 <% content_for :extra_js do %>
     <script type="text/javascript" lang="javascript">
-    <%if event.is_conference_like%>
-       $("#price_model_id").change(function () {
-        arr=<%PriceModel.includes(:coupons).where(:event=>event).where.not(:coupons=>{:price_model_id=>nil}).ids.to_s%>;
-        if(jQuery.inArray( $('#price_model_id').val(), arr )==-1)
-          $("#cut_code").hide()
-        else
-          $("#cut_code").show()
-      });
-       <%end%>
-
         $(document).ready(function () {
             $('#login').click(function () {
                 $.get('/users/sign_in', function (data) {
