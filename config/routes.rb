@@ -67,7 +67,7 @@ Rails.application.routes.draw do
       match 'cancel' => 'events#cancel_book', :as => :cancel_book, :via => :delete
       match 'cancel_conference' => 'events#cancel_book_conference', :as => :cancel_book_conference, :via => :delete
       match 'start_register' => 'events#start_register', :as => :start_register, :via => :get
-      match 'check_token/:token'=>'events#check_token', :as=>:check_token
+      match 'check_token/:token'=>'events#check_token', :as=>:check_token,:via=>:get
     end
   end
   resources :profiles
