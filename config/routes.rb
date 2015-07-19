@@ -50,7 +50,7 @@ Rails.application.routes.draw do
 
   root 'events#index'
 
-  get 'coupons/:price_model_id', to: 'coupons#filter_by_price'
+  get 'coupons_by_price_model/:price_model_id', to: 'coupons#filter_by_price'
 
   devise_for :users, path: 'auth', path_names: {sign_in: 'login', sign_out: 'logout', password: 'password', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'new'}, :controllers => {:omniauth_callbacks => 'omniauth_callbacks'}
 
