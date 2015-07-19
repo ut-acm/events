@@ -19,7 +19,7 @@
         <% if @participation.event.is_conference_like%>
         <div>
           <%token=@participation.create_enroll_token%>
-          <%qr = RQRCode::QRCode.new('http://acm.ut.ac.ir/'+check_token_event_path(@participation.event,token), :size => 5, :level => :h )%>
+          <%qr = RQRCode::QRCode.new('http://acm.ut.ac.ir/'+check_token_event_path(@participation.event,token), :size => 10, :level => :h )%>
           <%png = qr.to_img%>
            <%png.resize(120,120).save "#{token}_#{@participation.event.id}.png"%>
            <%=image_tag "#{token}_#{@participation.event.id}.png"%> 
