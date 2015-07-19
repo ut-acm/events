@@ -5,6 +5,14 @@ class EventsController < ApplicationController
   before_action :complete_profile
   before_action :set_event, :only => [:book_conference,:cancel_book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register]
 
+  before_action :http_basic_authenticate,:only=>:check_token
+
+  def http_basic_authenticate
+  authenticate_or_request_with_http_basic do |name, password|
+    name == 'feri' && password == 'khatar'
+  end
+end
+
   def index
     #@events = Event.all
     render 'events/choser', layout: false
@@ -117,6 +125,12 @@ class EventsController < ApplicationController
     else
       render 'events/prebuy'
     end
+  end
+
+  def check_token(event)
+    par=Participation.where(:event=>event,:enroll_token=>:params[:token]).where.not(:enroll_seen=>true).first
+    @pass=par
+    par.update(:enroll_seen=>true) if par
   end
 
 

@@ -23,6 +23,13 @@ class Participation < ActiveRecord::Base
       end
     end
 
+    def create_enroll_token
+      loop do
+        a=SecureRandom.urlsafe_base64
+        return a if PriceModel.where(:enroll_token=>a,:event=>self.event).size==0
+      end
+    end
+
   def buy (profile)
     if self.profile == profile and self.payed == false and Invoice.joins(:participation).merge(Participation.where("profile_id = ?", self.profile.id).where("event_id = ?", self.event.id)).count == 0
     #if true

@@ -12,11 +12,9 @@
 #   runner "MyModel.some_method"
 #   rake "some:great:rake:task"
 # end
-every 1.day do
-	Event.where('extract(day   from begins) = ? and extract(month   from begins) = ? and extract(year   from begins) = ?' , Time.now.day,Time.now.month,Time.now.year).each do |e|
-		UserMailer.remind_event(e).deliver
-	end
-end
+
+
+
 #
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"

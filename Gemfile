@@ -61,3 +61,4 @@ gem "non-stupid-digest-assets"
 
 #gem 'spreadsheet', '~> 0.9.9'
 gem 'whenever', :require => false
+gem 'rqrcode_png'
