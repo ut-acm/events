@@ -2,11 +2,11 @@
 alert("<%= @error %>");
 <% else %>
 <%event=@event%>
-$('#register<%=@event.id%>').html('<%= link_to "/#","data-toggle"=>"modal","data-target"=>"#myModal"+event.id.to_s, :style => "display: block;", :onclick=>"$(.modal).style.display=\'\'" do %>
+$('#register<%=@event.id%>').html('<%= link_to "/#","data-toggle"=>"modal","data-target"=>"#myModal"+event.id.to_s, :style => "display: block;", :onclick=>"$(.modal).style.display=\'\'".html_safe do %>
         <i class="link"></i>
         <p class="info">
           دوست دارید شرکت کنید؟ </p>
-          <%end%>'.html_safe);
+          <%end%>');
 //$('#more_info<%=@event.id%>').html('');
 $('#sabt<%=@event.id%>').html('');
 <% end %>
