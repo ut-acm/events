@@ -159,7 +159,7 @@
 <% content_for :extra_js do %>
     <%if event.is_conference_like%>
        $("#price_model_id").change(function () {
-        arr=<%PriceModel.includes(:coupons).where(:event=>event).where.not(:coupons=>{:price_model_id=>nil}).ids.to_s%>;
+        arr=<%PriceModel.includes(:coupons).where(:event=>event).ids.to_s%>;
         if(jQuery.inArray( $('#price_model_id').val(), arr )==-1)
           $("#cut_code").hide()
         else
