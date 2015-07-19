@@ -74,7 +74,7 @@ class Profile < ActiveRecord::Base
         p=Participation.new(:event => event, :profile => self,:price_model=>price_model,:coupon=>coupon)
         event.participations << p
         return p.errors.messages.first if p.errors.messages.first
-        coupon.update(:enabled=>false)
+        coupon.update(:enabled=>false) if price_model.coupons.size>0
         return nil
     end
   end
