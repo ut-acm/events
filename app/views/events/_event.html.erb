@@ -42,7 +42,7 @@
 			<% elsif !event.is_full? %>
 
 				<% if current_user %>
-                <%if event.category=="Conference"%>
+                <%if event.is_conference_like%>
                     <%= link_to '/#','data-toggle'=>"modal",'data-target'=>"#myModal"+event.id.to_s, :style => 'display: block;', :onclick=>"$(.modal).style.display=''" do %>
                         <i class="link"></i>
                         <p class="info">
@@ -72,8 +72,10 @@
     <div class="modal-content">
         <div class="modal-body">
           <%=form_tag book_conference_event_path(event),:remote=>true do%>
-            <%=select_tag :price_model_id, options_from_collection_for_select(PriceModel.where(:event=>event),:id,:name),:id=>"price_model_id_#{event.id}"%>
-            <%=text_field_tag :cut_code,'',:style=>"display:none;",:id=>"cut_code_#{event.id}"%>
+            <li><%=label_tag 'نوع ثبتنام:'%><br>
+            <%=select_tag :price_model_id, options_from_collection_for_select(PriceModel.where(:event=>event),:id,:name),:id=>"price_model_id_#{event.id}"%></li>
+            <li id="cut_code_<%event.id%>}"><%=label_tag 'کئ تخفیف:'%><br>
+            <%=text_field_tag :cut_code,'',:style=>"display:none;"%></li>
             <%=submit_tag 'انتخاب'%>
           <%end%>
         </div>
