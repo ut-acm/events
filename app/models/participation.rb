@@ -18,7 +18,7 @@ class Participation < ActiveRecord::Base
     end
 
     def coupon_is_for_price_model
-      if self.event.is_conference_like && not(self.price_model.coupons.ids.include?(self.coupon.id))
+      if self.event.is_conference_like && self.coupon && not(self.price_model.coupons.ids.include?(self.coupon.id))
         errors.add(:base, 'wrong argument')
       end
     end
