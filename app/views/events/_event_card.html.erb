@@ -157,8 +157,6 @@
 </div>
 
 <script type="text/javascript" lang="javascript">
-
-    
     <%if event.is_conference_like%>
        $("#price_model_id_<%=event.id%>").change(function () {
         arr=<%=PriceModel.includes(:coupons).where(:event=>event).where.not(:coupons=>{:price_model_id=>nil}).ids.map{|i|i.to_s}.to_s.html_safe%>;
@@ -168,8 +166,8 @@
           $("#cut_code_<%=event.id%>").show();
       });
     <%end%>
-
 </script>
+
 <% content_for :extra_js do %>
     <script type="text/javascript" lang="javascript">
         $(document).ready(function () {

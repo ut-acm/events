@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       match 'book' => 'events#book', :as => :book, :via => :post
       match 'book_conference' => 'events#book_conference',:as=>:book_conference, :via => :post
       match 'cancel' => 'events#cancel_book', :as => :cancel_book, :via => :delete
+      match 'cancel_conference' => 'events#cancel_book_conference', :as => :cancel_book_conference, :via => :delete
       match 'start_register' => 'events#start_register', :a => :start_register, :via => :get
     end
   end

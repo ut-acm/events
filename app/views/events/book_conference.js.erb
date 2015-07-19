@@ -1,7 +1,7 @@
 <% if @error %>
 alert("<%= @error %>");
 <% else %>
-$('#register<%=@event.id%>').html('<%= link_to cancel_book_event_path(@event), :remote => true, :data => {:confirm => 'آیا مطمئن هستید که می‌خواهید لغو کنید؟'}, :method => :delete, :style => 'display: block' do %>' +
+$('#register<%=@event.id%>').html('<%= link_to cancel_book_conference_event_path(@event), :remote => true, :data => {:confirm => 'آیا مطمئن هستید که می‌خواهید لغو کنید؟'}, :method => :delete, :style => 'display: block' do %>' +
         '<i class="check"></i>' +
         '<p class="info">' +
         'شرکت خواهم کرد!' +

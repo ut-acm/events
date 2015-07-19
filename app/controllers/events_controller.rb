@@ -3,7 +3,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, :only => [:book, :cancel_book, :edit, :new]
   before_action :complete_profile
-  before_action :set_event, :only => [:book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register]
+  before_action :set_event, :only => [:book_conference,:cancel_book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register]
 
   def index
     #@events = Event.all
@@ -276,6 +276,12 @@ class EventsController < ApplicationController
       participation = Participation.where("event_id = ?", @event.id).where("profile_id = ?",@profile.id).first
       participation.notify_book
     end
+  end
+
+  def cancel_book_conference
+    authenticate_user!
+    @profile = current_user.profile
+    @profile.cancel_book_conference(@event)
   end
 
 

@@ -57,6 +57,10 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def cancel_book_conference(event)
+    participations.where("event_id = ?", event.id).delete_all
+  end
+
   def book_conference(event,price_model,cut_code)
     if price_model.coupons.size>0
       coupon=Coupon.where(:cut_code=>cut_code,:enabled=>true,:price_model=>price_model).first
