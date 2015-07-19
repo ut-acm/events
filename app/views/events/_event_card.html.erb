@@ -157,16 +157,17 @@
 </div>
 
 <% content_for :extra_js do %>
+    <script type="text/javascript" lang="javascript">
+    
     <%if event.is_conference_like%>
        $("#price_model_id").change(function () {
-        arr=<%PriceModel.includes(:coupons).where(:event=>event).ids.to_s%>;
+        arr=<%=PriceModel.includes(:coupons).where(:event=>event).where.not(:coupons=>{:price_model_id=>nil}).ids.to_s%>;
         if(jQuery.inArray( $('#price_model_id').val(), arr )==-1)
           $("#cut_code").hide()
         else
           $("#cut_code").show()
       });
        <%end%>
-    <script type="text/javascript" lang="javascript">
         $(document).ready(function () {
             $('#login').click(function () {
                 $.get('/users/sign_in', function (data) {
