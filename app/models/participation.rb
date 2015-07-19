@@ -26,7 +26,7 @@ class Participation < ActiveRecord::Base
     def create_enroll_token
       loop do
         # a=SecureRandom.urlsafe_base64(3)
-        a=rand(0..1000000).to_s
+        a=rand(0..100000).to_s
         return a if Participation.where(:enroll_token=>a,:event=>self.event).size==0
       end
     end
