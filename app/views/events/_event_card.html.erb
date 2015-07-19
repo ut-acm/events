@@ -156,6 +156,18 @@
   </div>
 </div>
 
+<script type="text/javascript" lang="javascript">
+
+    <%if event.is_conference_like%>
+       $("#price_model_id_<%=event.id%>").change(function () {
+        arr=<%=PriceModel.includes(:coupons).where(:event=>event).where.not(:coupons=>{:price_model_id=>nil}).ids.map{|i|i.to_s}.to_s.html_safe%>;
+        if(jQuery.inArray( $('#price_model_id_<%=event.id%>').val(), arr )==-1)
+          $("#cut_code_<%=event.id%>").hide();
+        else
+          $("#cut_code_<%=event.id%>").show();
+      });
+
+</script>
 <% content_for :extra_js do %>
     <script type="text/javascript" lang="javascript">
 
