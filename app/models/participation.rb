@@ -8,9 +8,16 @@ class Participation < ActiveRecord::Base
   belongs_to :price_model
 
   validate :price_model_is_for_event, :before => :create
+  validate :coupon_is_for_price_model, :before => :create
 
     def price_model_is_for_event
       if self.event.is_conference_like && not(self.event.price_models.ids.include?(self.price_model.id))
+        errors.add(:base, 'wrong argument')
+      end
+    end
+
+    def coupon_is_for_price_model
+      if self.event.is_conference_like && not(self.price_model.coupons.ids.include?(self.coupon.id))
         errors.add(:base, 'wrong argument')
       end
     end
