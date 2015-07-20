@@ -97,7 +97,7 @@ class UserMailer < ActionMailer::Base
     coupons=price_model.coupons.to_a
     subject="کد تخفیف رویداد #{price_model.event.title} برای شما!"
     i=0
-    mail.each do |mail|
+    mails.each do |mail|
       attachments.inline['acm.png'] = @@acm
       recipient = mail
       code=coupons[i].cut_code
