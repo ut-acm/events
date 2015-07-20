@@ -93,6 +93,25 @@ class UserMailer < ActionMailer::Base
 
   end
 
+  def send_coupons(mails,price_model)
+    coupons=price_model.coupons.to_a
+    subject="کد تخفیف رویداد #{price_model.event.title} برای شما!"
+    i=0
+    mail.each do |mail|
+      attachments.inline['acm.png'] = @@acm
+      recipient = mail
+      code=coupons[i].cut_code
+      i+=1
+      puts 'Email: to => ' + recipient + ', subject => ' + subject
+      mail(to: recipient, subject: subject) do |format|
+        format.html { render 'user_mailer/coupons', :locals => {:event => price_model.event,:price_model=>price_model,:cut_code=>code} }
+      end
+    end
+  end
+
+  def send_coupon(price_model,coupon_cut)
+  end
+
   def remind_event(event)
     subject =
         'شاخه‌ی دانشجویی ای‌سی‌ام دانشگاه تهران -' +

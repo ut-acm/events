@@ -7,8 +7,9 @@ class PriceModel < ActiveRecord::Base
 		i=0
 		loop do
 			break if i==n
-			c=Coupon.new(:cut_code=>SecureRandom.urlsafe_base64(3),:price_model=>self,:enabled=>true)
+			c=Coupon.new(:cut_code=>SecureRandom.urlsafe_base64(5),:price_model=>self,:enabled=>true)
 			i+=1 if c.save
 		end
 	end
+
 end
