@@ -109,9 +109,6 @@ class UserMailer < ActionMailer::Base
     end
   end
 
-  def send_coupon(price_model,coupon_cut)
-  end
-
   def remind_event(event)
     subject =
         'شاخه‌ی دانشجویی ای‌سی‌ام دانشگاه تهران -' +
