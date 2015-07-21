@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @ut_student.email %>
+</p>
+
+<p>
+  <strong>Token:</strong>
+  <%= @ut_student.token %>
+</p>
+
+<p>
+  <strong>Validated:</strong>
+  <%= @ut_student.validated %>
+</p>
+
+<%= link_to 'Edit', edit_ut_student_path(@ut_student) %> |
+<%= link_to 'Back', ut_students_path %>

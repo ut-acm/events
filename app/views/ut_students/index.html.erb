@@ -1,0 +1,29 @@
+<h1>Listing ut_students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Token</th>
+      <th>Validated</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ut_students.each do |ut_student| %>
+      <tr>
+        <td><%= ut_student.email %></td>
+        <td><%= ut_student.token %></td>
+        <td><%= ut_student.validated %></td>
+        <td><%= link_to 'Show', ut_student %></td>
+        <td><%= link_to 'Edit', edit_ut_student_path(ut_student) %></td>
+        <td><%= link_to 'Destroy', ut_student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ut student', new_ut_student_path %>
