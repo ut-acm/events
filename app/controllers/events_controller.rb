@@ -7,6 +7,12 @@ class EventsController < ApplicationController
 
   before_action :http_basic_authenticate,:only=>:check_token
 
+  before_action :keep_notice
+
+  def keep_notice
+    flash.keep(:notice)
+  end
+
   def http_basic_authenticate
   authenticate_or_request_with_http_basic do |name, password|
     name == 'feri' && password == 'khatar'
