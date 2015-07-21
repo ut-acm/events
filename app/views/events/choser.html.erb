@@ -8,7 +8,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if notice %>
+<div class="notice"><%= notice %></div>
+    <% end %>
 <%= javascript_include_tag 'ckeditor/ckeditor.js' %>
 <nav class="navbar navbar-default navbar-acm navbar-static-top" role="navigation">
   <div class="container">
