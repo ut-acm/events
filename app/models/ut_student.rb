@@ -3,6 +3,6 @@ class UtStudent < ActiveRecord::Base
 	validate :ut_mail
 
 	def ut_mail
-		self.errors.add(:email=>"ایمیل دانشگاه را وراد کنید.") unless self.email.ends_with?("@ut.ir")
+		self.errors.add(:email=>"ایمیل دانشگاه را وراد کنید.") unless self.email.ends_with?("@ut.ac.ir")
 	end
 end
