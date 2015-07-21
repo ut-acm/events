@@ -27,7 +27,7 @@ class UtStudentsController < ApplicationController
   def edit
   end
 
-  def validate
+  def validate_token
       if current_user.ut_student && !current_user.ut_student.validate && current_user.ut_student.token==params[:params]
         ut_student.update(:validated=>true)
         send_coupons(current_user.ut_student.email,PriceModel.find(9))
