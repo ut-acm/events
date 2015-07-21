@@ -3,8 +3,7 @@ class PriceModelsController < ApplicationController
   before_action :authenticate_admin
 
   def authenticate_admin
-    if !(current_user and current_user.has_role?(:admin))
-      redirect_to events_path
+    redirect_to events_path if !(current_user and current_user.has_role?(:admin))
   end
 
   # GET /price_models

@@ -6,8 +6,7 @@ class CouponsController < ApplicationController
   # GET /coupons.json
 
   def authenticate_admin
-    if !(current_user and current_user.has_role?(:admin))
-      redirect_to events_path
+    redirect_to events_path if !(current_user and current_user.has_role?(:admin))
   end
 
   def filter_by_price
