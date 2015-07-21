@@ -111,6 +111,7 @@ class UserMailer < ActionMailer::Base
       attachments.inline['acm.png'] = @@acm
       recipient = email
       code=price_model.create_a_coupon
+      Rails.logger.info "????????????????????????????????? #{code} #{email} #{recipient}"
       puts 'Email: to => ' + recipient + ', subject => ' + subject
       mail(to: recipient, subject: subject) do |format|
         format.html { render 'user_mailer/coupons', :locals => {:event => price_model.event,:price_model=>price_model,:cut_code=>code} }
