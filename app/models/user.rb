@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome
   # associations
   has_one :profile
+  has_one :ut_student
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info

@@ -8,6 +8,18 @@ class UserMailer < ActionMailer::Base
   # setting default from
   default from: "ACM Student Chapter"
 
+  def send_ut_validation(user)
+    recipient = user.ut_student.email
+        subject = 'اعتبار سنجی ایمیل شما'
+        attachments.inline['acm.png'] = @@acm
+
+        puts 'Email: to => ' + recipient + ', subject => ' + subject
+        mail(to: recipient, subject: subject) do |format|
+          format.html { render 'user_mailer/ut_validation', :locals => {:token => user.ut_student.token} }
+    #      format.html { render 'welcome_message' }
+        end
+  end
+
   # call this method to send an email
   def welcome(user)
     recipient = user.email
@@ -93,18 +105,16 @@ class UserMailer < ActionMailer::Base
 
   end
 
-  def send_coupons(mails,price_model)
+  def send_coupons(email,price_model)
     coupons=price_model.coupons.to_a
     subject="کد تخفیف رویداد #{price_model.event.title} برای شما!"
-    mails.each do |mail|
       attachments.inline['acm.png'] = @@acm
-      recipient = mail
+      recipient = email
       code=price_model.create_a_coupon
       puts 'Email: to => ' + recipient + ', subject => ' + subject
       mail(to: recipient, subject: subject) do |format|
         format.html { render 'user_mailer/coupons', :locals => {:event => price_model.event,:price_model=>price_model,:cut_code=>code} }
       end
-    end
   end
 
   def remind_event(event)

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="direction: rtl">
+<p>دوست گرامی</p>
+<p>
+شما این ایمیل را به خاطر اعتبار سنجی ایمیل دانگاهی خود دریافت کرده اید.<br>
+لطفا روی لینک زیر کلیلک کنید.
+<%=link_to validate_ut_email_path(token)%>
+<p style="margin-top: 30px;">شاخه‌ی دانشجویی ای‌سی‌ام</p>
+<%= image_tag attachments['acm.png'].url, :alt => 'ACM Student Chapter', :size => '64x64' %>
+</body>
+</html>

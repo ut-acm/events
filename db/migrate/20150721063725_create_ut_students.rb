@@ -4,6 +4,7 @@ class CreateUtStudents < ActiveRecord::Migration
       t.string :email
       t.text :token
       t.boolean :validated
+      t.integer :user_id
 
       t.timestamps
     end

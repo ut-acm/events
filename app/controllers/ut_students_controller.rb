@@ -1,5 +1,11 @@
 class UtStudentsController < ApplicationController
   before_action :set_ut_student, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :authenticate_admin,:only=>[:index, :show, :edit,:update,:destroy]
+
+  def authenticate_admin
+    redirect_to events_path if !(current_user and current_user.has_role?(:admin))
+  end
 
   # GET /ut_students
   # GET /ut_students.json
@@ -21,14 +27,28 @@ class UtStudentsController < ApplicationController
   def edit
   end
 
+  def validate
+      if current_user.ut_student && !current_user.ut_student.validate && current_user.ut_student.token==params[:params]
+        ut_student.update(:validated=>true)
+        send_coupons(current_user.ut_student.email,PriceModel.find(9))
+        render 'ut_students/success_validate'
+      else
+        render 'ut_students/fail_validate'
+      end
+  end
+
   # POST /ut_students
   # POST /ut_students.json
   def create
     @ut_student = UtStudent.new(ut_student_params)
+    @ut_student.token=SecureRandom.urlsafe_base64
+    @ut_student.user=current_user
+    @ut_student.validated=false
 
     respond_to do |format|
       if @ut_student.save
-        format.html { redirect_to @ut_student, notice: 'Ut student was successfully created.' }
+        UserMail.send_ut_validation(current_user).deliver
+        format.html { redirect_to @ut_student, notice: 'ایمیل شما ثبت شد و ایمیلی جهت تایید به شما داده شد.' }
         format.json { render :show, status: :created, location: @ut_student }
       else
         format.html { render :new }
