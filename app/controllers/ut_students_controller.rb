@@ -34,7 +34,7 @@ class UtStudentsController < ApplicationController
         UserMailer.send_coupons(current_user.ut_student.email,PriceModel.find(9)).deliver
         render 'ut_students/success_validate'
       else
-        render 'ut_students/fail_validate'
+        raender 'ut_students/fail_validate'
       end
   end
 
@@ -49,8 +49,7 @@ class UtStudentsController < ApplicationController
     respond_to do |format|
       if @ut_student.save
         UserMailer.send_ut_validation(current_user).deliver
-        flash[:notice] = 'ایمیل شما ثبت شد و ایمیلی جهت تایید به شما داده شد.'
-        format.html { redirect_to events_path, notice: 'ایمیل شما ثبت شد و ایمیلی جهت تایید به شما داده شد.' }
+        format.html { redirect_to @ut_student, notice: 'ایمیل شما ثبت شد و ایمیلی جهت تایید به شما داده شد.' }
         format.json { render :show, status: :created, location: @ut_student }
       else
         format.html { render :new }
