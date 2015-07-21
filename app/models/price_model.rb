@@ -8,7 +8,6 @@ class PriceModel < ActiveRecord::Base
 		c=nil
 		loop do
 			return c.cut_code if i==1
-			Rails.logger.info ":::::::::::::::::::::::::::::::: #{c.cut_code}"
 			c=Coupon.new(:cut_code=>SecureRandom.urlsafe_base64(5),:price_model=>self,:enabled=>true)
 			i+=1 if c.save
 		end
