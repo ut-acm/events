@@ -1,5 +1,6 @@
 class PriceModelsController < ApplicationController
   before_action :set_price_model, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
 
   # GET /price_models
   # GET /price_models.json

@@ -96,12 +96,10 @@ class UserMailer < ActionMailer::Base
   def send_coupons(mails,price_model)
     coupons=price_model.coupons.to_a
     subject="کد تخفیف رویداد #{price_model.event.title} برای شما!"
-    i=0
     mails.each do |mail|
       attachments.inline['acm.png'] = @@acm
       recipient = mail
-      code=coupons[i].cut_code
-      i+=1
+      code=price_model.create_a_coupon
       puts 'Email: to => ' + recipient + ', subject => ' + subject
       mail(to: recipient, subject: subject) do |format|
         format.html { render 'user_mailer/coupons', :locals => {:event => price_model.event,:price_model=>price_model,:cut_code=>code} }

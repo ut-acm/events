@@ -3,6 +3,14 @@ class PriceModel < ActiveRecord::Base
 	has_many :participations
 	has_many :coupons
 
+	def create_a_coupon
+		loop do
+			return c.cut_code if i==1
+			c=Coupon.new(:cut_code=>SecureRandom.urlsafe_base64(5),:price_model=>self,:enabled=>true)
+			i+=1 if c.save
+		end
+	end
+
 	def create_coupons(n)
 		i=0
 		loop do
