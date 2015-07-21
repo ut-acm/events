@@ -1,9 +1,15 @@
 class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy,:filter_by_price]
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy,:fil]
+  before_action :authenticate_admin
 
   # GET /coupons
   # GET /coupons.json
+
+  def authenticate_admin
+    if !(current_user and current_user.has_role?(:admin))
+      redirect_to events_path
+  end
 
   def filter_by_price
     @coupons=Coupon.where(:price_model_id=>params[:price_model_id])

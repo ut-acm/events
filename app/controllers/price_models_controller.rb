@@ -1,6 +1,11 @@
 class PriceModelsController < ApplicationController
   before_action :set_price_model, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin
+
+  def authenticate_admin
+    if !(current_user and current_user.has_role?(:admin))
+      redirect_to events_path
+  end
 
   # GET /price_models
   # GET /price_models.json
