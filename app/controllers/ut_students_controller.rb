@@ -28,7 +28,8 @@ class UtStudentsController < ApplicationController
   end
 
   def validate_token
-      if current_user.ut_student && !current_user.ut_student.validated && current_user.ut_student.token==params[:params]
+    # Rails.logger.info "::::::::::::::::::::::::::::::::::::::::::::",current_user.ut_student,!current_user.ut_student.validated,
+      if current_user.ut_student && !current_user.ut_student.validated && current_user.ut_student.token==params[:token]
         ut_student.update(:validated=>true)
         send_coupons(current_user.ut_student.email,PriceModel.find(9))
         render 'ut_students/success_validate'
