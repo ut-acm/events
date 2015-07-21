@@ -1,3 +1,4 @@
+# encoding: utf-8
 class UtStudent < ActiveRecord::Base
 	belongs_to :user
 	validate :ut_mail
