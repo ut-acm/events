@@ -47,7 +47,7 @@ class UtStudentsController < ApplicationController
 
     respond_to do |format|
       if @ut_student.save
-        UserMail.send_ut_validation(current_user).deliver
+        UserMailer.send_ut_validation(current_user).deliver
         format.html { redirect_to @ut_student, notice: 'ایمیل شما ثبت شد و ایمیلی جهت تایید به شما داده شد.' }
         format.json { render :show, status: :created, location: @ut_student }
       else
