@@ -5,6 +5,6 @@ class UtStudent < ActiveRecord::Base
 	validates_uniqueness_of :email
 
 	def ut_mail
-		self.errors.add(:email,"ایمیل دانشگاه را وراد کنید.") unless self.email.ends_with?("@ut.ac.ir")
+		self.errors.add(:email,"ایمیل دانشگاه را وارد کنید.") unless self.email.ends_with?("@ut.ac.ir")
 	end
 end
