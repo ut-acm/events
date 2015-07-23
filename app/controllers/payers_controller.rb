@@ -33,6 +33,10 @@ class PayersController < ApplicationController
     @payer = Payer.new(payer_params)
     if @payer.save
       redirect_to bank_payit_path(@payer.id)
+    else
+      respond_to do |format|
+        format.html { render :new }
+      end
     end
     # respond_to do |format|
     #   if @payer.save
