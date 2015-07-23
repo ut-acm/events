@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 class PaymentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,:except=>[:create_other_site,:approve_other_site,:other_suc,:other_fail]
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
   # GET /payments
