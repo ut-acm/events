@@ -1,7 +1,7 @@
 class Payer < ActiveRecord::Base
 	belongs_to :payment
 	validate :check_mobile
-	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,:message=>"ایمیل صحیح نیست"
+	# validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,:message=>"ایمیل صحیح نیست"
 	validate :check_rank
 	# validate :be_present
 
