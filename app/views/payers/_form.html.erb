@@ -16,6 +16,8 @@
     transition: border-color 0.25s ease-in-out 0s, box-shadow 0.25s ease-in-out 0s;
 }
 </style>
+<div class="col-lg-12">
+    <div class="container col-md-4 col-md-offset-4 pan">
 <%= form_for(@payer) do |f| %>
   <% if @payer.errors.any? %>
     <div id="error_explanation">
@@ -60,5 +62,6 @@
     <%= f.submit%>
   </div>
 <% end %>
+</div></div>
 </body>
 </html>
