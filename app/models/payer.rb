@@ -3,7 +3,7 @@ class Payer < ActiveRecord::Base
 	validate :check_mobile
 	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,:message=>"ایمیل صحیح نیست"
 	validate :check_rank
-	validate :be_present
+	# validate :be_present
 
 	def be_present
 		unless self.name and self.surname and self.mobile and self.email and self.region_type and self.exam_regional_rank and self.exam_overall_rank and self.city and self.school
