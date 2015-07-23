@@ -1,5 +1,7 @@
 <html dir="rtl">
-<head><link href="/events/assets/application-b6dbcc014b6b97898fc61b3f2297e03b.css" media="all" rel="stylesheet"></head>
+<title>Registeration</title>
+<head>
+  <link href="/events/assets/application-b6dbcc014b6b97898fc61b3f2297e03b.css" media="all" rel="stylesheet"></head>
 <body style="background-color:#F7F7F7">
 <style>
 .form-control {
@@ -53,10 +55,10 @@
     <%= f.text_field :region_type, class:  'form-control' ,:placeholder=>"سهمیه"%>
   </div>
   <div class="input-group">
-    <%= f.number_field :exam_regional_rank, class:  'form-control', style: "width:93%;margin:auto;margin-top:10;margin-bottom:10;" ,:placeholder=>"رتبه در منطقه"%>
+    <%= f.number_field :exam_regional_rank, class:  'form-control',:placeholder=>"رتبه در منطقه"%>
   </div>
   <div class="input-group">
-    <%= f.number_field :exam_overall_rank, style: "width:93%;margin:auto;margin-top:10;margin-bottom:10;", class:  'form-control' ,:placeholder=>"رتبه در کشور"%>
+    <%= f.number_field :exam_overall_rank, class:  'form-control' ,:placeholder=>"رتبه در کشور"%>
   </div>
   <div class="input-group">
     <%= f.text_field :city, class:  'form-control' ,:placeholder=>"شهر"%>
@@ -65,7 +67,7 @@
     <%= f.text_field :school, class:  'form-control',:placeholder=>"دبیرستان" %>
   </div>
   <div class="input-group">
-    <%= f.label 'میخواهم در برنامه معرفی دانشکده مهنسی برق و کامپیوتر شرکت کنم.' ,style:"margin:10px" %>
+    <%= f.label 'میخواهم در برنامه معرفی دانشکده مهندسی برق و کامپیوتر شرکت کنم.' ,style:"margin:10px" %>
     <%= f.check_box :want_elec ,style: "margin:10px" %>
   </div>
   <div class="input-group">
