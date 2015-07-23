@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :models
+
   resources :ut_students
 
   resources :coupons

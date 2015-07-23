@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  PayIt: MyString
+  name: MyString
+  surname: MyString
+  mobile: MyString
+  email: MyString
+  grades_image: MyText
+  region_type: MyString
+  exam_regional_rank: 1
+  exam_overall_rank: 1
+  city: MyString
+  school: MyString
+  payment_id: 1
+
+two:
+  PayIt: MyString
+  name: MyString
+  surname: MyString
+  mobile: MyString
+  email: MyString
+  grades_image: MyText
+  region_type: MyString
+  exam_regional_rank: 1
+  exam_overall_rank: 1
+  city: MyString
+  school: MyString
+  payment_id: 1
