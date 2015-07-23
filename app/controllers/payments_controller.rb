@@ -154,10 +154,10 @@ class PaymentsController < ApplicationController
         redirect_to parsed_response["bank"]
         return
       else
-        render :new
+        render new_payer_path
       end
     else
-      render :new
+      render new_payer_path
     end
 
   end
@@ -170,7 +170,7 @@ class PaymentsController < ApplicationController
     #puts params["successful"]
     #puts approve_params
     if approve_params["reference"].empty? or approve_params["successful"].empty?
-      redirect_to payments_path, :notice => "اطلاعات پرداخت اشتباه است."
+      redirect_to payer_fail_path
       return
     end
     #puts "REF-key"
@@ -180,7 +180,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.where("reference_key = ?", approve_params["reference"]).where("status = ?", false).first
     #puts "Is nill? " + @payment.nil?.to_s
     if @payment.nil?
-      redirect_to payments_path, notice: 'در فرآیند پرداخت مشکلی به وجود آمد.'
+      redirect_to payer_fail_path
       return
     end
     # mohammad #############################
@@ -190,7 +190,7 @@ class PaymentsController < ApplicationController
       response = http.request request
       result = JSON.parse(response.body)
       if result['status'] != 1 or !result['successful']
-        redirect_to payments_path, notice: 'فرایند پرداخت با خطا روبرو شد.'
+        redirect_to payer_fail_path
         return
       end
     end
@@ -203,7 +203,7 @@ class PaymentsController < ApplicationController
     @payment.succeed_time = Time.now
     @payment.save
     UserMailer.complete_payment(@payment).deliver
-    render 'payments/approve'
+    redirect_to payer_success_path
     #redirect_to payments_path, notice: 'پرداخت با موفقیت انجام شد.'
   end
 
