@@ -17,7 +17,7 @@
     margin: 10px;
     transition: border-color 0.25s ease-in-out 0s, box-shadow 0.25s ease-in-out 0s;
 }
-.input-groups{
+.input-group{
   margin: auto;
   }
 </style>
@@ -53,10 +53,10 @@
     <%= f.text_field :region_type, class:  'form-control' ,:placeholder=>"سهمیه"%>
   </div>
   <div class="input-group" style="margin-right:-5%">
-    <%= f.number_field :exam_regional_rank, class:  'form-control', style: "width:93%;margin:auto" ,:placeholder=>"رتبه در منطقه"%>
+    <%= f.number_field :exam_regional_rank, class:  'form-control', style: "width:93%;margin:auto;margin-top:10;margin-bottom:10;" ,:placeholder=>"رتبه در منطقه"%>
   </div>
   <div class="input-group" style="margin-right:-5%">
-    <%= f.number_field :exam_overall_rank, style: "width:93%;margin:auto", class:  'form-control' ,:placeholder=>"رتبه در کشور"%>
+    <%= f.number_field :exam_overall_rank, style: "width:93%;margin:auto;margin-top:10;margin-bottom:10;", class:  'form-control' ,:placeholder=>"رتبه در کشور"%>
   </div>
   <div class="input-group">
     <%= f.text_field :city, class:  'form-control' ,:placeholder=>"شهر"%>
