@@ -34,7 +34,7 @@ class UtStudentsController < ApplicationController
         UserMailer.send_coupons(current_user.ut_student.email,PriceModel.find(9)).deliver
         render 'ut_students/success_validate'
       else
-        raender 'ut_students/fail_validate'
+        render 'ut_students/fail_validate'
       end
   end
 

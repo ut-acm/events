@@ -29,7 +29,7 @@ class PayItsController < ApplicationController
   # POST /pay_its
   # POST /pay_its.json
   def create
-    @pay_it = PayIt.create(pay_it_params)
+    @pay_it = PayIt.new(pay_it_params)
     respond_to do |format|
     Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@pay_it.nil?}"
       if @pay_it.save
