@@ -35,7 +35,7 @@ class PayersController < ApplicationController
       redirect_to bank_payit_path(@payer.id)
     else
       respond_to do |format|
-        format.html { render :new }
+        format.html { render :new ,:layout=>false}
       end
     end
     # respond_to do |format|
