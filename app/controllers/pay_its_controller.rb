@@ -1,5 +1,10 @@
 class PayItsController < ApplicationController
   before_action :set_pay_it, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin [:show, :edit, :update, :destroy]
+
+  def authenticate_admin
+    redirect_to events_path if !(current_user and current_user.has_role?(:admin))
+  end
 
   # GET /pay_its
   # GET /pay_its.json
@@ -28,8 +33,9 @@ class PayItsController < ApplicationController
 
     respond_to do |format|
       if @pay_it.save
-        format.html { redirect_to @pay_it, notice: 'Pay it was successfully created.' }
-        format.json { render :show, status: :created, location: @pay_it }
+        redirect_to create_payit_path(@pay_it.id)
+        # format.html { redirect_to @pay_it, notice: 'Pay it was successfully created.' }
+        # format.json { render :show, status: :created, location: @pay_it }
       else
         format.html { render :new }
         format.json { render json: @pay_it.errors, status: :unprocessable_entity }

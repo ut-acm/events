@@ -130,15 +130,10 @@ class PaymentsController < ApplicationController
     #redirect_to payments_path, notice: 'پرداخت با موفقیت انجام شد.'
   end
 
-  def new_other_site
-    @payment = Payment.new
-    @profile = Profile.where(:surname=>"PayIt").first
-  end
-
-
   def create_other_site
     @profile = Profile.where(:surname=>"PayIt").first
     @payment = Payment.new(:amount=>300000)
+    @payment.pay_it=PayIt.find(params[:payit_id])
     @payment.profile = @profile
     if @payment.save
       uri = URI('http://acm.ut.ac.ir/epayment/payments')
