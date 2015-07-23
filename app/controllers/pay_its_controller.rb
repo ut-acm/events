@@ -30,17 +30,19 @@ class PayItsController < ApplicationController
   # POST /pay_its.json
   def create
     @pay_it = PayIt.new(:name=>params[:pay_it][:name], :surname=>params[:pay_it][:surname], :mobile=>params[:pay_it][:mobile], :email=>params[:pay_it][:email], :grades_image=>params[:pay_it][:grades_image], :region_type=>params[:pay_it][:region_type], :exam_regional_rank=>params[:pay_it][:exam_regional_rank], :exam_overall_rank=>params[:pay_it][:exam_overall_rank], :city=>params[:pay_it][:city], :school=>params[:pay_it][:school])
-    respond_to do |format|
     Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@pay_it.nil?} #{@pay_it.id.nil?} #{@pay_it.name.nil?} #{@pay_it.name}"
-      if @pay_it.save
+    if @pay_it.save
         redirect_to bank_payit_path(@pay_it.id)
-        # format.html { redirect_to @pay_it, notice: 'Pay it was successfully created.' }
-        # format.json { render :show, status: :created, location: @pay_it }
-      else
-        format.html { render :new }
-        format.json { render json: @pay_it.errors, status: :unprocessable_entity }
-      end
     end
+    # respond_to do |format|
+    #   if @pay_it.save
+    #     # format.html { redirect_to @pay_it, notice: 'Pay it was successfully created.' }
+    #     # format.json { render :show, status: :created, location: @pay_it }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @pay_it.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /pay_its/1
