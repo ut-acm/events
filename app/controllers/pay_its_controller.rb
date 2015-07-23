@@ -29,7 +29,7 @@ class PayItsController < ApplicationController
   # POST /pay_its
   # POST /pay_its.json
   def create
-    @pay_it = PayIt.new(:name=>params[:name], :surname=>params[:surname], :mobile=>params[:mobile], :email=>params[:email], :grades_image=>params[:grades_image], :region_type=>params[:region_type], :exam_regional_rank=>params[:exam_regional_rank], :exam_overall_rank=>params[:exam_overall_rank], :city=>params[:city], :school=>params[:school])
+    @pay_it = PayIt.new(:name=>params[:pay_it][:name], :surname=>params[:pay_it][:surname], :mobile=>params[:pay_it][:mobile], :email=>params[:pay_it][:email], :grades_image=>params[:pay_it][:grades_image], :region_type=>params[:pay_it][:region_type], :exam_regional_rank=>params[:pay_it][:exam_regional_rank], :exam_overall_rank=>params[:pay_it][:exam_overall_rank], :city=>params[:pay_it][:city], :school=>params[:pay_it][:school])
     respond_to do |format|
     Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@pay_it.nil?} #{@pay_it.id.nil?} #{@pay_it.name.nil?} #{@pay_it.name}"
       if @pay_it.save
@@ -47,7 +47,7 @@ class PayItsController < ApplicationController
   # PATCH/PUT /pay_its/1.json
   def update
     respond_to do |format|
-      if @pay_it.update(pay_it_params)
+      if @pay_it.update(pay_it_params[:pay_it])
         format.html { redirect_to @pay_it, notice: 'Pay it was successfully updated.' }
         format.json { render :show, status: :ok, location: @pay_it }
       else
@@ -70,11 +70,11 @@ class PayItsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pay_it
-      @pay_it = PayIt.find(params[:id])
+      @pay_it = PayIt.find(params[:pay_it][:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def pay_it_params
-      params.require(:pay_it).permit(:name, :surname, :mobile, :email, :grades_image, :region_type, :exam_regional_rank, :exam_overall_rank, :city, :school)
+    def pay_it_params[:pay_it]
+      params[:pay_it].require(:pay_it).permit(:name, :surname, :mobile, :email, :grades_image, :region_type, :exam_regional_rank, :exam_overall_rank, :city, :school)
     end
 end
