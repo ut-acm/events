@@ -1,3 +1,5 @@
+<html>
+<body style="background-color:#FFFACD">
 <%= form_for(@payer) do |f| %>
   <% if @payer.errors.any? %>
     <div id="error_explanation">
@@ -11,39 +13,39 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'نام' %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'نام خانوادگی' %><br>
     <%= f.text_field :surname %>
   </div>
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'موبایل' %><br>
     <%= f.text_field :mobile %>
   </div>
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'ایمیل' %><br>
     <%= f.text_field :email %>
   </div>
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'سهمیه منطقه' %><br>
     <%= f.text_field :region_type %>
   </div>
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'رتبه در منطقه' %><br>
     <%= f.number_field :exam_regional_rank %>
   </div>
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'رتبه در کشور' %><br>
     <%= f.number_field :exam_overall_rank %>
   </div>
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'شهر' %><br>
     <%= f.text_field :city %>
   </div>
-  <div class="field">
+  <div class="form-control">
     <%= f.label 'دبیرستان' %><br>
     <%= f.text_field :school %>
   </div>
@@ -51,3 +53,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+</body>
+</html>

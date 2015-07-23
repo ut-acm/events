@@ -202,7 +202,7 @@ class PaymentsController < ApplicationController
     @payment.status = true
     @payment.succeed_time = Time.now
     @payment.save
-    UserMailer.complete_payment(@payment).deliver
+    # UserMailer.complete_payment(@payment).deliver
     redirect_to payer_success_path
     #redirect_to payments_path, notice: 'پرداخت با موفقیت انجام شد.'
   end
