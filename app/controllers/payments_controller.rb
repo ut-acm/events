@@ -207,6 +207,11 @@ class PaymentsController < ApplicationController
     #redirect_to payments_path, notice: 'پرداخت با موفقیت انجام شد.'
   end
 
+  def other_suc
+  end
+  def other_fail
+  end
+
 
   def manual_new
     #TODO
