@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   resources :price_models
 
-  get,:as=>:payer_fail
-  get,:as=>:payer_success
+  get 'asd',:as=>:payer_fail
+  get'suc',:as=>:payer_success
 
   get 'validate_ut/:token'=>'ut_students#validate_token',:as=>:validate_ut_email
 
