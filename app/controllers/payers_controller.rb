@@ -1,6 +1,6 @@
 class PayersController < ApplicationController
   before_action :set_payer, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin ,:only=>[:show, :edit, :update, :destroy]
+  before_action :authenticate_admin ,:only=>[:show, :edit, :update, :destroy,:index]
 
   def authenticate_admin
     redirect_to events_path if !(current_user and current_user.has_role?(:admin))
