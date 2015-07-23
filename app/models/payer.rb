@@ -13,7 +13,7 @@ class Payer < ActiveRecord::Base
 
 	def check_mobile
 		return unless self.mobile
-		self.errors.add(:mobile,'موبایل صحیح نیست') unless (self.mobile.starts_with?("09") and self.mobile.size==10)
+		self.errors.add(:mobile,'موبایل صحیح نیست') unless (self.mobile.starts_with?("09") and self.mobile.size==11)
 	end
 
 	def check_rank
