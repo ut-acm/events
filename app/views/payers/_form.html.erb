@@ -17,6 +17,9 @@
     margin: 10px;
     transition: border-color 0.25s ease-in-out 0s, box-shadow 0.25s ease-in-out 0s;
 }
+.input-groups{
+  margin: auto;
+  }
 </style>
 
 <div class="col-lg-12">
@@ -50,10 +53,10 @@
     <%= f.text_field :region_type, class:  'form-control' ,:placeholder=>"سهمیه"%>
   </div>
   <div class="input-group" style="margin-right:-5%">
-    <%= f.number_field :exam_regional_rank, class:  'form-control', style: "width:93%" ,:placeholder=>"رتبه در منطقه"%>
+    <%= f.number_field :exam_regional_rank, class:  'form-control', style: "width:93%;margin:auto" ,:placeholder=>"رتبه در منطقه"%>
   </div>
   <div class="input-group" style="margin-right:-5%">
-    <%= f.number_field :exam_overall_rank, style: "width:93%", class:  'form-control' ,:placeholder=>"رتبه در کشور"%>
+    <%= f.number_field :exam_overall_rank, style: "width:93%;margin:auto", class:  'form-control' ,:placeholder=>"رتبه در کشور"%>
   </div>
   <div class="input-group">
     <%= f.text_field :city, class:  'form-control' ,:placeholder=>"شهر"%>
@@ -66,7 +69,7 @@
     <%= f.check_box :want_elec ,style: "margin:10px" %>
   </div>
   <div class="actions">
-    <%= f.submit "ثبت نام",class: 'btn btn-primary ',:style=>"margin:10px"%>
+    <%= f.submit "ثبت نام",class: 'btn btn-primary ',:style=>"margin:10px;"%>
   </div>
 <% end %>
 </div></div>
