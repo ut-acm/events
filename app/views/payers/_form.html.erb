@@ -33,7 +33,7 @@
 
       <ul>
       <% @payer.errors.messages.each do |message| %>
-        <li><%= message.second %></li>
+        <li><%= message.second.first %></li>
       <% end %>
       </ul>
     </div>
