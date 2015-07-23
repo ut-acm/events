@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206155025) do
+ActiveRecord::Schema.define(version: 20150723083246) do
 
   create_table "answers", force: true do |t|
     t.integer  "answered"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20150206155025) do
     t.integer  "event_id"
     t.integer  "duration"
     t.datetime "start_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "coupons", force: true do |t|
+    t.integer  "price_model_id"
+    t.text     "cut_code"
+    t.boolean  "enabled"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,6 +86,7 @@ ActiveRecord::Schema.define(version: 20150206155025) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "report_id"
+    t.boolean  "is_conference_like"
   end
 
   create_table "invoices", force: true do |t|
@@ -100,7 +109,43 @@ ActiveRecord::Schema.define(version: 20150206155025) do
     t.integer  "profile_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "payed",      default: false
+    t.boolean  "payed",          default: false
+    t.integer  "price_model_id"
+    t.integer  "coupon_id"
+    t.text     "enroll_token"
+    t.boolean  "enroll_seen"
+  end
+
+  create_table "pay_its", force: true do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "mobile"
+    t.string   "email"
+    t.text     "grades_image"
+    t.string   "region_type"
+    t.integer  "exam_regional_rank"
+    t.integer  "exam_overall_rank"
+    t.string   "city"
+    t.string   "school"
+    t.integer  "payment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payers", force: true do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.string   "mobile"
+    t.string   "email"
+    t.text     "grades_image"
+    t.string   "region_type"
+    t.integer  "exam_regional_rank"
+    t.integer  "exam_overall_rank"
+    t.string   "city"
+    t.string   "school"
+    t.integer  "payment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "payments", force: true do |t|
@@ -211,6 +256,15 @@ ActiveRecord::Schema.define(version: 20150206155025) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
+
+  create_table "ut_students", force: true do |t|
+    t.string   "email"
+    t.text     "token"
+    t.boolean  "validated"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "worldcups", force: true do |t|
     t.integer  "profile_id"
