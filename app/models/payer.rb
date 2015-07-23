@@ -12,10 +12,12 @@ class Payer < ActiveRecord::Base
 	end
 
 	def check_mobile
+		return unless self.check_mobile
 		self.errors.add(:mobile,'موبایل صحیح نیست') unless (self.mobile.starts_with?("09") and self.mobile.size==10)
 	end
 
 	def check_rank
+		return unless self.exam_overall_rank and self.exam_overall_rank
 		self.errors.add(:exam_regional_rank,'رتبه منطقه عددی مثبت است') unless self.exam_regional_rank>0
 		self.errors.add(:exam_overall_rank,'رتبه کشوری عددی مثبت است') unless self.exam_overall_rank>0
 	end
