@@ -137,10 +137,12 @@ end
     par=Participation.where(:event=>@event,:enroll_token=>params[:token],:enroll_seen=>[nil,false]).first
     Rails.logger.info ":::::::::::::::::::::::::::::::::#{par} #{params[:token]} #{@event}"
     @pass=par
-    if @pass
+    if par
       par.update(:enroll_seen=>true)
+      Rails.logger.info "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
       render :text=>"SUCCESS"
     else
+      Rails.logger.info "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
       render :text=>"FAILED"
     end
   end
