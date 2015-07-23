@@ -1,0 +1,45 @@
+<h1>Listing payers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Grades image</th>
+      <th>Region type</th>
+      <th>Exam regional rank</th>
+      <th>Exam overall rank</th>
+      <th>City</th>
+      <th>School</th>
+      <th>Payment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payers.each do |payer| %>
+      <tr>
+        <td><%= payer.name %></td>
+        <td><%= payer.surname %></td>
+        <td><%= payer.mobile %></td>
+        <td><%= payer.email %></td>
+        <td><%= payer.grades_image %></td>
+        <td><%= payer.region_type %></td>
+        <td><%= payer.exam_regional_rank %></td>
+        <td><%= payer.exam_overall_rank %></td>
+        <td><%= payer.city %></td>
+        <td><%= payer.school %></td>
+        <td><%= payer.payment_id %></td>
+        <td><%= link_to 'Show', payer %></td>
+        <td><%= link_to 'Edit', edit_payer_path(payer) %></td>
+        <td><%= link_to 'Destroy', payer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payer', new_payer_path %>

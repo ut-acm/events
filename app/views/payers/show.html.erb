@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @payer.name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @payer.surname %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @payer.mobile %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @payer.email %>
+</p>
+
+<p>
+  <strong>Grades image:</strong>
+  <%= @payer.grades_image %>
+</p>
+
+<p>
+  <strong>Region type:</strong>
+  <%= @payer.region_type %>
+</p>
+
+<p>
+  <strong>Exam regional rank:</strong>
+  <%= @payer.exam_regional_rank %>
+</p>
+
+<p>
+  <strong>Exam overall rank:</strong>
+  <%= @payer.exam_overall_rank %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @payer.city %>
+</p>
+
+<p>
+  <strong>School:</strong>
+  <%= @payer.school %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @payer.payment_id %>
+</p>
+
+<%= link_to 'Edit', edit_payer_path(@payer) %> |
+<%= link_to 'Back', payers_path %>

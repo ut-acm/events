@@ -1,0 +1,61 @@
+<%= form_for(@payer) do |f| %>
+  <% if @payer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payer.errors.count, "error") %> prohibited this payer from being saved:</h2>
+
+      <ul>
+      <% @payer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :surname %><br>
+    <%= f.text_field :surname %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile %><br>
+    <%= f.text_field :mobile %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :grades_image %><br>
+    <%= f.text_area :grades_image %>
+  </div>
+  <div class="field">
+    <%= f.label :region_type %><br>
+    <%= f.text_field :region_type %>
+  </div>
+  <div class="field">
+    <%= f.label :exam_regional_rank %><br>
+    <%= f.number_field :exam_regional_rank %>
+  </div>
+  <div class="field">
+    <%= f.label :exam_overall_rank %><br>
+    <%= f.number_field :exam_overall_rank %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br>
+    <%= f.text_field :school %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_id %><br>
+    <%= f.number_field :payment_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
