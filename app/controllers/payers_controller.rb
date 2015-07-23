@@ -81,6 +81,6 @@ class PayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payer_params
-      params.require(:payer).permit(:name, :surname, :mobile, :email, :grades_image, :region_type, :exam_regional_rank, :exam_overall_rank, :city, :school, :payment_id)
+      params.require(:payer).permit(:name, :surname, :mobile, :email, :grades_image, :region_type, :exam_regional_rank, :exam_overall_rank, :city, :school, :payment_id,:want_elec)
     end
 end

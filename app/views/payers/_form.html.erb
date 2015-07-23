@@ -61,6 +61,10 @@
   <div class="input-group">
     <%= f.text_field :school, class:  'form-control',:placeholder=>"دبیرستان" %>
   </div>
+  <div class="input-group">
+    <%= f.label 'میخواهم در برنامه معرفید انشکده مهنسی برق و کامپیوتر شرکت کنم.'%><br>
+    <%= f.check_box :want_elec, class: 'form-control' %>
+  </div>
   <div class="actions">
     <%= f.submit "ثبت نام",class: 'btn btn-primary ',:style=>"margin:10px"%>
   </div>
