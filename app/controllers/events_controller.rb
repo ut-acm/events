@@ -3,7 +3,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, :only => [:book, :cancel_book, :edit, :new]
   before_action :complete_profile
-  before_action :set_event, :only => [:book_conference,:cancel_book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register]
+  before_action :set_event, :only => [:book_conference,:cancel_book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register,:check_token]
 
   before_action :http_basic_authenticate,:only=>:check_token
 
@@ -135,7 +135,7 @@ end
 
   def check_token
     par=Participation.where(:event=>@event,:enroll_token=>params[:token],:enroll_seen=>[nil,false]).first
-    Rails.logger.info ":::::::::::::::::::::::::::::::::#{par} #{params[:token]} #{@event}"
+    # Rails.logger.info ":::::::::::::::::::::::::::::::::#{par} #{params[:token]} #{@event}"
     @pass=par
     if @pass
       par.update(:enroll_seen=>true)
