@@ -28,7 +28,7 @@
 
       <ul>
       <% @payer.errors.messages.each do |message| %>
-        <li><%= message %></li>
+        <li><%= message.second %></li>
       <% end %>
       </ul>
     </div>
