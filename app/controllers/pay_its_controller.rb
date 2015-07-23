@@ -31,7 +31,7 @@ class PayItsController < ApplicationController
   def create
     @pay_it = PayIt.new(pay_it_params)
     respond_to do |format|
-    Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@pay_it.nil?} #{@pay_it.id}"
+    Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@pay_it.nil?} #{@pay_it.id.nil?} #{@pay_it.name.nil?}"
       if @pay_it.save
         redirect_to bank_payit_path(@pay_it.id)
         # format.html { redirect_to @pay_it, notice: 'Pay it was successfully created.' }
