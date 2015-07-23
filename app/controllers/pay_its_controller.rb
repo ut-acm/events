@@ -33,7 +33,7 @@ class PayItsController < ApplicationController
 
     respond_to do |format|
       if @pay_it.save
-        redirect_to create_payit_path(@pay_it.id)
+        redirect_to bank_payit_path(@pay_it.id)
         # format.html { redirect_to @pay_it, notice: 'Pay it was successfully created.' }
         # format.json { render :show, status: :created, location: @pay_it }
       else
