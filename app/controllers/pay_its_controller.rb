@@ -30,7 +30,7 @@ class PayItsController < ApplicationController
   # POST /pay_its.json
   def create
     @pay_it = PayIt.new(pay_it_params)
-    Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@payit.name}"
+    Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@pay_it.nil?}"
     respond_to do |format|
       if @pay_it.save
         redirect_to bank_payit_path(@pay_it.id)
