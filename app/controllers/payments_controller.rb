@@ -208,8 +208,11 @@ class PaymentsController < ApplicationController
   end
 
   def other_suc
+    render :layout => false
   end
+  
   def other_fail
+    render :layout => false
   end
 
 

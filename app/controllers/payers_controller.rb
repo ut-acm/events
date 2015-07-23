@@ -20,6 +20,7 @@ class PayersController < ApplicationController
   # GET /payers/new
   def new
     @payer = Payer.new
+    render :layout => false
   end
 
   # GET /payers/1/edit
