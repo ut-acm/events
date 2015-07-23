@@ -133,7 +133,7 @@ class PaymentsController < ApplicationController
   def create_other_site
     @profile = Profile.where(:surname=>"PayIt").first
     @payment = Payment.new(:amount=>300000)
-    @payment.pay_it=PayIt.find(params[:payit_id])
+    @payment.pay_it=Payer.find(params[:payit_id])
     @payment.profile = @profile
     if @payment.save
       uri = URI('http://acm.ut.ac.ir/epayment/payments')

@@ -25,16 +25,18 @@ class PayersController < ApplicationController
   # POST /payers.json
   def create
     @payer = Payer.new(payer_params)
-
-    respond_to do |format|
-      if @payer.save
-        format.html { redirect_to @payer, notice: 'Payer was successfully created.' }
-        format.json { render :show, status: :created, location: @payer }
-      else
-        format.html { render :new }
-        format.json { render json: @payer.errors, status: :unprocessable_entity }
-      end
+    if @payer.save
+      redirect_to bank_payit_path(@payer.id)
     end
+    # respond_to do |format|
+    #   if @payer.save
+    #     format.html { redirect_to @payer, notice: 'Payer was successfully created.' }
+    #     format.json { render :show, status: :created, location: @payer }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @payer.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /payers/1
