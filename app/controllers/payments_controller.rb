@@ -130,6 +130,89 @@ class PaymentsController < ApplicationController
     #redirect_to payments_path, notice: 'پرداخت با موفقیت انجام شد.'
   end
 
+  def new_other_site
+    @payment = Payment.new
+    @profile = Profile.where(:surname=>"PayIt").first
+  end
+
+
+  def create_other_site
+    @profile = Profile.where(:surname=>"PayIt").first
+    @payment = Payment.new(:amount=>300000)
+    @payment.profile = @profile
+    if @payment.save
+      uri = URI('http://acm.ut.ac.ir/epayment/payments')
+      parameters = {
+          'merchant' => "4452A141",
+          'amount' => @payment.amount,
+          'redirect' => "http://acm.ut.ac.ir/approve_payit"}
+      response = transact(uri, parameters)
+      puts response.body
+      @payment.response = response.body
+      parsed_response = JSON.parse(response.body)
+      if parsed_response["status"] != 1
+        redirect_to payments_path, notice: "در ارتباط با بانک خطایی رخ داده‌است."
+        return
+      end
+      @payment.reference_key = parsed_response["reference"]
+      if @payment.save
+        redirect_to parsed_response["bank"]
+        return
+      else
+        render :new
+      end
+    else
+      render :new
+    end
+
+  end
+
+  def approve_other_site
+    #puts "Approve"
+    #puts "params"
+    #puts params
+    #puts params["reference"]
+    #puts params["successful"]
+    #puts approve_params
+    if approve_params["reference"].empty? or approve_params["successful"].empty?
+      redirect_to payments_path, :notice => "اطلاعات پرداخت اشتباه است."
+      return
+    end
+    #puts "REF-key"
+    #puts approve_params["reference"]
+    #puts "successful"
+    #puts approve_params["successful"]
+    @payment = Payment.where("reference_key = ?", approve_params["reference"]).where("status = ?", false).first
+    #puts "Is nill? " + @payment.nil?.to_s
+    if @payment.nil?
+      redirect_to payments_path, notice: 'در فرآیند پرداخت مشکلی به وجود آمد.'
+      return
+    end
+    # mohammad #############################
+    uri = URI("http://acm.ut.ac.ir/epayment/payments/lookup?merchant=4452A141&reference=#{approve_params['reference']}")
+    Net::HTTP.start(uri.host, uri.port) do |http|
+      request = Net::HTTP::Get.new uri
+      response = http.request request
+      result = JSON.parse(response.body)
+      if result['status'] != 1 or !result['successful']
+        redirect_to payments_path, notice: 'فرایند پرداخت با خطا روبرو شد.'
+        return
+      end
+    end
+    ########################################
+
+    @profile = @payment.profile
+    @profile.credit += @payment.amount
+    @profile.save
+    @payment.status = true
+    @payment.succeed_time = Time.now
+    @payment.save
+    UserMailer.complete_payment(@payment).deliver
+    render 'payments/approve'
+    #redirect_to payments_path, notice: 'پرداخت با موفقیت انجام شد.'
+  end
+
+
   def manual_new
     #TODO
     if !current_user.has_role?(:admin)
