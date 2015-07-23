@@ -1,0 +1,45 @@
+<h1>Listing pay_its</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Grades image</th>
+      <th>Region type</th>
+      <th>Exam regional rank</th>
+      <th>Exam overall rank</th>
+      <th>City</th>
+      <th>School</th>
+      <th>Payment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pay_its.each do |pay_it| %>
+      <tr>
+        <td><%= pay_it.name %></td>
+        <td><%= pay_it.surname %></td>
+        <td><%= pay_it.mobile %></td>
+        <td><%= pay_it.email %></td>
+        <td><%= pay_it.grades_image %></td>
+        <td><%= pay_it.region_type %></td>
+        <td><%= pay_it.exam_regional_rank %></td>
+        <td><%= pay_it.exam_overall_rank %></td>
+        <td><%= pay_it.city %></td>
+        <td><%= pay_it.school %></td>
+        <td><%= pay_it.payment_id %></td>
+        <td><%= link_to 'Show', pay_it %></td>
+        <td><%= link_to 'Edit', edit_pay_it_path(pay_it) %></td>
+        <td><%= link_to 'Destroy', pay_it, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pay it', new_pay_it_path %>

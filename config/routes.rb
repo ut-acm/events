@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :models
+  resources :pay_its
 
   resources :ut_students
 
