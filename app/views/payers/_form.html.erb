@@ -24,10 +24,10 @@
 <%= form_for(@payer) do |f| %>
   <% if @payer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@payer.errors.count, "error") %> خطا مانع ثبت نام صحیح شما شد:</h2>
+      <h2><%= @payer.errors.count%> خطا مانع ثبت نام صحیح شما شد:</h2>
 
       <ul>
-      <% @payer.errors.full_messages.each do |message| %>
+      <% @payer.errors.messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
