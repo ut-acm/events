@@ -134,9 +134,10 @@ end
   end
 
   def check_token
+    return
     par=Participation.where(:event=>self,:enroll_token=>params[:token],:enroll_seen=>[nil,false]).first
     @pass=par
-    par.update(:enroll_seen=>true) if par
+    # par.update(:enroll_seen=>true) if par
   end
 
 
