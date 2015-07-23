@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   delete 'participations/destroy/:id' => 'events#participation_destroy'
 
   # get 'new_payit'=>'payments#new_other_site'
-  post 'bank_payit/:payit_id'=>'payments#create_other_site', :as=>:bank_payit
+  get 'bank_payit/:payit_id'=>'payments#create_other_site', :as=>:bank_payit
   get 'approve_payit/:payit_id' => 'payments#approve_other_site', :as=>:create_payit
 
 
