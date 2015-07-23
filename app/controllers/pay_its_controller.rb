@@ -29,9 +29,9 @@ class PayItsController < ApplicationController
   # POST /pay_its
   # POST /pay_its.json
   def create
-    @pay_it = PayIt.new(pay_it_params)
-    Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@pay_it.nil?}"
+    @pay_it = PayIt.create(pay_it_params)
     respond_to do |format|
+    Rails.logger.info "::::::::::::::::::::::::::::#{@pay_it} #{@pay_it.nil?}"
       if @pay_it.save
         redirect_to bank_payit_path(@pay_it.id)
         # format.html { redirect_to @pay_it, notice: 'Pay it was successfully created.' }
