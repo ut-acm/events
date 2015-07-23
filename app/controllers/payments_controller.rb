@@ -140,7 +140,7 @@ class PaymentsController < ApplicationController
       parameters = {
           'merchant' => "4452A141",
           'amount' => @payment.amount,
-          'redirect' => "http://acm.ut.ac.ir/approve_payit"}
+          'redirect' => approve_payit_path(params[:payit_id])}
       response = transact(uri, parameters)
       puts response.body
       @payment.response = response.body

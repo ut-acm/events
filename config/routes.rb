@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   # get 'new_payit'=>'payments#new_other_site'
   get 'bank_payit/:payit_id'=>'payments#create_other_site', :as=>:bank_payit
-  get 'approve_payit/:payit_id' => 'payments#approve_other_site', :as=>:create_payit
+  get 'approve_payit/:payit_id' => 'payments#approve_other_site', :as=>:approve_payit
 
 
   resources :invoices
