@@ -4,7 +4,7 @@ class Payer < ActiveRecord::Base
 	validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,:message=>"ایمیل صحیح نیست"
 	validate :check_rank
 	validate :be_present
-
+	validate :check_unique
 	def be_present
 		unless self.name and self.surname and self.mobile and self.email and self.region_type and self.exam_regional_rank and self.exam_overall_rank and self.city and self.school
 			self.errors.add(:base,"پر کردن تمام فیلدها اجباری است.")
@@ -21,4 +21,14 @@ class Payer < ActiveRecord::Base
 		self.errors.add(:exam_regional_rank,'رتبه منطقه عددی مثبت است') unless self.exam_regional_rank>0
 		self.errors.add(:exam_overall_rank,'رتبه کشوری عددی مثبت است') unless self.exam_overall_rank>0
 	end
+
+	def check_unique
+		return unless self.mobile
+		Payer.where(:mobile => self.mobile).each do |pay|
+			if !(pay.payment_id.nil?) && Payment.find(pay.payment_id).status == true
+				self.errors.add(:mobile, 'این شماره قبلا با موفقیت ثبت شده است')	
+			end
+		end
+	end
+
 end

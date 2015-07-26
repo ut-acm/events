@@ -10,6 +10,7 @@ class PayersController < ApplicationController
   # GET /payers.json
   def index
     @payers = Payer.all
+    @payments = Payment.all
   end
 
   # GET /payers/1

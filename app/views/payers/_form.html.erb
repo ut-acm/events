@@ -26,6 +26,7 @@
 
 <div class="col-lg-12">
     <div class="container col-md-4 col-md-offset-4 pan" style="width:28%; margin-left:40.33%">
+    <p> ثبت نام شما زمانی به پایان رسیده‌است که پیام «پرداخت شما موفقیت‌آمیز بود»را دریافت کنید </p>
 <%= form_for(@payer) do |f| %>
   <% if @payer.errors.any? %>
     <div id="error_explanation">
@@ -65,10 +66,6 @@
   </div>
   <div class="input-group">
     <%= f.text_field :school, class:  'form-control',:placeholder=>"دبیرستان" %>
-  </div>
-  <div class="input-group">
-    <%= f.label 'میخواهم در برنامه معرفی دانشکده مهندسی برق و کامپیوتر شرکت کنم.' ,style:"margin:10px" %>
-    <%= f.check_box :want_elec ,style: "margin:10px" %>
   </div>
   <div class="input-group">
     <%= f.submit "ثبت نام",class: 'btn btn-primary ',:style=>"margin:10px;"%>
