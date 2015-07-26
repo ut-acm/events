@@ -13,6 +13,6 @@ module Acm
 	config.assets.precompile += %w(ckeditor/*)
     config.time_zone = 'Tehran'
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-    config.assets.paths << "#{Rails.root}"
+    # config.assets.paths << "#{Rails.root}"
   end
 end
