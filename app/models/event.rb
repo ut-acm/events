@@ -51,7 +51,12 @@ class Event < ActiveRecord::Base
   end
 
   def is_full?
-    capacity <= participations.where('payed = ?',true).count
+    if self.price_models.size>0
+      cap=PriceModel.where(:event=>self).sum(:capacity)
+    else
+      cap=self.capacity
+    end
+    cap <= participations.where('payed = ?',true).count
   end
 
 end

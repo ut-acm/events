@@ -14,7 +14,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def check_capacity
-    if participation.event.is_full?
+    if participation.price_model.is_full?
       errors.add(:full, "رویداد مورد نظر پر شده‌است.")
     end
   end

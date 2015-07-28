@@ -22,4 +22,9 @@ class PriceModel < ActiveRecord::Base
 		end
 	end
 
+	def is_full?
+		return capacity <= participations.where('payed = ?',true).count if event.is_conference_like
+		return event.capacity <= event.participations.where('payed = ?',true).count
+	end
+
 end

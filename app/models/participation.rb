@@ -62,7 +62,7 @@ class Participation < ActiveRecord::Base
   end
 
   def check_capacity
-    if event.is_full?
+    if price_model.is_full?
       errors.add(:event, "is full!")
     end
   end
