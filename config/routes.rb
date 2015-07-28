@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
   resources :price_models
 
-  get 'otherr_fail'=>'payments#other_fail',:as=>:payer_fail
-  get 'otherr_suc'=>'payments#other_suc',:as=>:payer_success
+  # get 'otherr_fail'=>'payments#other_fail',:as=>:payer_fail
+  # get 'otherr_suc'=>'payments#other_suc',:as=>:payer_success
 
   get 'validate_ut/:token'=>'ut_students#validate_token',:as=>:validate_ut_email
 
@@ -40,8 +40,8 @@ Rails.application.routes.draw do
   delete 'participations/destroy/:id' => 'events#participation_destroy'
 
   # get 'new_payit'=>'payments#new_other_site'
-  get 'bank_payit/:payit_id'=>'payments#create_other_site', :as=>:bank_payit
-  get 'approve_payit/:payit_id' => 'payments#approve_other_site', :as=>:approve_payit
+  # get 'bank_payit/:payit_id'=>'payments#create_other_site', :as=>:bank_payit
+  # get 'approve_payit/:payit_id' => 'payments#approve_other_site', :as=>:approve_payit
 
 
   resources :invoices
