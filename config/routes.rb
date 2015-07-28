@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :payers
+  # resources :payers
 
-  resources :pay_its
+  # resources :pay_its
 
   resources :ut_students
 
