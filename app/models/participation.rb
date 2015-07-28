@@ -31,6 +31,13 @@ class Participation < ActiveRecord::Base
       end
     end
 
+
+
+  def is_full?
+    return price_model.capacity <= price_model.participations.where('payed = ?',true).count if event.is_conference_like
+    return event.capacity <= event.participations.where('payed = ?',true).count
+  end
+
   def buy (profile)
     if self.profile == profile and self.payed == false and Invoice.joins(:participation).merge(Participation.where("profile_id = ?", self.profile.id).where("event_id = ?", self.event.id)).count == 0
     #if true
@@ -62,7 +69,7 @@ class Participation < ActiveRecord::Base
   end
 
   def check_capacity
-    if price_model.is_full?
+    if is_full?
       errors.add(:event, "is full!")
     end
   end
