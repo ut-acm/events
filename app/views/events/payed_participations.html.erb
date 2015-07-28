@@ -11,7 +11,7 @@
   <tbody>
     <% @pars.each do |part| %>
       <tr>
-        <td><%= part.profile.email %></td>
+        <td><%= part.profile.user.email %></td>
         <td><%= part.enroll_token %></td>
         <%if part.enroll_seen%>
           <td>Already Checked</td>
