@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Enroll Token</th>
+      <th>Check</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pars.each do |part| %>
+      <tr>
+        <td><%= part.profile.email %></td>
+        <td><%= part.enroll_token %></td>
+        <%if part.enroll_seen%>
+          <td>Already Checked</td>
+        <%else%>
+          <td>
+            <%= link_to check_token_event_path(part.event,part.enroll_token) do%>
+              Check
+            <%end%>
+          </td>
+        <%else%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
