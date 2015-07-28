@@ -18,7 +18,7 @@
         <td><%= price_model.price %></td>
         <td><%= price_model.name %></td>
         <td><%= price_model.capacity %></td>
-        <td><%= price_model.participations.where(:payaed=>true).size %></td>
+        <td><%= price_model.participations.where(:payed=>true).size %></td>
         <td><%= price_model.event_id %></td>
         <td><%= link_to 'Show', price_model %></td>
         <td><%= link_to 'Edit', edit_price_model_path(price_model) %></td>
