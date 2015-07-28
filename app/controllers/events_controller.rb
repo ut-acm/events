@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   before_action :complete_profile
   before_action :set_event, :only => [:book_conference,:cancel_book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register,:check_token]
 
-  before_action :phttp_basic_authenticate,:only=>:check_token
+  before_action :http_basic_authenticate,:only=>:check_token
 
   before_action :keep_notice
 
