@@ -8,6 +8,17 @@ class UserMailer < ActionMailer::Base
   # setting default from
   default from: "ACM Student Chapter"
 
+  def send_qr_reminder(participation)
+    recipient = participation.profile.user.email
+        subject = "کد ورود شما به رویداد #{participation.event.title}"
+        attachments.inline['acm.png'] = @@acm
+
+        puts 'Email: to => ' + recipient + ', subject => ' + subject
+        mail(to: recipient, subject: subject) do |format|
+          format.html { render 'user_mailer/qr_reminder', :locals => {:token => participation.enroll_token,:participation=>participation} }
+        end
+  end
+
   def send_ut_validation(user)
     recipient = user.ut_student.email
         subject = 'اعتبار سنجی ایمیل شما'

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="direction: rtl">
+<p>دوست گرامی</p>
+<p>
+شما در رویداد <%=participation.event.title%> ثبت نام کرده اید و ثبت نام شما کامل شده است. برای ورود به همایش شما باید qr-code زیر را با خود پرینت کرده و بیاورید.
+<br>
+<%=image_tag "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=#{check_token_event_path(@participation.event,token)}"%> 
+<p style="margin-top: 30px;">شاخه‌ی دانشجویی ای‌سی‌ام</p>
+<%= image_tag attachments['acm.png'].url, :alt => 'ACM Student Chapter', :size => '64x64' %>
+</body>
+</html>
