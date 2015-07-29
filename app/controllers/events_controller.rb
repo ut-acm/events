@@ -3,13 +3,18 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, :only => [:book, :cancel_book, :edit, :new]
   before_action :complete_profile
-  before_action :set_event, :only => [:book_conference,:cancel_book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register,:check_token,:payed_participations]
+  before_action :set_event, :only => [:book_conference,:cancel_book_conference, :book, :cancel_book, :edit, :update, :show, :destroy, :start_register,:check_token,:payed_participations,:live]
+  before_action :authenticate_live, :only => [:live]
 
   before_action :http_basic_authenticate,:only=>:check_token
 
   before_action :keep_notice
 
   before_action :authenticate_admin,:only=>[:payed_participations]
+
+  def authenticate_live
+    redirect_to events_path if !(current_user and current_user.participations.where(:payed=>true).map{|p|p.event.id}.include?(@event.id))
+  end
 
   def authenticate_admin
     redirect_to events_path if !(current_user and current_user.has_role?(:admin))
@@ -58,9 +63,9 @@ class EventsController < ApplicationController
       elsif category == 'Workshop'
         @title = "ورک‌شاپ‌ها"
       elsif category == 'Conference'
-	      @title = "همایش ها"
+        @title = "همایش ها"
       elsif category == 'Talk'
-	      @title = 'تاک ها'
+        @title = 'تاک ها'
       end
       render 'events/index'
     else
