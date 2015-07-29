@@ -1,0 +1,49 @@
+<!--howtoapply-->
+<!DOCTYPE html>
+<div class="col-md-12" style="margin-bottom: 20px">
+    <div class="col-md-8 ">
+        <div class="tint"></div>
+        <!--<img src="http://acm.ut.ac.ir/events/system/events/posters/000/000/068/original/photo176784913103694242.jpg?1437925436">-->
+        <div id="myElement">Loading the player...</div>
+        <!--	<div class="box">
+                <div id='playerRavtNLYlNyyb'></div>
+            </div>-->
+        <div class="sep">
+
+        </div>
+        <div class="tint-gray"></div>
+    </div>
+    <div class="col-md-4">
+        <div class="head-tile">
+            <div class="head-icon">
+                <i class="fa fa-comments fa-2x"></i>
+            </div>
+            <div class="head-title">
+                <h3>
+                    گفت و گو
+                </h3>
+
+            </div>
+        </div>
+        <div class="box">
+            <iframe src="http://108.61.188.198" style="border: 0 none transparent;"
+                    webkitallowfullscreen allowfullscreen frameborder="no" width="100%" height="400px">
+            </iframe>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <a href="http://acm.ut.ac.ir" style="color:white">شاخه دانشجویی ACM دانشگاه تهران</a>
+</div>
+<!--&lt;!&ndash; jQuery (necessary for Bootstrap's JavaScript plugins) &ndash;&gt;-->
+
+<script type="text/javascript">
+    jwplayer('myElement').setup({
+        file: 'http://live_qmery.com-pars.tehran.temcdn.ir/stream/playlist.m3u8',
+        width: '100%',
+//        height: 500px,
+        aspectratio: '16:9'
+//        image: "http://acm.ut.ac.ir/events/system/events/posters/000/000/068/original/photo176784913103694242.jpg?1437925436"
+    });
+    //    123
+</script>
