@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723113207) do
+ActiveRecord::Schema.define(version: 20150728092001) do
 
   create_table "answers", force: true do |t|
     t.integer  "answered"
@@ -146,7 +146,6 @@ ActiveRecord::Schema.define(version: 20150723113207) do
     t.integer  "payment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "want_elec"
   end
 
   create_table "payments", force: true do |t|
@@ -166,6 +165,7 @@ ActiveRecord::Schema.define(version: 20150723113207) do
     t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "capacity"
   end
 
   create_table "profiles", force: true do |t|

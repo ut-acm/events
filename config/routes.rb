@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # resources :payers
+   resources :payers
 
   # resources :pay_its
 
