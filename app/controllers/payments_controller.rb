@@ -37,6 +37,7 @@ class PaymentsController < ApplicationController
       redirect_to events_path
       return
     end
+    @profile = current_user.profile
   end
 
 

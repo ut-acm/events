@@ -84,6 +84,7 @@ Rails.application.routes.draw do
       match 'start_register' => 'events#start_register', :as => :start_register, :via => :get
       match 'check_token/:token'=>'events#check_token', :as=>:check_token,:via=>:get
       match 'payed_participations'=>'events#payed_participations', :as=>:payed_participations,:via=>:get
+      match 'live'=>'events#live',:via=>:get
     end
   end
   resources :profiles
