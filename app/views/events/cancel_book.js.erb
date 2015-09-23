@@ -4,8 +4,12 @@ alert("<%= @error %>");
 $('#register<%=@event.id%>').html('<%= link_to  book_event_path(@event), :method => :post, :style => 'display: block;', :remote => true do %>' +
       ' <i class="link"></i>' +
     '<p class="info">' +
-    'دوست دارید شرکت کنید؟' +
-    '</p>' +
+    <%if @event.category=="Product"%>
+    'دوست دارید بخرید؟'
+    <%else%>
+    'دوست دارید شرکت کنید؟'
+    <%end%>
+    +'</p>' +
 '<% end %>');
 //$('#more_info<%=@event.id%>').html('');
 $('#sabt<%=@event.id%>').html('');
