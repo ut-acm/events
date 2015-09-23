@@ -145,7 +145,7 @@ class EventsController < ApplicationController
       if @participation.event.category=="Product"
             send_file(
       @participation.event.product_address,
-        :filename => event.product_address.split('/').last)
+        :filename => @participation.event.product_address.split('/').last)
       else
       render 'events/successbuy'
     end
@@ -187,7 +187,7 @@ class EventsController < ApplicationController
       if @participation.event.category=="Product"
             send_file(
       @participation.event.product_address,
-        :filename => event.product_address.split('/').last)
+        :filename => @participation.event.product_address.split('/').last)
       else
       render 'events/successbuy'
     end
@@ -198,7 +198,7 @@ class EventsController < ApplicationController
         if @participation.event.category=="Product"
             send_file(
       @participation.event.product_address,
-        :filename => event.product_address.split('/').last)
+        :filename => @participation.event.product_address.split('/').last)
       else
         render 'events/successbuy'
       end
@@ -299,7 +299,7 @@ class EventsController < ApplicationController
       if @participation.event.category=="Product"
             send_file(
       @participation.event.product_address,
-        :filename => event.product_address.split('/').last)
+        :filename => @participation.event.product_address.split('/').last)
       else
       render 'events/successbuy'
     end
