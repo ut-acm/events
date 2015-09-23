@@ -50,7 +50,7 @@ class EventsController < ApplicationController
 
   def filter_by_category
     category = params[:category]
-    if category == 'Class' or category == 'Ring' or category == 'Lab' or category == 'Workshop' or category=='Conference' or category=='Talk' خق category=='Product'
+    if category == 'Class' or category == 'Ring' or category == 'Lab' or category == 'Workshop' or category=='Conference' or category=='Talk' or category=='Product'
       @events = Event.where("category = ?", category).where("begins > ?", Time.now).order(:begins)
       @archives = Event.where("category = ?", category).where("begins < ?", Time.now).order(:begins)
       @title = "رویدادها"
@@ -66,8 +66,7 @@ class EventsController < ApplicationController
         @title = "همایش ها"
       elsif category == 'Talk'
         @title = 'تاک ها'
-      end
-    elsif category == 'Product'
+      elsif category == 'Product'
         @title = 'محصولات قابل خرید'
       end
       render 'events/index'
