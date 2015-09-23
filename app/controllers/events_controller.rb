@@ -193,6 +193,11 @@ class EventsController < ApplicationController
       render 'events/errorbuy'
     else
       if @participation.buy(@profile)
+        if @participation.event.category=="Product"
+            send_file(
+      @participation.event.product_address,
+        :filename => @participation.event.title)
+      end
         render 'events/successbuy'
       else
         redirect_to @participation.event, :notice => "فرآیند خرید با اشکال روبه‌رو شد."
@@ -288,6 +293,11 @@ class EventsController < ApplicationController
     @participation = Participation.find(params[:id])
     @profile = @participation.profile
     if @participation.payed
+      if @participation.event.category=="Product"
+            send_file(
+      @participation.event.product_address,
+        :filename => @participation.event.title)
+      end
       render 'events/successbuy'
     elsif @participation.check_credit
       render 'events/errorbuy'
