@@ -23,7 +23,7 @@ $('#register<%=@event.id%>').html('<%= link_to cancel_book_event_path(@event), :
 $('#sabt<%=@event.id%>').html('<span class="feature register link" >'
         + '<%= link_to  prebuy_path(@event) do %>'
         +' <p class="info">'+
-        <%if event.category=="Product"%>
+        <%if @event.category=="Product"%>
         'خرید'
         <%else%>
         'ثبت نام'
