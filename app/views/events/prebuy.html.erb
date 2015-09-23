@@ -40,7 +40,7 @@
                 <%else%>
                 <% link_text='ثبت نام'%>
                 <%end%>
-                <%= link_to 'ثبت نام',buy_path(participation: @participation), method: :post, :class => 'btn btn-primary' %>
+                <%= link_to link_text,buy_path(participation: @participation), method: :post, :class => 'btn btn-primary' %>
                 <%= link_to 'لغو', root_path, :class => 'btn btn-danger' %>
               </div>
             </div>
