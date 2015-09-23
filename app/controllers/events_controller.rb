@@ -146,8 +146,9 @@ class EventsController < ApplicationController
             send_file(
       @participation.event.product_address,
         :filename => @participation.event.title)
-      end
+      else
       render 'events/successbuy'
+    end
     elsif @participation.check_credit
       render 'events/errorbuy'
     else
@@ -187,8 +188,9 @@ class EventsController < ApplicationController
             send_file(
       @participation.event.product_address,
         :filename => @participation.event.title)
-      end
+      else
       render 'events/successbuy'
+    end
     elsif @participation.check_credit
       render 'events/errorbuy'
     else
@@ -197,8 +199,9 @@ class EventsController < ApplicationController
             send_file(
       @participation.event.product_address,
         :filename => @participation.event.title)
-      end
+      else
         render 'events/successbuy'
+      end
       else
         redirect_to @participation.event, :notice => "فرآیند خرید با اشکال روبه‌رو شد."
       end
@@ -297,8 +300,9 @@ class EventsController < ApplicationController
             send_file(
       @participation.event.product_address,
         :filename => @participation.event.title)
-      end
+      else
       render 'events/successbuy'
+    end
     elsif @participation.check_credit
       render 'events/errorbuy'
     else
