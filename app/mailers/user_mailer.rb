@@ -73,9 +73,13 @@ class UserMailer < ActionMailer::Base
   def complete_invoice(invoice)
     recipient = invoice.participation.profile.user.email
     subject =
-        'شاخه‌ی دانشجویی ای‌سی‌ام دانشگاه تهران -' +
-'صورت‌حساب ثبت‌نام رویداد ' +
-            invoice.participation.event.title
+        'شاخه‌ی دانشجویی ای‌سی‌ام دانشگاه تهران -'
+        if(participation.event.category=="Product"
+          subject=subject+'صورت‌حساب خرید محصول '
+        else
+          subject=subject+'صورت‌حساب ثبت‌نام رویداد '
+        end
+        subject=subject+invoice.participation.event.title
     attachments.inline['acm.png'] = @@acm
 
     puts 'Email: to => ' + recipient + ', subject => ' + subject
