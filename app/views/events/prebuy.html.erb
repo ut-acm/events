@@ -8,15 +8,29 @@
 
           <div class="control-group" style="direction: rtl">
               <p>
+                <%if @participation.event.category=="Product"%>
+                شما در حال خرید محصول
+                <%else%>
 شما در حال ثبت‌نام رویداد
+<%end%>
                 <strong>     <%= @participation.event.title %></strong>
-          و هزینه‌ی ثبت‌نام
+          و هزینه‌ی
+          <%if @participation.event.category=="Product"%>
+          خرید
+          <%else%>
+           ثبت‌نام
+           <%end%>
               <strong><%= @participation.get_price %></strong>
 ریال
               است.
               </p>
               <p>
-                آیا مطمئن هستید می‌خواهید در این رویداد ثبت‌نام کنید؟
+                آیا مطمئن هستید می‌خواهید در
+                <%if @participation.event.category=="Product"%>
+                این محصول را خریداری کنید؟
+                <%else%>
+                 این رویداد ثبت‌نام کنید؟
+                 <%end%>
               </p>
 
             <div class="controls">
