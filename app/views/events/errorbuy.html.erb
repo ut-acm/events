@@ -3,19 +3,34 @@
   <div class="widget green">
     <div class="widget-title">
       <h4>
-خطا در ثبت‌نام
+خطا در
+<%if @participation.event.category=="Production"%>
+خرید
+<%else%>
+ ثبت‌نام
+ <%end%>
       </h4>
     </div>
     <div class="widget-body">
 
       <div class="control-group" style="direction: rtl">
         <p>
-اعتبار شما برای ثبت‌نام در رویداد
+اعتبار شما برای
+<%if @participation.event.category=="Production"%>
+خرید محصول
+<%else%>
+ثبت‌نام در رویداد
+<%end%>
      <strong>     <%= @participation.event.title %></strong>
           ، کافی نیست. حداقل مبلغ
           <strong><%= @participation.get_price - @participation.profile.credit %> </strong>
           ریال
-          پرداخت کنید تا بتوانید در این رویداد ثبت‌نام کنید.
+          پرداخت کنید تا بتوانید
+          <%if @participation.event.category=="Production"%>
+          این محصول را تهیه نمایید
+          <%else%>
+           در این رویداد ثبت‌نام کنید.
+           <%end%>
         </p>
 
         <div class="controls">

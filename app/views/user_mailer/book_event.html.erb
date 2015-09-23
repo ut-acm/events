@@ -15,7 +15,12 @@
     <%= event.begins.to_parsi.strftime("%d") %>
     <%= event.begins.to_parsi.strftime("%B") %>
     شروع خواهد شد.
-    هزینه‌ی ثبت‌نام این رویداد
+    هزینه‌ی
+    <%if event.category=="Product"%>
+    خرید این محصول
+    <%else%>
+    ثبت‌نام این رویداد
+    <%end%>
     <%= price %>
     ریال است.
   </p>
@@ -28,8 +33,11 @@
         <%= event.title %>
       </strong>
     </a>
-
+<%if event.category=="Product"%>
+این محصول را تهیه نمایید
+<%else%>
     در این رویداد ثبت نام کنید.
+    <%end%>
   </p>
   <p style="margin-top: 30px;">شاخه‌ی دانشجویی ای‌سی‌ام</p>
 		<%= image_tag attachments['acm.png'].url, :alt => 'ACM Student Chapter', :size => '64x64' %>

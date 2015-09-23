@@ -9,11 +9,19 @@
     <strong> <%= profile.credentials %></strong>
   </p>
   <p>
+    <%if event.category=="Product"%>
+    شما محصول
+    <%= event.title %>
+    را خریدید و مبلغ
+    <%= price %>
+    ریال از حساب شما کسر شد.
+    <%else%>
     شما در رویداد
     <%= event.title %>
     ثبت‌نام کردید و مبلغ
     <%= price %>
     ریال از حساب شما کسر شد.
+    <%end%>
   </p>
     <p>
     شما می‌توانید با رفتن به صفحه‌ی

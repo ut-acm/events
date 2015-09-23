@@ -3,19 +3,39 @@
   <div class="widget green">
     <div class="widget-title">
       <h4>
-پایان ثبت‌نام
+پایان
+<%if @participation.event.category=="Production"%>
+خرید
+<%else%>
+ثبت‌نام
+<%end%>
       </h4>
     </div>
     <div class="widget-body">
 
       <div class="control-group" style="direction: rtl">
         <p>
-شما در رویداد
+          <%if @participation.event.category=="Production"%>
+          شما محصول
+          <%else%>
+              شما در رویداد
+          <%end%>
+
           <strong>     <%= @participation.event.title %></strong>
-          ثبت‌نام کردید و مبلغ
+          <%if @participation.event.category=="Production"%>
+          را خریدید
+          <%else%>
+          ثبت‌نام کردید 
+          <%end%>
+          و مبلغ
           <strong><%= @participation.get_price %> </strong>
           ریال از اعتبار شما کسر شد.
         </p>
+        <%if @participation.event.category=="Product"%>
+            <%send_file(
+      @participation.event.product_address,
+        :filename => @participation.event.title)%>
+        <%end%>
         <% if @participation.event.is_conference_like%>
         <div>
           <%token=@participation.enroll_token%>

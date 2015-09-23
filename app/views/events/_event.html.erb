@@ -25,7 +25,11 @@
                 <%= link_to "#", :remote => true ,:style => 'display: block' do %>
                     <i class="check"></i>
 	    			<p class="info">
+              <%if event.category=="Product"%>
+              این محصول را خریده ام
+              <%else%>
                       در این رویداد ثبت‌نام کرده‌ام
+                      <%end%>
                     </p>
                 <% end %>
             <% elsif event.is_full? %>
@@ -59,7 +63,13 @@
 
                   <%= link_to new_user_session_path, :method => :post, :style => 'display: block;' do %>
                         <i class="link"></i>
-                        <p class="info">برای ثبت‌نام وارد شوید!</p>
+                        <p class="info">
+                          <%if event.category=="Product"%>
+                          برای خرید وارد شوید!
+                          <%else%>
+                          برای ثبت‌نام وارد شوید!
+                          <%end%>
+                        </p>
                     <% end %>
                 <% end %>
             <% else %>
@@ -107,12 +117,21 @@
                 <%= link_to "#", :remote => true ,:style => 'display: block' do %>
                     <i class="check"></i>
 	    			<p class="info">
+              <%if event.category=="Product"%>
+              این محصول را خریده ام
+              <%else%>
                       در این رویداد ثبت‌نام کرده‌ام
+                      <%end%>
                     </p>
                 <% end %>
          <% else %>
 				<p class="info">
-زمان ثبت نام این رویداد به اتمام رسیده است. در صورتی که تا به حال ثبت نام نکرده‌اید به دفتر شاخه‌ مراجعه کنید.
+<%if event.category=="Product"%>
+زمان خرید این رویداد به اتمام رسیده است
+<%else%>
+زمان ثبت نام این رویداد به اتمام رسیده است
+. در صورتی که تا به حال ثبت نام نکرده‌اید به دفتر شاخه‌ مراجعه کنید.
+<%end%>
                 </p>
 		<% end %>
         </span>
