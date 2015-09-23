@@ -74,7 +74,7 @@ class UserMailer < ActionMailer::Base
     recipient = invoice.participation.profile.user.email
     subject =
         'شاخه‌ی دانشجویی ای‌سی‌ام دانشگاه تهران -'
-        if(participation.event.category=="Product"
+        if participation.event.category=="Product"
           subject=subject+'صورت‌حساب خرید محصول '
         else
           subject=subject+'صورت‌حساب ثبت‌نام رویداد '
