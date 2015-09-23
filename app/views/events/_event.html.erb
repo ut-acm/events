@@ -177,7 +177,9 @@
         </div>
 
         <hr>
-        <%= render partial: 'class_sessions/index_all', locals: {event: event} %>
+        <%if event.category!="Product"%>
+          <%= render partial: 'class_sessions/index_all', locals: {event: event} %>
+        <%end%>
             <% if current_user.nil? == false and (current_user.profile.is_officer(event) or current_user.has_role?(:admin)) %>
             <hr>
 
