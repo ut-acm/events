@@ -31,11 +31,7 @@
           <strong><%= @participation.get_price %> </strong>
           ریال از اعتبار شما کسر شد.
         </p>
-        <%if @participation.event.category=="Product"%>
-            <%send_file(
-      @participation.event.product_address,
-        :filename => @participation.event.title)%>
-        <%end%>
+        
         <% if @participation.event.is_conference_like%>
         <div>
           <%token=@participation.enroll_token%>

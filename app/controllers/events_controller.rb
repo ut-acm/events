@@ -142,6 +142,11 @@ class EventsController < ApplicationController
       return
     end
     if @participation.payed
+      if @participation.event.category=="Product"
+            send_file(
+      @participation.event.product_address,
+        :filename => @participation.event.title)
+      end
       render 'events/successbuy'
     elsif @participation.check_credit
       render 'events/errorbuy'
@@ -178,6 +183,11 @@ class EventsController < ApplicationController
       return
     end
     if @participation.payed
+      if @participation.event.category=="Product"
+            send_file(
+      @participation.event.product_address,
+        :filename => @participation.event.title)
+      end
       render 'events/successbuy'
     elsif @participation.check_credit
       render 'events/errorbuy'
