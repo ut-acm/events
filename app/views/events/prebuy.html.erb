@@ -35,6 +35,11 @@
 
             <div class="controls">
               <div class="form-actions">
+                <%if @participation.event.category=="Product"%>
+                <% link_text='خرید'%>
+                <%else%>
+                <% link_text='ثبت نام'%>
+                <%end%>
                 <%= link_to 'ثبت نام',buy_path(participation: @participation), method: :post, :class => 'btn btn-primary' %>
                 <%= link_to 'لغو', root_path, :class => 'btn btn-danger' %>
               </div>
