@@ -4,7 +4,7 @@
     <div class="widget-title">
       <h4>
 پایان
-<%if @participation.event.category=="Production"%>
+<%if @participation.event.category=="Product"%>
 خرید
 <%else%>
 ثبت‌نام
@@ -15,14 +15,14 @@
 
       <div class="control-group" style="direction: rtl">
         <p>
-          <%if @participation.event.category=="Production"%>
+          <%if @participation.event.category=="Product"%>
           شما محصول
           <%else%>
               شما در رویداد
           <%end%>
 
           <strong>     <%= @participation.event.title %></strong>
-          <%if @participation.event.category=="Production"%>
+          <%if @participation.event.category=="Product"%>
           را خریدید
           <%else%>
           ثبت‌نام کردید 

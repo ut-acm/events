@@ -50,7 +50,7 @@ class EventsController < ApplicationController
 
   def filter_by_category
     category = params[:category]
-    if category == 'Class' or category == 'Ring' or category == 'Lab' or category == 'Workshop' or category=='Conference' or category=='Talk'
+    if category == 'Class' or category == 'Ring' or category == 'Lab' or category == 'Workshop' or category=='Conference' or category=='Talk' خق category=='Product'
       @events = Event.where("category = ?", category).where("begins > ?", Time.now).order(:begins)
       @archives = Event.where("category = ?", category).where("begins < ?", Time.now).order(:begins)
       @title = "رویدادها"
@@ -66,6 +66,9 @@ class EventsController < ApplicationController
         @title = "همایش ها"
       elsif category == 'Talk'
         @title = 'تاک ها'
+      end
+    elsif category == 'Product'
+        @title = 'محصولات قابل خرید'
       end
       render 'events/index'
     else
@@ -357,7 +360,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster,:tag_list,:is_conference_like, :officer_ids => [])
+    params.require(:event).permit(:title, :sentence, :description, :summary, :begins, :venue, :category, :capacity, :price, :poster,:tag_list,:is_conference_like, :officer_ids => [],:product_address)
     # params.permit!
   end
 

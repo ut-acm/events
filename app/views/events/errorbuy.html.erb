@@ -4,7 +4,7 @@
     <div class="widget-title">
       <h4>
 خطا در
-<%if @participation.event.category=="Production"%>
+<%if @participation.event.category=="Product"%>
 خرید
 <%else%>
  ثبت‌نام
@@ -16,7 +16,7 @@
       <div class="control-group" style="direction: rtl">
         <p>
 اعتبار شما برای
-<%if @participation.event.category=="Production"%>
+<%if @participation.event.category=="Product"%>
 خرید محصول
 <%else%>
 ثبت‌نام در رویداد
@@ -26,7 +26,7 @@
           <strong><%= @participation.get_price - @participation.profile.credit %> </strong>
           ریال
           پرداخت کنید تا بتوانید
-          <%if @participation.event.category=="Production"%>
+          <%if @participation.event.category=="Product"%>
           این محصول را تهیه نمایید
           <%else%>
            در این رویداد ثبت‌نام کنید.
